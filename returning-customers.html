@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Nuban Beauty | Welcome Back: The Next-Generation In My Skin™ Suite</title>
-  <meta content="A special thank-you for our returning customers: Discover your favorite NUBAN look, now even better with the new In My Skin™ formula. Never ashy, never ghastly." name="description"/>
+  <meta content="A special thank-you for our returning customers: Discover your favorite NUBAN look, now even better with the new In My Skin™ formula. Never ashy, never ghostly." name="description"/>
   
   <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -310,10 +310,10 @@
             <span class="font-label-kicker text-label-kicker text-brand-terracotta-dark uppercase font-semibold">WELCOME BACK TO NUBAN</span>
           </div>
 
-          <!-- Hero Headline with User Requested Kicker Line -->
+          <!-- Hero Headline with User Requested Kicker Line (Ghostly & Prominent Font Size) -->
           <div>
-            <p class="text-xs sm:text-sm tracking-[0.25em] uppercase text-brand-terracotta font-semibold mb-2">
-              never ashy, never ghastly
+            <p class="text-base sm:text-lg md:text-xl font-bold tracking-[0.22em] uppercase text-brand-terracotta mb-3 leading-snug">
+              never ashy, never ghostly
             </p>
             <h1 class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-display-hero text-ink-espresso font-normal">
               Your favorite NUBAN look. Now even better.
@@ -693,19 +693,22 @@
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <!-- OPTION A: JUST THE FOUNDATION (5 cols) -->
-          <div class="lg:col-span-5 bg-surface-card-light p-8 border border-border-editorial-strong space-y-6 shadow-sm">
-            <div class="border-b border-border-editorial-subtle pb-4">
+          <!-- OPTION A: JUST THE FOUNDATION (5 cols - Warm Luxury Card, No Black Frames) -->
+          <div class="lg:col-span-5 bg-surface-card-light/95 p-6 sm:p-8 border border-[#E4D9CF] hover:border-brand-terracotta/40 transition-colors space-y-6 shadow-sm rounded-xs">
+            <div class="border-b border-[#E8DFD8] pb-4">
               <span class="font-label-caption text-label-caption uppercase tracking-wider text-ink-cedar font-semibold">OPTION A: JUST THE FOUNDATION</span>
               <h3 class="font-headline-md text-headline-md text-ink-espresso font-normal">Replace Your Favorite Foundation</h3>
               <p class="font-body-sm text-body-sm text-ink-cedar mt-1">Get your In My Skin™ Water-Infused Foundation in the shade that suits you.</p>
             </div>
 
-            <!-- Single Foundation Visual Preview Card -->
-            <div class="bg-white border border-border-editorial-subtle p-4 flex items-center justify-center rounded-xs shadow-2xs">
-              <div class="h-44 w-auto flex items-center justify-center overflow-hidden">
-                <img src="foundation bottles/in my skin 2.webp" alt="In My Skin Liquid Foundation" class="max-h-full max-w-full object-contain"/>
+            <!-- Single Foundation Visual Preview Card with Hover Enlarge -->
+            <div class="bg-gradient-to-b from-[#FAF6F0] to-white border border-[#E8DFD8] p-6 flex flex-col items-center justify-center rounded-xs shadow-2xs group overflow-hidden cursor-zoom-in relative">
+              <div class="h-48 w-full flex items-center justify-center overflow-hidden">
+                <img id="single-preview-img" src="foundation bottles/in my skin 2.webp" alt="In My Skin Liquid Foundation (30ml)" class="max-h-full max-w-full object-contain filter contrast-[1.02] transition-transform duration-500 ease-out group-hover:scale-125"/>
               </div>
+              <span class="absolute bottom-2.5 right-2.5 text-[10px] font-semibold uppercase tracking-wider text-ink-cedar bg-white/90 backdrop-blur-xs px-2.5 py-0.5 border border-[#E8DFD8] opacity-75 group-hover:opacity-100 transition flex items-center gap-1 rounded-2xs shadow-2xs">
+                <span class="material-symbols-outlined text-[13px] text-brand-terracotta">zoom_in</span> Hover to enlarge
+              </span>
             </div>
             
             <ul class="space-y-2.5 text-body-sm text-ink-espresso">
@@ -737,107 +740,138 @@
                 <label class="block font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold mb-2" for="single-shade-select">
                   Select Your Shade:
                 </label>
-                <select class="w-full bg-surface-alabaster border border-border-editorial-medium py-3 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0 rounded-none" id="single-shade-select">
+                <select class="w-full bg-surface-alabaster border border-[#E4D9CF] py-3.5 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0 rounded-xs" id="single-shade-select" onchange="syncSingleShadePreview(this.value)">
                   <option value="05">Shade #05 Neutral Almond (Warm Golden undertone)</option>
                   <option selected="" value="06">Shade #06 Warm Amber (Rich Warm undertone)</option>
                   <option value="07">Shade #07 Spiced Cinnamon (Terracotta Red undertone)</option>
                   <option value="08">Shade #08 Deep Chestnut (Rich Deep Espresso undertone)</option>
                 </select>
               </div>
-              <button class="w-full bg-accent-cocoa text-surface-ivory font-label-button text-label-button uppercase py-4 tracking-widest hover:bg-ink-espresso transition cursor-pointer shadow-sm font-semibold" onclick="addSingleToCart()">
+              <button class="w-full bg-brand-terracotta-dark text-white font-label-button text-label-button uppercase py-4 tracking-widest hover:bg-brand-terracotta transition cursor-pointer shadow-sm font-semibold rounded-xs" onclick="addSingleToCart()">
                 Get My New Foundation
               </button>
             </div>
           </div>
 
-          <!-- OPTION B: THE COMPLETE EXPERIENCE (7 cols - Featured) -->
-          <div class="lg:col-span-7 bg-surface-card-light p-8 md:p-10 border-2 border-brand-terracotta relative space-y-6 shadow-xl" id="suite-protocol">
-            <div class="absolute -top-3.5 right-8 bg-brand-terracotta text-white font-label-button text-[11px] uppercase px-4 py-1 tracking-widest font-semibold">
+          <!-- OPTION B: THE COMPLETE EXPERIENCE (7 cols - Interactive 4-Piece Showcase, Hover Zoom) -->
+          <div class="lg:col-span-7 bg-surface-card-light/95 p-6 sm:p-8 md:p-10 border-2 border-brand-terracotta relative space-y-6 shadow-xl rounded-xs" id="suite-protocol">
+            <div class="absolute -top-3.5 right-6 sm:right-8 bg-brand-terracotta text-white font-label-button text-[11px] uppercase px-4 py-1 tracking-widest font-semibold shadow-xs rounded-2xs">
               CUSTOMER FAVORITE · SAVE ₦13,000
             </div>
-            <div class="border-b border-border-editorial-subtle pb-4">
+            <div class="border-b border-[#E8DFD8] pb-4">
               <span class="font-label-caption text-label-caption uppercase tracking-wider text-brand-terracotta font-semibold">OPTION B: THE COMPLETE EXPERIENCE</span>
               <h3 class="font-headline-md text-headline-md text-ink-espresso font-normal">Meet the 4-Piece In My Skin™ Suite</h3>
               <p class="font-body-sm text-body-sm text-ink-cedar mt-1">Why stop at foundation? Get your complete complexion routine in one convenient package.</p>
             </div>
 
-            <!-- Suite items image grid displaying all 4 products together -->
-            <div class="grid grid-cols-4 gap-2.5 bg-white p-3 border border-border-editorial-subtle rounded-xs">
-              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs">
-                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
-                  <img src="foundation bottles/in my skin 2.webp" alt="Foundation" class="max-h-full max-w-full object-contain"/>
+            <!-- Featured Suite Product Interactive Showcase with Hover Zoom -->
+            <div class="bg-gradient-to-b from-[#FAF6F0] to-white border border-[#E8DFD8] p-5 sm:p-6 rounded-xs flex flex-col sm:flex-row items-center gap-6 group overflow-hidden relative shadow-2xs">
+              <!-- Enlarging High-Res Product Image Container -->
+              <div class="w-full sm:w-1/2 h-52 sm:h-60 flex items-center justify-center overflow-hidden cursor-zoom-in relative bg-white/60 rounded-xs border border-[#E8DFD8]/60 p-4">
+                <img id="suite-featured-img" src="foundation bottles/in my skin 2.webp" alt="In My Skin Foundation (30ml)" class="max-h-full max-w-full object-contain filter contrast-[1.02] transition-all duration-500 ease-out group-hover:scale-125"/>
+                <div class="absolute top-2.5 left-2.5 px-2.5 py-0.5 bg-brand-terracotta text-white font-label-caption text-[10px] uppercase tracking-wider font-semibold rounded-2xs shadow-xs" id="suite-featured-badge">
+                  Item 1 of 4 · Core Base
                 </div>
-                <span class="text-[10px] font-semibold text-ink-espresso">Foundation</span>
+                <span class="absolute bottom-2.5 right-2.5 text-[10px] font-semibold uppercase tracking-wider text-ink-cedar bg-white/90 backdrop-blur-xs px-2.5 py-0.5 border border-[#E8DFD8] opacity-75 group-hover:opacity-100 transition flex items-center gap-1 rounded-2xs shadow-2xs">
+                  <span class="material-symbols-outlined text-[13px] text-brand-terracotta">zoom_in</span> Hover to enlarge
+                </span>
               </div>
-              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs">
-                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
-                  <img src="suite/concealer.webp" alt="Concealer" class="max-h-full max-w-full object-contain"/>
+
+              <!-- Product Details Narrative -->
+              <div class="w-full sm:w-1/2 space-y-2 text-left">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-xs uppercase tracking-widest text-brand-terracotta font-bold" id="suite-featured-kicker">Foundation (30ml)</span>
+                  <span class="text-[11px] text-ink-cedar font-medium" id="suite-featured-price">Retail price: ₦15,000</span>
                 </div>
-                <span class="text-[10px] font-semibold text-ink-espresso">Concealer</span>
-              </div>
-              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs">
-                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
-                  <img src="suite/oil lock.webp" alt="Oil-Lock Powder" class="max-h-full max-w-full object-contain"/>
-                </div>
-                <span class="text-[10px] font-semibold text-ink-espresso">Powder</span>
-              </div>
-              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs border border-brand-terracotta/40">
-                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
-                  <img src="suite/blender.webp" alt="Pro-Blender Sponge" class="max-h-full max-w-full object-contain"/>
-                </div>
-                <span class="text-[10px] font-bold text-brand-terracotta">FREE Gift</span>
+                <h4 class="font-headline-sm text-xl sm:text-2xl text-ink-espresso font-normal" id="suite-featured-title">1. In My Skin™ Foundation (30ml)</h4>
+                <p class="font-body-sm text-[12px] text-ink-cedar leading-relaxed" id="suite-featured-desc">Lightweight water-infused veil formulated specifically for Nigerian heat and melanin undertones. Delivers buildable, true-to-skin coverage that never turns ashy or oxidizes.</p>
+                <p class="text-[11px] text-brand-terracotta font-medium italic flex items-center gap-1 pt-1">
+                  <span class="material-symbols-outlined text-sm">touch_app</span> Click any product below to inspect
+                </p>
               </div>
             </div>
 
-            <!-- Suite items text breakdown -->
-            <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold">Your suite includes:</p>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-body-sm">
-              <div class="p-3 bg-surface-alabaster border border-border-editorial-subtle flex items-start gap-2.5">
-                <span class="material-symbols-outlined text-brand-terracotta text-lg mt-0.5">check</span>
-                <div>
-                  <p class="font-medium text-ink-espresso">1. In My Skin™ Foundation (30ml)</p>
-                  <p class="text-[11px] text-ink-cedar">Retail price: ₦15,000</p>
-                </div>
+            <!-- Interactive 4-Piece Suite Product Titles (Clickable & Hover Responsive) -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold">Your complete 4-piece suite includes:</p>
+                <span class="text-[11px] text-brand-terracotta font-semibold hidden sm:inline">Click title to inspect product</span>
               </div>
-              <div class="p-3 bg-surface-alabaster border border-border-editorial-subtle flex items-start gap-2.5">
-                <span class="material-symbols-outlined text-brand-terracotta text-lg mt-0.5">check</span>
-                <div>
-                  <p class="font-medium text-ink-espresso">2. Under-Eye Serum Concealer</p>
-                  <p class="text-[11px] text-ink-cedar">Retail price: ₦15,000</p>
-                </div>
-              </div>
-              <div class="p-3 bg-surface-alabaster border border-border-editorial-subtle flex items-start gap-2.5">
-                <span class="material-symbols-outlined text-brand-terracotta text-lg mt-0.5">check</span>
-                <div>
-                  <p class="font-medium text-ink-espresso">3. 16H Oil-Lock Translucent Powder</p>
-                  <p class="text-[11px] text-ink-cedar">Retail price: ₦16,000</p>
-                </div>
-              </div>
-              <div class="p-3 bg-surface-sand border border-brand-terracotta/40 flex items-start gap-2.5">
-                <span class="material-symbols-outlined text-brand-terracotta text-lg mt-0.5">card_giftcard</span>
-                <div>
-                  <p class="font-medium text-ink-espresso">4. Velvet Pro-Blender Sponge</p>
-                  <p class="text-[11px] text-brand-terracotta font-semibold">FREE gift worth ₦5,500</p>
-                </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="suite-products-container">
+                <!-- 1. Foundation -->
+                <button type="button" onclick="activateSuiteProduct(0)" class="suite-prod-btn text-left p-3.5 border-2 border-brand-terracotta bg-[#FAF6F0] rounded-xs transition-all duration-200 cursor-pointer flex items-center gap-3 shadow-2xs group" data-idx="0">
+                  <div class="w-12 h-12 bg-white rounded-xs p-1 flex items-center justify-center flex-shrink-0 border border-[#E8DFD8] group-hover:border-brand-terracotta overflow-hidden transition-colors">
+                    <img src="foundation bottles/in my skin 2.webp" alt="Foundation" class="max-h-full max-w-full object-contain group-hover:scale-120 transition-transform duration-300"/>
+                  </div>
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-center justify-between gap-1">
+                      <p class="font-medium text-ink-espresso text-[13px] sm:text-sm font-semibold truncate suite-prod-name">1. In My Skin™ Foundation (30ml)</p>
+                      <span class="material-symbols-outlined text-brand-terracotta text-sm suite-prod-icon flex-shrink-0">check_circle</span>
+                    </div>
+                    <p class="text-[11px] text-ink-cedar">Retail price: ₦15,000</p>
+                  </div>
+                </button>
+
+                <!-- 2. Concealer -->
+                <button type="button" onclick="activateSuiteProduct(1)" class="suite-prod-btn text-left p-3.5 border border-[#E8DFD8] bg-surface-alabaster hover:bg-[#FAF6F0] hover:border-brand-terracotta/60 rounded-xs transition-all duration-200 cursor-pointer flex items-center gap-3 group" data-idx="1">
+                  <div class="w-12 h-12 bg-white rounded-xs p-1 flex items-center justify-center flex-shrink-0 border border-[#E8DFD8] group-hover:border-brand-terracotta overflow-hidden transition-colors">
+                    <img src="suite/concealer.webp" alt="Concealer" class="max-h-full max-w-full object-contain group-hover:scale-120 transition-transform duration-300"/>
+                  </div>
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-center justify-between gap-1">
+                      <p class="font-medium text-ink-espresso text-[13px] sm:text-sm truncate suite-prod-name">2. Under-Eye Serum Concealer</p>
+                      <span class="material-symbols-outlined text-ink-cedar/40 text-sm suite-prod-icon flex-shrink-0">radio_button_unchecked</span>
+                    </div>
+                    <p class="text-[11px] text-ink-cedar">Retail price: ₦15,000</p>
+                  </div>
+                </button>
+
+                <!-- 3. Powder -->
+                <button type="button" onclick="activateSuiteProduct(2)" class="suite-prod-btn text-left p-3.5 border border-[#E8DFD8] bg-surface-alabaster hover:bg-[#FAF6F0] hover:border-brand-terracotta/60 rounded-xs transition-all duration-200 cursor-pointer flex items-center gap-3 group" data-idx="2">
+                  <div class="w-12 h-12 bg-white rounded-xs p-1 flex items-center justify-center flex-shrink-0 border border-[#E8DFD8] group-hover:border-brand-terracotta overflow-hidden transition-colors">
+                    <img src="suite/oil lock.webp" alt="Powder" class="max-h-full max-w-full object-contain group-hover:scale-120 transition-transform duration-300"/>
+                  </div>
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-center justify-between gap-1">
+                      <p class="font-medium text-ink-espresso text-[13px] sm:text-sm truncate suite-prod-name">3. 16H Oil-Lock Translucent Powder</p>
+                      <span class="material-symbols-outlined text-ink-cedar/40 text-sm suite-prod-icon flex-shrink-0">radio_button_unchecked</span>
+                    </div>
+                    <p class="text-[11px] text-ink-cedar">Retail price: ₦16,000</p>
+                  </div>
+                </button>
+
+                <!-- 4. Blender (Free Gift) -->
+                <button type="button" onclick="activateSuiteProduct(3)" class="suite-prod-btn text-left p-3.5 border border-brand-terracotta/40 bg-surface-sand hover:bg-[#FAF6F0] hover:border-brand-terracotta rounded-xs transition-all duration-200 cursor-pointer flex items-center gap-3 group" data-idx="3">
+                  <div class="w-12 h-12 bg-white rounded-xs p-1 flex items-center justify-center flex-shrink-0 border border-brand-terracotta/40 group-hover:border-brand-terracotta overflow-hidden transition-colors">
+                    <img src="suite/blender.webp" alt="Blender" class="max-h-full max-w-full object-contain group-hover:scale-120 transition-transform duration-300"/>
+                  </div>
+                  <div class="flex-grow min-w-0">
+                    <div class="flex items-center justify-between gap-1">
+                      <p class="font-medium text-ink-espresso text-[13px] sm:text-sm truncate suite-prod-name">4. Velvet Pro-Blender Sponge</p>
+                      <span class="material-symbols-outlined text-brand-terracotta text-sm suite-prod-icon flex-shrink-0">card_giftcard</span>
+                    </div>
+                    <p class="text-[11px] text-brand-terracotta font-semibold">FREE gift worth ₦5,500</p>
+                  </div>
+                </button>
               </div>
             </div>
 
             <!-- Pricing & Calculation -->
-            <div class="bg-surface-card-warm p-5 border border-border-editorial-subtle flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="bg-surface-card-warm p-5 border border-[#E8DFD8] flex flex-col sm:flex-row items-center justify-between gap-4 rounded-xs">
               <div>
                 <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-cedar">Total individual value: <span class="line-through">₦51,500</span></p>
                 <div class="flex items-baseline gap-3">
                   <span class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-headline-lg text-brand-terracotta-dark font-semibold leading-none" id="suite-live-price">₦38,500</span>
-                  <span class="px-2 py-0.5 bg-brand-terracotta text-white text-[11px] font-label-button uppercase font-semibold">You save ₦13,000!</span>
+                  <span class="px-2 py-0.5 bg-brand-terracotta text-white text-[11px] font-label-button uppercase font-semibold rounded-2xs">You save ₦13,000!</span>
                 </div>
               </div>
-              <!-- Quantity Selector -->
+              <!-- Quantity Selector (Soft Luxury Frame) -->
               <div class="flex items-center gap-3">
                 <span class="font-label-caption text-label-caption uppercase text-ink-espresso font-semibold">Quantity:</span>
-                <div class="flex items-center border border-border-editorial-strong bg-white">
-                  <button class="px-3 py-1 hover:bg-surface-card-warm text-ink-espresso font-bold cursor-pointer" onclick="adjustSuiteQty(-1)">-</button>
-                  <span class="px-4 py-1 text-ink-espresso font-medium" id="suite-qty-display">1</span>
-                  <button class="px-3 py-1 hover:bg-surface-card-warm text-ink-espresso font-bold cursor-pointer" onclick="adjustSuiteQty(1)">+</button>
+                <div class="flex items-center border border-[#E4D9CF] bg-white rounded-xs overflow-hidden shadow-2xs">
+                  <button type="button" class="px-3.5 py-1.5 hover:bg-surface-card-warm text-ink-espresso font-bold cursor-pointer transition" onclick="adjustSuiteQty(-1)">-</button>
+                  <span class="px-4 py-1.5 text-ink-espresso font-medium min-w-[28px] text-center" id="suite-qty-display">1</span>
+                  <button type="button" class="px-3.5 py-1.5 hover:bg-surface-card-warm text-ink-espresso font-bold cursor-pointer transition" onclick="adjustSuiteQty(1)">+</button>
                 </div>
               </div>
             </div>
@@ -847,7 +881,7 @@
               <label class="block font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold mb-2" for="suite-shade-select">
                 Choose your foundation shade and get everything you need for a beautifully finished look:
               </label>
-              <select class="w-full bg-surface-alabaster border border-border-editorial-medium py-3 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0 rounded-none" id="suite-shade-select">
+              <select class="w-full bg-surface-alabaster border border-[#E4D9CF] py-3.5 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0 rounded-xs" id="suite-shade-select">
                 <option value="05">Suite Shade #05 Neutral Almond (Pairs with Concealer 05 + Honey Powder)</option>
                 <option selected="" value="06">Suite Shade #06 Warm Amber (Pairs with Concealer 06 + Caramel Powder)</option>
                 <option value="07">Suite Shade #07 Spiced Cinnamon (Pairs with Concealer 07 + Deep Sand Powder)</option>
@@ -856,7 +890,7 @@
             </div>
 
             <!-- Conversion Action -->
-            <button class="w-full bg-brand-terracotta-dark text-white font-label-button text-label-button uppercase py-4 tracking-widest hover:bg-brand-terracotta transition shadow-md flex items-center justify-center gap-3 cursor-pointer font-semibold" onclick="addSuiteToCart()">
+            <button class="w-full bg-brand-terracotta-dark text-white font-label-button text-label-button uppercase py-4 tracking-widest hover:bg-brand-terracotta transition shadow-md flex items-center justify-center gap-3 cursor-pointer font-semibold rounded-xs" onclick="addSuiteToCart()">
               <span class="material-symbols-outlined">shopping_bag</span>
               <span>Get My Complete Suite</span>
             </button>
@@ -1477,6 +1511,107 @@
       const suiteSection = document.getElementById('suite-protocol');
       if (suiteSection) {
         suiteSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Suite Interactive Products Data
+    const suiteProductsData = [
+      {
+        title: '1. In My Skin™ Foundation (30ml)',
+        kicker: 'Foundation (30ml)',
+        badge: 'Item 1 of 4 · Core Base',
+        price: 'Retail price: ₦15,000',
+        desc: 'Lightweight water-infused veil formulated specifically for Nigerian heat and melanin undertones. Delivers buildable, true-to-skin coverage that never turns ashy or oxidizes.',
+        img: 'foundation bottles/in my skin 2.webp'
+      },
+      {
+        title: '2. Under-Eye Serum Concealer',
+        kicker: 'Serum Concealer',
+        badge: 'Item 2 of 4 · Brighten & Correct',
+        price: 'Retail price: ₦15,000',
+        desc: 'Ultra-creamy serum concealer with high pigment concentration. Melts seamlessly under eyes without creasing or settling into fine lines.',
+        img: 'suite/concealer.webp'
+      },
+      {
+        title: '3. 16H Oil-Lock Translucent Powder',
+        kicker: 'Setting Powder',
+        badge: 'Item 3 of 4 · Humidity Lock',
+        price: 'Retail price: ₦16,000',
+        desc: 'Micro-milled translucent powder that locks in your foundation for up to 16 hours. Zero flashback and zero white cast on melanin skin.',
+        img: 'suite/oil lock.webp'
+      },
+      {
+        title: '4. Velvet Pro-Blender Sponge',
+        kicker: 'FREE Luxury Gift',
+        badge: 'Item 4 of 4 · Complimentary Gift',
+        price: 'FREE gift worth ₦5,500',
+        desc: 'Custom teardrop microfiber beauty sponge designed for seamless airbrush blending with minimal product absorption. Included 100% free with your suite.',
+        img: 'suite/blender.webp'
+      }
+    ];
+
+    function activateSuiteProduct(idx) {
+      const item = suiteProductsData[idx];
+      if (!item) return;
+
+      const featImg = document.getElementById('suite-featured-img');
+      const featTitle = document.getElementById('suite-featured-title');
+      const featKicker = document.getElementById('suite-featured-kicker');
+      const featBadge = document.getElementById('suite-featured-badge');
+      const featPrice = document.getElementById('suite-featured-price');
+      const featDesc = document.getElementById('suite-featured-desc');
+
+      if (featImg) {
+        featImg.style.opacity = '0.3';
+        featImg.style.transform = 'scale(0.96)';
+        setTimeout(() => {
+          featImg.src = item.img;
+          featImg.alt = item.title;
+          featImg.style.opacity = '1';
+          featImg.style.transform = 'scale(1)';
+        }, 150);
+      }
+      if (featTitle) featTitle.innerText = item.title;
+      if (featKicker) featKicker.innerText = item.kicker;
+      if (featBadge) featBadge.innerText = item.badge;
+      if (featPrice) featPrice.innerText = item.price;
+      if (featDesc) featDesc.innerText = item.desc;
+
+      // Update button active states
+      const buttons = document.querySelectorAll('.suite-prod-btn');
+      buttons.forEach((btn, i) => {
+        const icon = btn.querySelector('.suite-prod-icon');
+        if (i === idx) {
+          btn.className = 'suite-prod-btn text-left p-3.5 border-2 border-brand-terracotta bg-[#FAF6F0] rounded-xs transition-all duration-200 cursor-pointer flex items-center gap-3 shadow-2xs group';
+          if (icon) {
+            icon.innerText = i === 3 ? 'card_giftcard' : 'check_circle';
+            icon.className = 'material-symbols-outlined text-brand-terracotta text-sm suite-prod-icon flex-shrink-0';
+          }
+        } else {
+          btn.className = 'suite-prod-btn text-left p-3.5 border border-[#E8DFD8] bg-surface-alabaster hover:bg-[#FAF6F0] hover:border-brand-terracotta/60 rounded-xs transition-all duration-200 cursor-pointer flex items-center gap-3 group';
+          if (icon) {
+            icon.innerText = i === 3 ? 'card_giftcard' : 'radio_button_unchecked';
+            icon.className = 'material-symbols-outlined text-ink-cedar/40 text-sm suite-prod-icon flex-shrink-0';
+          }
+        }
+      });
+    }
+
+    // Sync Option A single foundation bottle preview when shade is chosen
+    function syncSingleShadePreview(shadeVal) {
+      const imgMap = {
+        '05': 'foundation bottles/L3_2.webp',
+        '06': 'foundation bottles/in my skin 2.webp',
+        '07': 'a2.webp',
+        '08': 'L1_2.webp'
+      };
+      const singleImg = document.getElementById('single-preview-img');
+      if (singleImg && imgMap[shadeVal]) {
+        singleImg.style.opacity = '0.3';
+        setTimeout(() => {
+          singleImg.src = imgMap[shadeVal];
+          singleImg.style.opacity = '1';
+        }, 120);
       }
     }
 
