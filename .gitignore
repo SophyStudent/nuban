@@ -1,3 +1,41 @@
-# Archives
+# ==============================================================================
+# Nuban Beauty Landing Page - .gitignore
+# ==============================================================================
+
+# Archives & Temporary Download Packages
 *.zip
+*.tar.gz
+
+# Design Reference & Inspo Assets (not needed for production web page)
+inspo/
+stitch_temp/
 african_skin_temp/
+tiktok ad landing page.htm
+*.txt
+
+# Unused Raw Uploads & Unreferenced UUID Asset Files
+2596bc1b-62eb-40d5-bec8-fc577bbc4805.jpeg
+7e4adf75-46a5-40d0-bae0-e28ab9d591d9.jpeg
+b53450d3-da29-4bd3-9ab4-eeb65787e863.jpeg
+d7718ae5-7919-4324-92e6-72e547b3f787.png
+e8b66b0a-838d-43fc-a6cf-179ecbbb7241.jpeg
+f6596ae1-57cf-49e5-8923-b1bec60f8c4c.jpeg
+images.jpeg
+in my skin 7.webp
+a2.webp
+L1_2.webp
+L3_2.webp
+
+arm/5c17e4f3-c49c-48c2-b942-24c2d4f83f8e.jpeg
+arm/800a469c-e16b-4a7d-b7d2-e7e145f61518.jpeg
+arm/a527841c-c9c0-4cce-8930-206b675760d4.png
+arm/ba4c5136-c905-41c2-9e04-15a636c28d30.jpeg
+
+# Temporary Background-Removal Test Outputs
+foundation bottles/*_nobg.png
+foundation bottles/*_transparent.png
+
+# OS & Editor Temporary Files
+.DS_Store
+Thumbs.db
+*.log
