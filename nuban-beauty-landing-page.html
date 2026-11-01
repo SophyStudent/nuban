@@ -1,0 +1,1552 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nuban Beauty | In My Skin™ — Melanin Complexion Suite</title>
+<meta content="Engineered in Lagos specifically for melanin undertones. Zero chalk, zero flashback, 16-hour tropical wear." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            alabaster: '#F8F4EF',
+            ivory: '#EDE1D5',
+            sand: '#F4ECE4',
+            linen: '#E9DDD0',
+            espresso: '#22140D',
+            richblack: '#1A0E08',
+            cocoa: '#361E13',
+            terracotta: '#B8562D',
+            terracottadark: '#A7461F',
+            bronze: '#C58337',
+            goldmuted: '#D97843',
+            warmgray: '#6E574C',
+            cedar: '#7D6458',
+            cardlight: '#FAF6F0',
+            cardwarm: '#F0E6DC'
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      background-color: #F8F4EF;
+      color: #22140D;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    .serif-display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+    ::selection {
+      background: #EDE1D5;
+      color: #22140D;
+    }
+    .editorial-border {
+      border-color: rgba(184, 86, 45, 0.18);
+    }
+    .swatch-active {
+      border-color: #B8562D !important;
+      box-shadow: 0 0 0 1px #B8562D;
+    }
+    #mobileDrawer {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+
+    /* Seamless Luxury Image Transform (Fade & Smooth Cross-Dissolve) */
+    .image-transform-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+    }
+    .image-primary {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.65s cubic-bezier(0.25, 1, 0.35, 1), transform 0.65s cubic-bezier(0.25, 1, 0.35, 1);
+      will-change: opacity, transform;
+    }
+    .image-secondary {
+      position: absolute;
+      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: 0;
+      transform: scale(1.03);
+      transition: opacity 0.65s cubic-bezier(0.25, 1, 0.35, 1), transform 0.65s cubic-bezier(0.25, 1, 0.35, 1);
+      will-change: opacity, transform;
+    }
+    .image-transform-container:hover .image-primary,
+    .image-transform-container.is-active .image-primary {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    .image-transform-container:hover .image-secondary,
+    .image-transform-container.is-active .image-secondary {
+      opacity: 1;
+      transform: scale(1);
+    }
+  
+    /* 3D Flip Card for Clinical Complexion Gallery */
+    .flip-card {
+      perspective: 1200px;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.65s cubic-bezier(0.25, 1, 0.35, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner,
+    .flip-card.is-flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+      transform-style: preserve-3d;
+    }
+    .flip-card-back > * {
+      transform: translateZ(1px);
+    }
+  </style>
+</head>
+<body class="bg-alabaster text-espresso selection:bg-ivory selection:text-espresso">
+<!-- Editorial Top Notification: Leads to Suite Section -->
+<a href="#suite" class="block border-b border-[#B8562D]/20 bg-[#EDE1D5] hover:bg-[#E3D4C4] transition-colors px-6 py-2.5 text-center text-xs tracking-widest text-[#22140D] uppercase font-medium cursor-pointer group">
+<span class="group-hover:text-terracotta transition-colors">25% Off In My Skin™ Foundation Orders • Complimentary Pro-Blender Included • Lagos &amp; Nationwide Express Dispatch</span>
+</a>
+<!-- Editorial Navigation Bar -->
+<header class="sticky top-0 z-50 backdrop-blur-md bg-[#F8F4EF]/92 border-b border-[#B8562D]/15 transition-all">
+<div class="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
+<a class="flex flex-col items-start leading-none group" href="#">
+<span class="serif-display text-2xl lg:text-3xl tracking-[0.25em] font-light text-espresso">NUBAN</span>
+<span class="text-[9px] tracking-[0.4em] text-terracotta uppercase font-semibold mt-1">BEAUTY • LAGOS</span>
+</a>
+<nav class="hidden md:flex items-center space-x-10 text-xs tracking-[0.2em] uppercase text-espresso/80 font-medium"><a class="hover:text-terracotta transition-colors" href="#shade-finder">Tactile Shade Match</a>
+<a class="hover:text-terracotta transition-colors" href="#suite">The Suite</a>
+<a class="hover:text-terracotta transition-colors" href="#reviews">Client Voices</a></nav>
+<div class="flex items-center space-x-4 sm:space-x-6">
+<a class="hidden sm:inline-block text-xs uppercase tracking-widest text-bronze hover:text-terracotta transition-colors font-semibold" href="#shade-finder">Consultation</a>
+<a class="hidden md:inline-block text-xs uppercase tracking-[0.18em] px-6 py-3 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] shadow-sm hover:shadow transition-all duration-300 font-medium" href="#suite">
+          Purchase The Suite
+        </a>
+<!-- Sleek Hamburger Menu Button for Mobile -->
+<button aria-expanded="false" aria-label="Toggle navigation menu" class="md:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 p-2 rounded focus:outline-none border border-[#B8562D]/30 hover:border-terracotta bg-[#FAF6F0] transition-colors" id="hamburgerBtn" onclick="toggleMobileMenu()">
+<span class="w-5 h-[1.5px] bg-[#22140D] transition-transform duration-300 origin-center" id="hamLine1"></span>
+<span class="w-5 h-[1.5px] bg-[#22140D] transition-opacity duration-300" id="hamLine2"></span>
+<span class="w-5 h-[1.5px] bg-[#22140D] transition-transform duration-300 origin-center" id="hamLine3"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Mobile Navigation Drawer Overlay -->
+<div aria-modal="true" class="fixed inset-0 z-40 bg-espresso/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 md:hidden" id="mobileMenuBackdrop" onclick="closeMobileMenu()" role="dialog"></div>
+<nav aria-label="Mobile Navigation" class="fixed top-0 right-0 bottom-0 w-[84%] max-w-sm z-50 bg-[#FAF6F0] border-l border-[#B8562D]/25 shadow-2xl flex flex-col justify-between p-8 transform translate-x-full md:hidden overflow-y-auto" id="mobileDrawer">
+<div>
+<!-- Drawer Header -->
+<div class="flex items-center justify-between pb-6 border-b border-[#B8562D]/20">
+<div>
+<span class="serif-display text-2xl tracking-[0.25em] font-light text-espresso">NUBAN</span>
+<span class="block text-[8px] tracking-[0.35em] text-terracotta uppercase font-semibold mt-0.5">BEAUTY • LAGOS</span>
+</div>
+<button aria-label="Close menu" class="w-9 h-9 flex items-center justify-center text-espresso/70 hover:text-espresso border border-[#B8562D]/25 hover:border-terracotta transition-colors text-lg font-light" onclick="closeMobileMenu()">
+      ✕
+    </button>
+</div>
+<!-- Drawer Nav Links -->
+<div class="mt-8 space-y-5">
+<a class="block text-xs uppercase tracking-[0.25em] text-espresso/90 hover:text-terracotta font-medium transition-colors py-2 border-b border-[#B8562D]/10" href="#shade-finder" onclick="closeMobileMenu()">
+      Tactile Shade Match
+    </a>
+<a class="block text-xs uppercase tracking-[0.25em] text-espresso/90 hover:text-terracotta font-medium transition-colors py-2 border-b border-[#B8562D]/10" href="#breakthroughs" onclick="closeMobileMenu()">
+      Formulation Study
+    </a>
+<a class="block text-xs uppercase tracking-[0.25em] text-espresso/90 hover:text-terracotta font-medium transition-colors py-2 border-b border-[#B8562D]/10" href="#suite" onclick="closeMobileMenu()">
+      The Complexion Suite
+    </a>
+<a class="block text-xs uppercase tracking-[0.25em] text-espresso/90 hover:text-terracotta font-medium transition-colors py-2 border-b border-[#B8562D]/10" href="#reviews" onclick="closeMobileMenu()">
+      Client Voices
+    </a>
+<a class="block text-xs uppercase tracking-[0.25em] text-espresso/90 hover:text-terracotta font-medium transition-colors py-2 border-b border-[#B8562D]/10" href="#shade-finder" onclick="closeMobileMenu()">
+      Shade Consultation
+    </a>
+</div>
+<!-- Primary Drawer CTA -->
+<div class="mt-8">
+<a class="block w-full py-4 text-center bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-sm" href="#suite" onclick="closeMobileMenu()">
+      Purchase The Suite • ₦38,500
+    </a>
+<button class="mt-3 block w-full py-3.5 text-center border border-[#B8562D]/40 text-espresso hover:bg-[#EDE1D5]/40 transition-colors text-xs tracking-[0.18em] uppercase font-medium" onclick="closeMobileMenu(); openCheckoutModal();">
+      Instant Order
+    </button>
+</div>
+</div>
+<!-- Drawer Footer Meta -->
+<div class="pt-8 border-t border-[#B8562D]/20 text-[11px] text-cedar space-y-2">
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-terracotta"></span>
+<span class="tracking-wide">Lagos &amp; Nationwide Fast Dispatch</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="w-1.5 h-1.5 rounded-full bg-bronze"></span>
+<span class="tracking-wide">100% Free Shade Replacement</span>
+</div>
+<p class="text-[10px] text-warmgray pt-2">atelier@nubanbeauty.com • +234 Lagos</p>
+</div>
+</nav>
+<!-- HERO SECTION: LIGHT LUXURY EDITORIAL -->
+<section class="relative overflow-hidden pt-8 lg:pt-16 pb-20 border-b border-[#B8562D]/15 bg-gradient-to-b from-[#F8F4EF] via-[#F4ECE4] to-[#EDE1D5]/60">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+<!-- Left Editorial Column -->
+<div class="lg:col-span-6 z-10 pr-0 lg:pr-6">
+<div class="inline-flex items-center space-x-3 mb-6">
+<span class="w-8 h-[1px] bg-terracotta"></span>
+<span class="text-[11px] tracking-[0.3em] uppercase text-terracotta font-semibold">Complexion Haute Formulation</span>
+</div>
+<h1 class="serif-display text-4xl sm:text-5xl lg:text-[3.75rem] leading-[1.12] font-normal text-espresso mb-6 tracking-tight">
+            Finally. Foundation Engineered for Melanin.<br/>
+            <span class="italic font-light text-terracotta">Never Ashy. Never Ghostly.</span>
+          </h1>
+<div class="space-y-4 text-base sm:text-[17px] text-warmgray font-light leading-relaxed max-w-xl mb-10">
+<p>
+            Many international foundation brands were developed around lighter skin tones, often leaving deeper complexions looking ashy, grey or unnatural.
+          </p>
+<p>
+            Nuban takes a different approach. Developed in Lagos, our foundations are formulated to complement melanin-rich skin, with authentic warm, golden and rich undertones.
+          </p>
+<p class="font-normal text-espresso/90">
+            No chalky finish. No grey cast. Just a natural-looking match.
+          </p>
+</div>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 mb-12">
+<a class="inline-flex items-center justify-center px-8 py-4 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] shadow-sm hover:shadow transition-all duration-300 text-xs tracking-[0.2em] uppercase font-medium" href="#shade-finder">
+              Find Your True Match
+            </a>
+<a class="inline-flex items-center justify-center px-8 py-4 border border-[#B8562D]/40 text-espresso hover:border-terracotta hover:bg-[#F0E6DC]/50 transition-all duration-300 text-xs tracking-[0.2em] uppercase font-medium" href="#suite">
+              Explore The 4-Piece Suite
+            </a>
+</div>
+<!-- Minimalist Editorial Trust Line -->
+<div class="pt-8 border-t border-[#B8562D]/15 grid grid-cols-3 gap-4 text-left">
+<div>
+<span class="block serif-display text-2xl text-espresso font-normal">16h</span>
+<span class="text-[11px] tracking-wider uppercase text-cedar font-medium">Humidity Matte</span>
+</div>
+<div>
+<span class="block serif-display text-2xl text-espresso font-normal">0%</span>
+<span class="text-[11px] tracking-wider uppercase text-cedar font-medium">Flashback Cast</span>
+</div>
+<div>
+<span class="block serif-display text-2xl text-espresso font-normal">100%</span>
+<span class="text-[11px] tracking-wider uppercase text-cedar font-medium">Shade Swap Match</span>
+</div>
+</div>
+</div>
+
+<!-- Right Visual: Seamless Model Blend with Clean Smooth Transform to Foundation Bottle on Hover, Click scrolls to Real Liquid on Real Skin -->
+<div class="lg:col-span-6 relative">
+<a href="#shade-finder" class="image-transform-container block relative w-full aspect-[4/5] cursor-pointer shadow-xl rounded-sm overflow-hidden group" title="Explore Real Liquid on Real Skin: Tactile Shade Consultation">
+  
+  <!-- Primary Image: Model Image -->
+  <img alt="Nuban Beauty Melanin Model" class="image-primary w-full h-full object-cover object-top filter brightness-[1.01] contrast-[1.02]" src="in my skin 8.webp" onerror="this.src='https://lh3.googleusercontent.com/aida-public/AB6AXuAzpntuHFJN4ULkLgQ32byZ07cYAh20Zo1SV6vRr3p78SsD6SjpbppTNBCfo7izkKe-LrkwUuLeu69fu_-flg42qtjIsPU2kpAnXEVDQJipLVp9_LcxSwZ2M2zTuF5LfZVfdSMwaH94F6nIW0h4WTOUfBHXJeHyee9BIsOqFPNDmd4fCd36xeINFJp8dVsKEr3vzEslfSl0cPAb2oBftqhCwfWJbbp2PawXl2sPgLhAKhx6cWHBWZqI'"/>
+  
+  <!-- Secondary Image: In My Skin 2 Bottle (Smooth Crossfade Transform, Exact Same Sizing) -->
+  <img alt="Nuban Beauty In My Skin Liquid Foundation Bottle" class="image-secondary w-full h-full object-cover object-center bg-[#FAF6F0]" src="in my skin 2.webp"/>
+  
+  <!-- Gentle warm gradient vignette overlay -->
+  <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-[#EDE1D5]/30 via-transparent to-transparent"></div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- WE FIXED WHY FOREIGN FOUNDATIONS FAIL ON AFRICAN SKIN -->
+<section class="py-24 lg:py-32 bg-[#F8F4EF] border-b border-[#B8562D]/15" id="breakthroughs">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="max-w-4xl mx-auto text-center mb-16 lg:mb-20">
+<span class="text-[11px] tracking-[0.35em] text-bronze uppercase font-semibold block mb-3">01 / Dermal Formulation Thesis</span>
+<h2 class="serif-display text-3xl sm:text-5xl lg:text-6xl text-espresso font-normal tracking-tight leading-tight">We Fixed Why Foreign Foundations Fail on African Skin</h2>
+<p class="mt-5 text-warmgray text-base sm:text-lg font-light leading-relaxed max-w-3xl mx-auto">Engineered in Lagos for authentic melanin biology. Foreign foundations oxidize into ash, flashback on camera, and melt in heat. See how Nuban’s dermal formulation solves each failure point in real-time.</p>
+<div class="mt-8 flex flex-wrap items-center justify-center gap-3 text-xs tracking-wider uppercase font-medium">
+<span class="px-4 py-2 border border-[#B8562D]/30 bg-[#FAF6F0] text-espresso shadow-sm">Melanin Protection</span>
+<span class="px-4 py-2 border border-[#B8562D]/20 bg-[#FAF6F0]/70 text-cedar">SPF 50+ Hybrid</span>
+<span class="px-4 py-2 border border-[#B8562D]/20 bg-[#FAF6F0]/70 text-cedar">Zero Oxidation</span>
+<span class="px-4 py-2 border border-[#B8562D]/20 bg-[#FAF6F0]/70 text-cedar">Tropical Heat Proof</span>
+<span class="px-4 py-2 border border-[#B8562D]/20 bg-[#FAF6F0]/70 text-cedar">Dermal Comfort</span>
+</div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-20">
+<!-- Left: Interactive Mobile Screen Dermal Scanner -->
+<div class="lg:col-span-6 relative flex justify-center">
+<div class="relative w-full max-w-[340px] sm:max-w-[380px] aspect-[9/18] rounded-[2.5rem] p-3.5 bg-[#22140D] shadow-2xl border-4 border-[#361E13]">
+<div class="relative w-full h-full rounded-[2rem] overflow-hidden bg-[#FAF6F0] flex flex-col justify-between">
+<!-- Camera Notch -->
+<div class="absolute top-3 inset-x-0 mx-auto w-24 h-4 bg-[#22140D] rounded-full z-20"></div>
+
+<!-- Scanner Viewport (Upper 62% in exact style of sample shared) -->
+<div class="relative w-full h-[62%] overflow-hidden cursor-pointer group" onclick="nextPhoneSlide()" title="Click to view next scan">
+<img id="phoneScanImg" alt="Dermal Scan Model" class="w-full h-full object-cover object-top transition-opacity duration-500 ease-out" src="in my skin 3.webp"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FAF6F0]"></div>
+
+<!-- Reticle & Scan Target Overlay (Exact Sample Shared Style) -->
+<div class="absolute inset-6 border border-dashed border-[#FAF6F0]/70 rounded-xl pointer-events-none flex flex-col justify-between p-3">
+<div class="flex justify-between items-start">
+<span class="text-[9px] tracking-widest text-[#FAF6F0] uppercase font-semibold bg-[#22140D]/60 px-2 py-0.5 rounded backdrop-blur-sm">Target Area</span>
+<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+</div>
+<div class="text-center">
+<span class="serif-display text-sm tracking-[0.2em] uppercase text-[#FFF7F0] font-medium bg-[#22140D]/70 px-3 py-1 rounded backdrop-blur-sm">Condition of your skin</span>
+</div>
+</div>
+</div>
+
+<!-- Lower Section in EXACT style of the sample shared -->
+<div class="p-5 flex-1 flex flex-col justify-between bg-[#FAF6F0]">
+<div class="space-y-2.5">
+<!-- Condition Card 1 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-[#EDE1D5]/50 border border-[#B8562D]/15 shadow-sm transition-all duration-300">
+<div class="flex items-center space-x-2.5">
+<span class="w-3.5 h-3.5 rounded bg-[#994F2B]/80 flex-shrink-0 transition-colors duration-300" id="scanCardDot1"></span>
+<div>
+<span class="block text-[11px] font-semibold text-espresso uppercase tracking-wider leading-none" id="scanCardTitle1">Skin Tone Matching</span>
+<span class="text-[9px] text-warmgray font-light" id="scanCardDesc1">Accurate warm and golden undertone matching</span>
+</div>
+</div>
+<span class="text-[10px] text-terracotta font-semibold uppercase" id="scanCardBadge1">Calibrated</span>
+</div>
+
+<!-- Condition Card 2 -->
+<div class="flex items-center justify-between p-2.5 rounded-lg bg-[#EDE1D5]/50 border border-[#B8562D]/15 shadow-sm transition-all duration-300">
+<div class="flex items-center space-x-2.5">
+<span class="w-3.5 h-3.5 rounded bg-[#B26A3B]/80 flex-shrink-0 transition-colors duration-300" id="scanCardDot2"></span>
+<div>
+<span class="block text-[11px] font-semibold text-espresso uppercase tracking-wider leading-none" id="scanCardTitle2">Ash Cast Level</span>
+<span class="text-[9px] text-warmgray font-light" id="scanCardDesc2">No visible grey or chalky cast</span>
+</div>
+</div>
+<span class="text-[10px] text-terracotta font-semibold uppercase" id="scanCardBadge2">Neutralized</span>
+</div>
+</div>
+
+<div class="pt-3 border-t border-[#B8562D]/15 flex items-center justify-between">
+<div class="flex items-baseline space-x-1.5">
+<span class="serif-display text-lg font-normal text-espresso leading-none">₦15,000</span>
+<span class="text-[9px] uppercase tracking-wider text-cedar font-light">/ bottle</span>
+</div>
+<a href="#suite" class="px-4 py-2 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-[10px] tracking-[0.18em] uppercase font-semibold shadow-sm inline-flex items-center space-x-1 cursor-pointer">
+<span>Buy Now</span>
+<span class="text-xs">→</span>
+</a>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<!-- Right: Numbered Fixes (1, 2, 3, 4) with Direct Synchronized Slide Selection -->
+<div class="lg:col-span-6 flex flex-col justify-center">
+<div class="space-y-4 mb-8">
+<!-- Fix 1 -->
+<div id="fixCard0" class="fix-item-card p-6 rounded-xl bg-[#FAF6F0] border-2 border-terracotta shadow-md transition-all duration-300 cursor-pointer" onclick="setPhoneSlide(0)">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-3">
+<span class="serif-display text-2xl text-terracotta font-medium italic">01.</span>
+<h4 class="text-sm sm:text-base font-semibold tracking-wider text-espresso uppercase">Warm Undertone Precision</h4>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-[#EDE1D5] text-terracotta">94% Customer Satisfaction</span>
+</div>
+<p class="text-sm sm:text-[15px] text-warmgray/90 font-normal leading-relaxed mt-1">No more foundations that leave your skin looking grey, chalky or unnaturally pale. Nuban is formulated with carefully selected warm, golden and rich cocoa undertones to complement deeper skin tones and deliver a more natural-looking finish.</p>
+</div>
+
+<!-- Fix 2 -->
+<div id="fixCard1" class="fix-item-card p-6 rounded-xl bg-[#FAF6F0] border border-[#B8562D]/20 shadow-sm transition-all duration-300 cursor-pointer hover:border-terracotta" onclick="setPhoneSlide(1)">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-3">
+<span class="serif-display text-2xl text-terracotta font-medium italic">02.</span>
+<h4 class="text-sm sm:text-base font-semibold tracking-wider text-espresso uppercase">Zero Flashback &amp; HD-Ready Finish</h4>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-[#EDE1D5] text-terracotta">No Visible Flashback</span>
+</div>
+<p class="text-sm sm:text-[15px] text-warmgray/90 font-normal leading-relaxed mt-1">Your foundation should look just as good in photographs as it does in person. Our light-diffusing formula helps minimise flash reflection, leaving your complexion looking smooth and natural in wedding photographs, evening events and everyday pictures.</p>
+</div>
+
+<!-- Fix 3 -->
+<div id="fixCard2" class="fix-item-card p-6 rounded-xl bg-[#FAF6F0] border border-[#B8562D]/20 shadow-sm transition-all duration-300 cursor-pointer hover:border-terracotta" onclick="setPhoneSlide(2)">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-3">
+<span class="serif-display text-2xl text-terracotta font-medium italic">03.</span>
+<h4 class="text-sm sm:text-base font-semibold tracking-wider text-espresso uppercase">16-Hour Tropical Climate Wear</h4>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-[#EDE1D5] text-terracotta">91% Comfort Rating</span>
+</div>
+<p class="text-sm sm:text-[15px] text-warmgray/90 font-normal leading-relaxed mt-1">Made with warm, humid climates in mind. Our breathable, oil-controlling formula helps manage excess shine while maintaining a smooth, velvet-matte finish throughout the day, without feeling heavy on your skin.</p>
+</div>
+
+<!-- Fix 4 -->
+<div id="fixCard3" class="fix-item-card p-6 rounded-xl bg-[#FAF6F0] border border-[#B8562D]/20 shadow-sm transition-all duration-300 cursor-pointer hover:border-terracotta" onclick="setPhoneSlide(3)">
+<div class="flex items-start justify-between mb-2">
+<div class="flex items-center space-x-3">
+<span class="serif-display text-2xl text-terracotta font-medium italic">04.</span>
+<h4 class="text-sm sm:text-base font-semibold tracking-wider text-espresso uppercase">True-to-Tone Colour Stability</h4>
+</div>
+<span class="text-xs font-semibold px-2 py-0.5 rounded bg-[#EDE1D5] text-terracotta">89% Colour Retention</span>
+</div>
+<p class="text-sm sm:text-[15px] text-warmgray/90 font-normal leading-relaxed mt-1">Your foundation should look the same in the afternoon as it did when you applied it in the morning. Our colour-stable pigments help resist oxidation, minimising unwanted darkening and orange colour shifts throughout the day.</p>
+</div>
+</div>
+
+<div class="grid grid-cols-3 gap-4 pt-6 border-t border-[#B8562D]/20 text-center">
+<div>
+<span class="block serif-display text-3xl sm:text-4xl text-espresso font-normal">87%</span>
+<span class="text-[10px] sm:text-[11px] tracking-wider uppercase text-cedar font-medium">Felt Weightless On Skin</span>
+</div>
+<div>
+<span class="block serif-display text-3xl sm:text-4xl text-espresso font-normal">89%</span>
+<span class="text-[10px] sm:text-[11px] tracking-wider uppercase text-cedar font-medium">Zero Oxidation After 12h</span>
+</div>
+<div>
+<span class="block serif-display text-3xl sm:text-4xl text-espresso font-normal">91%</span>
+<span class="text-[10px] sm:text-[11px] tracking-wider uppercase text-cedar font-medium">Skin Comfort All Day</span>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Clinical Complexion Gallery: 100% Clean Image Only, Flips on Hover/Touch to Plain Backside with Info -->
+<div class="pt-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-[#B8562D]/20">
+<div>
+<span class="text-[10px] tracking-[0.3em] uppercase text-bronze font-semibold block mb-1">True Skin Spectrum</span>
+<h3 class="serif-display text-2xl sm:text-3xl text-espresso font-normal">Clinical Complexion Gallery</h3>
+</div>
+<span class="text-xs text-cedar font-medium mt-2 sm:mt-0">Natural studio light • 100% untouched undertones</span>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Gallery Card 1: Warm Amber #06 -->
+<div class="flip-card aspect-[3/4] cursor-pointer group" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-card-inner">
+<!-- Front: Pure Clean Image Only, No Captions, Nothing Underneath -->
+<div class="flip-card-front overflow-hidden bg-[#EDE1D5]/50 border border-[#B8562D]/15 shadow-sm">
+<img alt="Warm Amber #06 Model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="in my skin 3.webp"/>
+</div>
+<!-- Back: 3 Elements (Title, Foundation Image with Original White BG, Price & Add to Cart CTA) -->
+<div class="flip-card-back bg-white border border-[#B8562D]/30 p-5 sm:p-6 flex flex-col justify-between items-center text-center shadow-md">
+<!-- 1. The Title -->
+<h5 class="serif-display text-xl sm:text-2xl text-espresso font-normal tracking-wide">
+Warm Amber #06
+</h5>
+
+<!-- 2. The Foundation Image (Original White Background Intact) -->
+<div class="flex-1 flex items-center justify-center my-2 overflow-hidden w-full">
+<img alt="Warm Amber #06 Foundation Bottle" class="max-h-40 sm:max-h-48 w-auto object-contain transition-transform duration-500 group-hover:scale-105" src="foundation bottles/in my skin 2.webp"/>
+</div>
+
+<!-- 3. Price & Add to Cart CTA -->
+<div class="w-full">
+<span class="block serif-display text-lg sm:text-xl font-normal text-espresso mb-2 tracking-wide">₦15,000</span>
+<button onclick="event.stopPropagation(); selectShadeAndGoToSuite('Shade #06 Warm Amber');" class="w-full py-2.5 px-4 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-sm cursor-pointer">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Gallery Card 2: Spiced Terracotta #07 -->
+<div class="flip-card aspect-[3/4] cursor-pointer group" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-card-inner">
+<!-- Front: Pure Clean Image Only -->
+<div class="flip-card-front overflow-hidden bg-[#EDE1D5]/50 border border-[#B8562D]/15 shadow-sm">
+<img alt="Spiced Terracotta #07 Model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="in my skin 4.webp"/>
+</div>
+<!-- Back: 3 Elements (Title, Foundation Image with Original White BG, Price & Add to Cart CTA) -->
+<div class="flip-card-back bg-white border border-[#B8562D]/30 p-5 sm:p-6 flex flex-col justify-between items-center text-center shadow-md">
+<!-- 1. The Title -->
+<h5 class="serif-display text-xl sm:text-2xl text-espresso font-normal tracking-wide">
+Spiced Terracotta #07
+</h5>
+
+<!-- 2. The Foundation Image (Original White Background Intact) -->
+<div class="flex-1 flex items-center justify-center my-2 overflow-hidden w-full">
+<img alt="Spiced Terracotta #07 Foundation Bottle" class="max-h-40 sm:max-h-48 w-auto object-contain transition-transform duration-500 group-hover:scale-105" src="foundation bottles/a2.webp"/>
+</div>
+
+<!-- 3. Price & Add to Cart CTA -->
+<div class="w-full">
+<span class="block serif-display text-lg sm:text-xl font-normal text-espresso mb-2 tracking-wide">₦15,000</span>
+<button onclick="event.stopPropagation(); selectShadeAndGoToSuite('Shade #07 Spiced Cinnamon');" class="w-full py-2.5 px-4 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-sm cursor-pointer">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Gallery Card 3: Deep Chestnut #08 -->
+<div class="flip-card aspect-[3/4] cursor-pointer group" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-card-inner">
+<!-- Front: Pure Clean Image Only -->
+<div class="flip-card-front overflow-hidden bg-[#EDE1D5]/50 border border-[#B8562D]/15 shadow-sm">
+<img alt="Deep Chestnut #08 Model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="in my skin 5.webp"/>
+</div>
+<!-- Back: 3 Elements (Title, Foundation Image with Original White BG, Price & Add to Cart CTA) -->
+<div class="flip-card-back bg-white border border-[#B8562D]/30 p-5 sm:p-6 flex flex-col justify-between items-center text-center shadow-md">
+<!-- 1. The Title -->
+<h5 class="serif-display text-xl sm:text-2xl text-espresso font-normal tracking-wide">
+Deep Chestnut #08
+</h5>
+
+<!-- 2. The Foundation Image (Original White Background Intact) -->
+<div class="flex-1 flex items-center justify-center my-2 overflow-hidden w-full">
+<img alt="Deep Chestnut #08 Foundation Bottle" class="max-h-40 sm:max-h-48 w-auto object-contain transition-transform duration-500 group-hover:scale-105" src="foundation bottles/L1_2.webp"/>
+</div>
+
+<!-- 3. Price & Add to Cart CTA -->
+<div class="w-full">
+<span class="block serif-display text-lg sm:text-xl font-normal text-espresso mb-2 tracking-wide">₦15,000</span>
+<button onclick="event.stopPropagation(); selectShadeAndGoToSuite('Shade #08 Deep Chestnut');" class="w-full py-2.5 px-4 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-sm cursor-pointer">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Gallery Card 4: Neutral Almond #05 -->
+<div class="flip-card aspect-[3/4] cursor-pointer group" onclick="this.classList.toggle('is-flipped')">
+<div class="flip-card-inner">
+<!-- Front: Pure Clean Image Only -->
+<div class="flip-card-front overflow-hidden bg-[#EDE1D5]/50 border border-[#B8562D]/15 shadow-sm">
+<img alt="Neutral Almond #05 Model" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="in my skin 9.webp"/>
+</div>
+<!-- Back: 3 Elements (Title, Foundation Image with Original White BG, Price & Add to Cart CTA) -->
+<div class="flip-card-back bg-white border border-[#B8562D]/30 p-5 sm:p-6 flex flex-col justify-between items-center text-center shadow-md">
+<!-- 1. The Title -->
+<h5 class="serif-display text-xl sm:text-2xl text-espresso font-normal tracking-wide">
+Neutral Almond #05
+</h5>
+
+<!-- 2. The Foundation Image (Original White Background Intact) -->
+<div class="flex-1 flex items-center justify-center my-2 overflow-hidden w-full">
+<img alt="Neutral Almond #05 Foundation Bottle" class="max-h-40 sm:max-h-48 w-auto object-contain transition-transform duration-500 group-hover:scale-105" src="foundation bottles/L3_2.webp"/>
+</div>
+
+<!-- 3. Price & Add to Cart CTA -->
+<div class="w-full">
+<span class="block serif-display text-lg sm:text-xl font-normal text-espresso mb-2 tracking-wide">₦15,000</span>
+<button onclick="event.stopPropagation(); selectShadeAndGoToSuite('Shade #05 Neutral Almond');" class="w-full py-2.5 px-4 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-sm cursor-pointer">
+Add to Cart
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+<!-- TACTILE SHADE CONSULTATION: AUTHENTIC SHADE MATCHING & VISCOSITY INSPECTION -->
+<section class="py-24 lg:py-32 bg-[#EDE1D5] border-b border-[#B8562D]/15" id="shade-finder">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+
+<!-- Left Column Card: Consultation & Selectors (Same Length & Style) -->
+<div class="lg:col-span-5 bg-[#FAF6F0] border border-[#B8562D]/25 p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col justify-between h-full">
+  <div>
+    <span class="text-[11px] tracking-[0.35em] text-terracotta uppercase font-semibold block mb-2">02 / Tactile Shade Consultation</span>
+    <h2 class="serif-display text-2xl sm:text-4xl lg:text-[2.6rem] text-espresso font-normal tracking-tight leading-tight mb-4">
+      Real Liquid on Real Skin. Not Digital Guesswork.
+    </h2>
+    <p class="text-warmgray text-xs sm:text-sm font-light leading-relaxed mb-6">
+      Look closely at the natural swatches. Notice how the fluid texture hugs melanin skin without chalking or separation, matching your authentic undertones seamlessly.
+    </p>
+
+    <!-- Undertone Selector Tabs -->
+    <div class="space-y-2.5" id="undertoneSelectors">
+      <button class="tone-btn swatch-active w-full text-left p-3.5 bg-[#FAF6F0] border border-[#B8562D]/30 transition-all flex items-center justify-between group shadow-sm" onclick="setTone('warm-amber', this)">
+        <div class="flex items-center space-x-3.5">
+          <span class="w-3 h-3 rounded-full bg-[#B26A3B] flex-shrink-0"></span>
+          <div>
+            <h4 class="text-xs tracking-wider uppercase font-semibold text-espresso">Warm Golden Amber</h4>
+            <span class="text-[11px] text-warmgray font-light">Warm honey, yellow, and caramel undertones</span>
+          </div>
+        </div>
+        <span class="serif-display text-lg text-terracotta group-hover:text-espresso font-medium">→</span>
+      </button>
+
+      <button class="tone-btn w-full text-left p-3.5 bg-[#FAF6F0]/70 border border-[#B8562D]/20 hover:bg-[#FAF6F0] transition-all flex items-center justify-between group" onclick="setTone('neutral-almond', this)">
+        <div class="flex items-center space-x-3.5">
+          <span class="w-3 h-3 rounded-full bg-[#C28254] flex-shrink-0"></span>
+          <div>
+            <h4 class="text-xs tracking-wider uppercase font-semibold text-espresso">Neutral Almond Bronze</h4>
+            <span class="text-[11px] text-warmgray font-light">Balanced neutral glow without heavy red or gold bias</span>
+          </div>
+        </div>
+        <span class="serif-display text-lg text-terracotta/60 group-hover:text-terracotta font-medium">→</span>
+      </button>
+
+      <button class="tone-btn w-full text-left p-3.5 bg-[#FAF6F0]/70 border border-[#B8562D]/20 hover:bg-[#FAF6F0] transition-all flex items-center justify-between group" onclick="setTone('spiced-terracotta', this)">
+        <div class="flex items-center space-x-3.5">
+          <span class="w-3 h-3 rounded-full bg-[#994F2B] flex-shrink-0"></span>
+          <div>
+            <h4 class="text-xs tracking-wider uppercase font-semibold text-espresso">Spiced Terracotta &amp; Cinnamon</h4>
+            <span class="text-[11px] text-warmgray font-light">Radiant rich warm red depth and sunlit warmth</span>
+          </div>
+        </div>
+        <span class="serif-display text-lg text-terracotta/60 group-hover:text-terracotta font-medium">→</span>
+      </button>
+
+      <button class="tone-btn w-full text-left p-3.5 bg-[#FAF6F0]/70 border border-[#B8562D]/20 hover:bg-[#FAF6F0] transition-all flex items-center justify-between group" onclick="setTone('deep-espresso', this)">
+        <div class="flex items-center space-x-3.5">
+          <span class="w-3 h-3 rounded-full bg-[#5E321E] flex-shrink-0"></span>
+          <div>
+            <h4 class="text-xs tracking-wider uppercase font-semibold text-espresso">Deep Espresso &amp; Cocoa</h4>
+            <span class="text-[11px] text-warmgray font-light">Pure rich depth with zero chalk or grey haze</span>
+          </div>
+        </div>
+        <span class="serif-display text-lg text-terracotta/60 group-hover:text-terracotta font-medium">→</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mt-6 pt-5 border-t border-[#B8562D]/20 flex items-center justify-between text-xs text-cedar font-medium">
+    <span>🛡️ 100% Free Shade Swap Guarantee</span>
+    <span>Lagos Concierge Support</span>
+  </div>
+</div>
+
+<!-- Right Column Card: Interactive Swatch Display Showcase (Same Length & Style) -->
+<div class="lg:col-span-7 bg-[#FAF6F0] border border-[#B8562D]/25 p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col justify-between h-full">
+  
+  <!-- Interactive Smooth Transform Container with Sized Down Image for Perfect Height Alignment -->
+  <div class="flex-grow flex flex-col justify-center">
+    <div class="image-transform-container relative w-full aspect-[4/5] max-w-sm mx-auto max-h-[370px] cursor-pointer shadow-md rounded-sm overflow-hidden group" onclick="this.classList.toggle('is-active')">
+      
+      <!-- Primary: Tone Swatch Image -->
+      <img alt="Nuban Beauty Swatch" class="image-primary w-full h-full object-cover object-center block" id="toneArmImg" src="arm/warm-amber-arm.jpeg"/>
+      
+      <!-- Secondary: Fluid Viscosity Stroke (Exact Same Dimensions & Center, Smooth Crossfade) -->
+      <img alt="In My Skin Foundation Swatch" class="image-secondary w-full h-full object-cover object-center bg-[#FAF6F0] block" id="toneBrushImg" src="in my skin 11.webp"/>
+    </div>
+  </div>
+
+  <!-- Dynamic Active Shade Detail -->
+  <div class="mt-6 pt-5 border-t border-[#B8562D]/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+    <div>
+      <span class="text-[10px] tracking-[0.25em] uppercase text-terracotta font-semibold">Recommended Match</span>
+      <h3 class="serif-display text-xl sm:text-2xl text-espresso font-normal" id="toneMatchTitle">In My Skin™ — Shade #06 (Warm Amber)</h3>
+      <p class="text-xs text-warmgray mt-0.5 max-w-md font-light" id="toneMatchDesc">
+        Engineered for medium-deep melanin with pure golden warmth. Eliminates the grey cast of standard foundation.
+      </p>
+    </div>
+    <a class="whitespace-nowrap px-6 py-3.5 bg-[#A7461F] text-[#FFF7F0] text-xs tracking-widest uppercase hover:bg-[#B8562D] transition-colors font-medium shadow-sm flex-shrink-0" href="#suite">
+      Select This Tone
+    </a>
+  </div>
+</div>
+</div>
+</div>
+</section>
+<!-- THE SUITE: 4-PIECE COMPLEXION RITUAL -->
+<section class="py-24 lg:py-32 bg-[#F8F4EF] border-b border-[#B8562D]/15" id="suite">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="border border-[#B8562D]/25 bg-[#F0E6DC] p-8 sm:p-12 lg:p-16 shadow-sm">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+<!-- Left: Interactive Nuban Product Imagery with All 4 Items -->
+<div class="lg:col-span-6">
+<div class="relative bg-white p-6 sm:p-8 border border-[#B8562D]/20 flex items-center justify-center shadow-sm">
+<div class="w-full max-w-md aspect-square flex items-center justify-center overflow-hidden">
+<img id="suiteMainImg" alt="In My Skin™ Liquid Foundation" class="max-h-[340px] sm:max-h-[380px] w-auto object-contain transition-all duration-500" src="foundation bottles/in my skin 2.webp"/>
+</div>
+<span id="suiteImgTag" class="absolute bottom-4 right-4 bg-[#FAF6F0]/95 border border-[#B8562D]/20 px-3 py-1 text-[10px] uppercase tracking-wider text-espresso font-semibold shadow-xs">
+In My Skin™ Foundation
+</span>
+</div>
+
+<!-- Component Thumbnail Tiles displaying all 4 items with images -->
+<div class="grid grid-cols-4 gap-2.5 sm:gap-3 mt-4">
+<!-- Tile 1: Foundation -->
+<div onclick="setSuitePreview('foundation')" id="suiteTile-foundation" class="suite-tile p-2.5 border-2 border-terracotta bg-[#FAF6F0] flex flex-col items-center justify-between text-center transition-all cursor-pointer rounded shadow-xs">
+<div class="w-full h-14 sm:h-16 flex items-center justify-center mb-1 overflow-hidden">
+<img src="foundation bottles/in my skin 2.webp" alt="Foundation" class="max-h-full max-w-full object-contain"/>
+</div>
+<span class="block text-[11px] font-semibold text-espresso leading-tight">Foundation</span>
+<span class="text-[9px] text-cedar">30ml Velvet</span>
+</div>
+
+<!-- Tile 2: Concealer -->
+<div onclick="setSuitePreview('concealer')" id="suiteTile-concealer" class="suite-tile p-2.5 border border-[#B8562D]/25 bg-[#FAF6F0] flex flex-col items-center justify-between text-center transition-all cursor-pointer rounded shadow-xs hover:border-terracotta">
+<div class="w-full h-14 sm:h-16 flex items-center justify-center mb-1 overflow-hidden">
+<img src="suite/concealer.webp" alt="Concealer" class="max-h-full max-w-full object-contain"/>
+</div>
+<span class="block text-[11px] font-semibold text-espresso leading-tight">Concealer</span>
+<span class="text-[9px] text-cedar">HD Radiant</span>
+</div>
+
+<!-- Tile 3: Oil-Lock Powder -->
+<div onclick="setSuitePreview('powder')" id="suiteTile-powder" class="suite-tile p-2.5 border border-[#B8562D]/25 bg-[#FAF6F0] flex flex-col items-center justify-between text-center transition-all cursor-pointer rounded shadow-xs hover:border-terracotta">
+<div class="w-full h-14 sm:h-16 flex items-center justify-center mb-1 overflow-hidden">
+<img src="suite/oil lock.webp" alt="Oil-Lock Powder" class="max-h-full max-w-full object-contain"/>
+</div>
+<span class="block text-[11px] font-semibold text-espresso leading-tight">Oil-Lock</span>
+<span class="text-[9px] text-cedar">Micro-Powder</span>
+</div>
+
+<!-- Tile 4: Velvet Blender -->
+<div onclick="setSuitePreview('blender')" id="suiteTile-blender" class="suite-tile p-2.5 border border-[#B8562D]/25 bg-[#FAF6F0] flex flex-col items-center justify-between text-center transition-all cursor-pointer rounded shadow-xs hover:border-terracotta">
+<div class="w-full h-14 sm:h-16 flex items-center justify-center mb-1 overflow-hidden">
+<img src="suite/blender.webp" alt="Pro Blender" class="max-h-full max-w-full object-contain"/>
+</div>
+<span class="block text-[11px] font-semibold text-terracotta leading-tight">Pro Blender</span>
+<span class="text-[9px] text-terracottadark font-medium">Gift (₦5,500)</span>
+</div>
+</div>
+</div>
+
+<!-- Right Editorial Pricing & Suite Breakdown -->
+<div class="lg:col-span-6">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] tracking-[0.35em] text-bronze uppercase font-semibold block">03 / The Complete Protocol</span>
+<button type="button" onclick="selectFullSuiteBundle()" class="text-[10px] tracking-wider uppercase text-terracotta hover:underline font-semibold cursor-pointer">
+✦ Full Suite Bundle (Save ₦13,000)
+</button>
+</div>
+
+<h2 class="serif-display text-3xl sm:text-4xl lg:text-5xl text-espresso font-normal tracking-tight leading-tight mb-3">
+The Melt-Proof Melanin Suite
+</h2>
+<p class="text-xs sm:text-sm text-warmgray font-light leading-relaxed mb-6">
+Customize your bag or acquire the full 4-piece ritual favored by leading Nigerian bridal artists for 16-hour sweat-proof elegance.
+</p>
+
+<!-- Interactive 4-Piece Customizer List -->
+<div class="space-y-3 mb-6 bg-[#FAF6F0] p-4 sm:p-5 border border-[#B8562D]/20 rounded-md">
+<!-- Item 1: Foundation -->
+<div class="flex items-center justify-between pb-3 border-b border-[#B8562D]/15 gap-2">
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-semibold text-espresso">1. In My Skin™ Foundation (30ml)</span>
+<span class="text-[11px] font-semibold text-terracotta">₦15,000</span>
+</div>
+<select id="suiteFoundationShade" onchange="selectedShade = this.value; if(document.getElementById('modalShade')) document.getElementById('modalShade').value = this.value;" class="mt-1 text-[11px] bg-[#EDE1D5]/60 border border-[#B8562D]/25 px-2 py-1 text-espresso focus:outline-none focus:border-terracotta rounded-xs w-full max-w-[240px]">
+<option value="Shade #06 Warm Amber">Shade #06 • Warm Amber (Golden Melanin)</option>
+<option value="Shade #05 Neutral Almond">Shade #05 • Neutral Almond (Harmonious Bronze)</option>
+<option value="Shade #07 Spiced Cinnamon">Shade #07 • Spiced Cinnamon (Warm Terracotta)</option>
+<option value="Shade #08 Deep Chestnut">Shade #08 • Deep Chestnut (Rich Cocoa Depth)</option>
+</select>
+</div>
+<div class="flex items-center border border-[#B8562D]/30 bg-white rounded overflow-hidden">
+<button type="button" onclick="changeSuiteQty('foundation', -1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">−</button>
+<span id="qty-foundation" class="w-8 text-center text-xs font-semibold text-espresso">1</span>
+<button type="button" onclick="changeSuiteQty('foundation', 1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">+</button>
+</div>
+</div>
+
+<!-- Item 2: Concealer -->
+<div class="flex items-center justify-between pb-3 border-b border-[#B8562D]/15 gap-2">
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-semibold text-espresso">2. In My Skin™ Radiant Concealer</span>
+<span class="text-[11px] font-semibold text-terracotta">₦15,000</span>
+</div>
+<span class="text-[10px] text-warmgray block">Neutralizes undereye shadows without creasing</span>
+</div>
+<div class="flex items-center border border-[#B8562D]/30 bg-white rounded overflow-hidden">
+<button type="button" onclick="changeSuiteQty('concealer', -1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">−</button>
+<span id="qty-concealer" class="w-8 text-center text-xs font-semibold text-espresso">1</span>
+<button type="button" onclick="changeSuiteQty('concealer', 1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">+</button>
+</div>
+</div>
+
+<!-- Item 3: Oil-Lock Powder -->
+<div class="flex items-center justify-between pb-3 border-b border-[#B8562D]/15 gap-2">
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-semibold text-espresso">3. Micro-Fine Oil-Lock Powder</span>
+<span class="text-[11px] font-semibold text-terracotta">₦16,000</span>
+</div>
+<span class="text-[10px] text-warmgray block">Weightless translucent setting powder, 16h shine lock</span>
+</div>
+<div class="flex items-center border border-[#B8562D]/30 bg-white rounded overflow-hidden">
+<button type="button" onclick="changeSuiteQty('powder', -1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">−</button>
+<span id="qty-powder" class="w-8 text-center text-xs font-semibold text-espresso">1</span>
+<button type="button" onclick="changeSuiteQty('powder', 1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">+</button>
+</div>
+</div>
+
+<!-- Item 4: Velvet Pro-Blender -->
+<div class="flex items-center justify-between gap-2">
+<div class="flex-1 min-w-0">
+<div class="flex items-center space-x-2">
+<span class="text-xs font-semibold text-espresso">4. Velvet Pro-Blender</span>
+<span id="blenderPriceLabel" class="text-[11px] font-semibold text-terracotta">Gift (FREE with Suite)</span>
+</div>
+<span class="text-[10px] text-warmgray block">Ergonomic streak-free microfiber pressing sponge</span>
+</div>
+<div class="flex items-center border border-[#B8562D]/30 bg-white rounded overflow-hidden">
+<button type="button" onclick="changeSuiteQty('blender', -1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">−</button>
+<span id="qty-blender" class="w-8 text-center text-xs font-semibold text-espresso">1</span>
+<button type="button" onclick="changeSuiteQty('blender', 1)" class="w-7 h-7 flex items-center justify-center text-espresso hover:bg-[#EDE1D5] transition-colors text-xs font-bold cursor-pointer">+</button>
+</div>
+</div>
+</div>
+
+<!-- Dynamic Live Price Lock -->
+<div class="flex items-baseline justify-between mb-6 pb-5 border-b border-[#B8562D]/20">
+<div>
+<span class="serif-display text-4xl sm:text-5xl text-espresso font-normal" id="suiteCalculatedPrice">₦38,500</span>
+<span class="text-xs text-cedar ml-2 block sm:inline" id="suiteItemCount">(Full 4-Piece Protocol)</span>
+</div>
+<div id="suiteDiscountBadge" class="text-right">
+<span class="block text-sm text-cedar/70 line-through" id="suiteRegularValue">₦51,500 Value</span>
+<span class="text-xs uppercase tracking-widest text-[#B8562D] font-bold" id="suiteSavingsText">Save ₦13,000 (25% Privilege)</span>
+</div>
+</div>
+
+<!-- Primary Purchase Trigger Button (Dynamically Updates with Selection) -->
+<button id="suitePrimaryBtn" class="w-full py-4 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-all duration-300 text-xs tracking-[0.2em] uppercase font-medium shadow-md cursor-pointer" onclick="handleSuiteOrder()">
+Acquire The Suite • ₦38,500
+</button>
+<div class="mt-4 flex items-center justify-between text-[11px] text-cedar tracking-wider font-medium">
+<span class="">Paystack Secured • Card / Bank Transfer</span>
+<span class="">100% Free Shade Replacement</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Editorial Guarantee Quote -->
+<div class="mt-12 p-8 border-l-2 border-terracotta bg-[#EDE1D5]/60 max-w-4xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-6 border border-[#B8562D]/15">
+<div>
+<h4 class="serif-display text-2xl text-espresso font-normal">The Nuban Shade Guarantee</h4>
+<p class="text-xs sm:text-sm text-warmgray mt-1 font-light max-w-xl">
+            If your chosen shade is not identical to your natural undertone, our Lagos concierge dispatches your replacement free within 7 days.
+          </p>
+</div>
+<span class="text-xs uppercase tracking-widest text-[#B8562D] font-bold whitespace-nowrap">Zero Risk • Free Swaps</span>
+</div>
+</div>
+</section>
+<!-- EDITORIAL TESTIMONIALS: REAL NIGERIAN CLIENTS & PRO MUAS (WITH AUTHENTIC AVATAR ICONS) -->
+<section class="py-24 lg:py-32 bg-[#EDE1D5] border-b border-[#B8562D]/15" id="reviews">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+<div class="max-w-5xl mb-12 sm:mb-16">
+<span class="text-[11px] tracking-[0.35em] text-bronze uppercase font-semibold block mb-3">04 / Verified Experiences</span>
+<h2 class="serif-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] text-espresso font-normal tracking-tight whitespace-nowrap">
+          Tested in Traffic, Owambes &amp; 35°C Heat.
+        </h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Review 1 -->
+<div class="p-8 border border-[#B8562D]/20 bg-[#FAF6F0] flex flex-col justify-between shadow-sm">
+<div>
+<!-- 5-Star Rating -->
+<div class="flex items-center space-x-1 text-terracotta mb-4" aria-label="5 out of 5 stars">
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
+<p class="text-sm sm:text-[15px] text-espresso/90 leading-relaxed font-normal mb-6">
+              I wore this to a 9-hour outdoor wedding reception in Victoria Island. Normally by 2 PM my T-zone is shining like polished glass. Nuban stayed velvet matte, and the flash pictures looked completely natural. Zero grey cast.
+            </p>
+</div>
+<div class="pt-6 border-t border-[#B8562D]/15 flex items-center space-x-4">
+  <img alt="Chidinma O." class="w-12 h-12 rounded-full object-cover border-2 border-[#B8562D]/30 shadow-sm flex-shrink-0" src="in my skin 1.webp"/>
+  <div>
+    <h5 class="text-xs font-semibold tracking-wider text-espresso uppercase flex items-center gap-1.5">
+      <span>Chidinma O.</span>
+      <span class="text-[10px] text-[#10b981] font-bold">✓ Verified</span>
+    </h5>
+    <span class="text-[11px] text-cedar block mt-0.5">Lekki Phase 1, Lagos • Shade #06</span>
+  </div>
+</div>
+</div>
+<!-- Review 2 -->
+<div class="p-8 border border-[#B8562D]/20 bg-[#FAF6F0] flex flex-col justify-between shadow-sm">
+<div>
+<!-- 5-Star Rating -->
+<div class="flex items-center space-x-1 text-terracotta mb-4" aria-label="5 out of 5 stars">
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
+<p class="text-sm sm:text-[15px] text-espresso/90 leading-relaxed font-normal mb-6">
+              I had surrendered to paying over ₦90,000 for foreign prestige brands that inevitably turned orange on my jawline. Nuban is formulated by people who actually understand melanin undertones. It becomes one with your skin.
+            </p>
+</div>
+<div class="pt-6 border-t border-[#B8562D]/15 flex items-center space-x-4">
+  <img alt="Halima B." class="w-12 h-12 rounded-full object-cover border-2 border-[#B8562D]/30 shadow-sm flex-shrink-0" src="in my skin 5.webp"/>
+  <div>
+    <h5 class="text-xs font-semibold tracking-wider text-espresso uppercase flex items-center gap-1.5">
+      <span>Halima B.</span>
+      <span class="text-[10px] text-[#10b981] font-bold">✓ Verified</span>
+    </h5>
+    <span class="text-[11px] text-cedar block mt-0.5">Maitama, Abuja • Shade #08</span>
+  </div>
+</div>
+</div>
+<!-- Review 3 -->
+<div class="p-8 border border-[#B8562D]/20 bg-[#FAF6F0] flex flex-col justify-between shadow-sm">
+<div>
+<!-- 5-Star Rating -->
+<div class="flex items-center space-x-1 text-terracotta mb-4" aria-label="5 out of 5 stars">
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+  <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+</div>
+<p class="text-sm sm:text-[15px] text-espresso/90 leading-relaxed font-normal mb-6">
+              As a bridal makeup artist directing 40+ Nigerian weddings a year, this suite is permanently in my kit. It photographs better than any UK or US department store foundation on African skin under heavy studio strobes.
+            </p>
+</div>
+<div class="pt-6 border-t border-[#B8562D]/15 flex items-center space-x-4">
+  <img alt="Tolani A." class="w-12 h-12 rounded-full object-cover border-2 border-[#B8562D]/30 shadow-sm flex-shrink-0" src="in my skin 9.webp"/>
+  <div>
+    <h5 class="text-xs font-semibold tracking-wider text-espresso uppercase flex items-center gap-1.5">
+      <span>Tolani A.</span>
+      <span class="text-[10px] text-terracotta font-bold">★ Celebrity MUA</span>
+    </h5>
+    <span class="text-[11px] text-cedar block mt-0.5">Studio Pro Owner • Ikeja, Lagos</span>
+  </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDITORIAL FAQ ACCORDION -->
+<section class="py-24 lg:py-32 bg-[#F8F4EF] border-b border-[#B8562D]/15">
+<div class="max-w-4xl mx-auto px-6 lg:px-12">
+<div class="text-center mb-16">
+<span class="text-[11px] tracking-[0.35em] text-bronze uppercase font-semibold block mb-3">05 / Common Inquiries</span>
+<h2 class="serif-display text-3xl sm:text-5xl text-espresso font-normal">
+          Frequently Asked Questions
+        </h2>
+</div>
+<div class="space-y-0 border-t border-[#B8562D]/20">
+<!-- FAQ item 1 -->
+<div class="border-b border-[#B8562D]/20 py-6">
+<button class="w-full flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="serif-display text-xl sm:text-2xl text-espresso group-hover:text-terracotta transition-colors font-normal">What if my shade does not match perfectly?</span>
+<span class="faq-icon text-lg text-terracotta group-hover:text-terracottadark font-medium transition-transform duration-300">+</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-300 text-xs sm:text-sm text-warmgray font-light leading-relaxed">
+<p class="pt-4">
+              You are safeguarded by our Free Shade Swap Policy. If your shade is not seamless, simply notify our Lagos WhatsApp desk within 7 days. We dispatch your exchange shade with zero return hassle.
+            </p>
+</div>
+</div>
+<!-- FAQ item 2 -->
+<div class="border-b border-[#B8562D]/20 py-6">
+<button class="w-full flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="serif-display text-xl sm:text-2xl text-espresso group-hover:text-terracotta transition-colors font-normal">Will this cause white flashback in flash photography?</span>
+<span class="faq-icon text-lg text-terracotta group-hover:text-terracottadark font-medium transition-transform duration-300">+</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-300 text-xs sm:text-sm text-warmgray font-light leading-relaxed">
+<p class="pt-4">
+              No. Ghost-face flashback occurs when cosmetics rely on cheap, highly reflective zinc or titanium filters. Nuban incorporates micronized spherical silica that diffuses harsh light evenly across the skin.
+            </p>
+</div>
+</div>
+<!-- FAQ item 3 -->
+<div class="border-b border-[#B8562D]/20 py-6">
+<button class="w-full flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="serif-display text-xl sm:text-2xl text-espresso group-hover:text-terracotta transition-colors font-normal">How soon will my order arrive across Nigeria?</span>
+<span class="faq-icon text-lg text-terracotta group-hover:text-terracottadark font-medium transition-transform duration-300">+</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-300 text-xs sm:text-sm text-warmgray font-light leading-relaxed">
+<p class="pt-4">
+              Lagos deliveries are fulfilled within 24 to 48 hours via dedicated dispatch. Abuja, Port Harcourt, Ibadan, and other states arrive within 2 to 4 working days via insured logistics partners.
+            </p>
+</div>
+</div>
+<!-- FAQ item 4 -->
+<div class="border-b border-[#B8562D]/20 py-6">
+<button class="w-full flex items-center justify-between text-left group" onclick="toggleFaq(this)">
+<span class="serif-display text-xl sm:text-2xl text-espresso group-hover:text-terracotta transition-colors font-normal">Is the formula non-comedogenic for sensitive skin?</span>
+<span class="faq-icon text-lg text-terracotta group-hover:text-terracottadark font-medium transition-transform duration-300">+</span>
+</button>
+<div class="faq-content max-h-0 overflow-hidden transition-all duration-300 text-xs sm:text-sm text-warmgray font-light leading-relaxed">
+<p class="pt-4">
+              Yes. Dermatologist-tested, non-comedogenic, and oil-free. Designed specifically to maintain skin respiration while regulating sebum in high humidity environments.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- EDITORIAL FOOTER -->
+<footer class="bg-[#EDE1D5] text-espresso pt-16 sm:pt-20 pb-12 border-t border-[#B8562D]/20">
+<div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+<!-- Top Section: Newsletter Block -->
+<div class="pb-12 mb-12 border-b border-[#B8562D]/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+  <div class="lg:col-span-6">
+    <span class="text-[10px] tracking-[0.3em] uppercase text-bronze font-semibold block mb-1">Stay Connected</span>
+    <h4 class="serif-display text-2xl sm:text-3xl text-espresso font-normal">Newsletter</h4>
+    <p class="text-xs sm:text-sm text-warmgray font-light mt-1">Sign up to our newsletter to receive exclusive offers.</p>
+  </div>
+  <div class="lg:col-span-6">
+    <form class="flex flex-col sm:flex-row gap-2.5" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Nuban Beauty.');">
+      <input type="email" placeholder="E-mail" required class="flex-1 bg-[#FAF6F0] border border-[#B8562D]/30 px-4 py-3 text-xs text-espresso placeholder:text-cedar/70 focus:outline-none focus:border-terracotta rounded-none"/>
+      <button type="submit" class="px-8 py-3 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-sm cursor-pointer whitespace-nowrap">
+        Subscribe
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Main 4-Column Grid: Our Philosophy, Collections, Useful Links, Contact Us -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#B8562D]/20">
+  
+  <!-- Column 1: Our Philosophy (md:col-span-4) -->
+  <div class="md:col-span-4 space-y-3">
+    <span class="serif-display text-2xl lg:text-3xl tracking-[0.2em] font-light block text-espresso">NUBAN</span>
+    <h5 class="text-[11px] tracking-[0.25em] uppercase font-semibold text-terracotta">Our Philosophy</h5>
+    <p class="text-xs sm:text-[13px] text-warmgray font-light leading-relaxed">
+      Beauty is more than what you wear, it's how you feel. Through premium makeup and science-led skincare, we celebrate, care for, and enhance melanin-rich skin with confidence at the heart of everything we create.
+    </p>
+  </div>
+
+  <!-- Column 2: Collections (md:col-span-3) -->
+  <div class="md:col-span-3 space-y-3">
+    <h5 class="text-[11px] tracking-[0.25em] uppercase font-semibold text-espresso">Collections</h5>
+    <ul class="text-xs space-y-2 text-warmgray font-light">
+      <li><a class="hover:text-terracotta transition-colors" href="#suite">In My Skin™ Foundation</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="#suite">The Melanin Suite</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="#suite">Radiant Concealer</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="#suite">Micro-Fine Oil-Lock Powder</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="#shade-finder">Tactile Shade Match</a></li>
+    </ul>
+  </div>
+
+  <!-- Column 3: Useful Links (md:col-span-2) -->
+  <div class="md:col-span-2 space-y-3">
+    <h5 class="text-[11px] tracking-[0.25em] uppercase font-semibold text-espresso">Useful Links</h5>
+    <ul class="text-xs space-y-2 text-warmgray font-light">
+      <li><a class="hover:text-terracotta transition-colors" href="https://nubanbeauty.com/pages/about-us" target="_blank" rel="noopener noreferrer">About us</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="https://nubanbeauty.com/pages/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="https://nubanbeauty.com/pages/shipping-delivery" target="_blank" rel="noopener noreferrer">Shipping &amp; Delivery</a></li>
+      <li><a class="hover:text-terracotta transition-colors" href="https://nubanbeauty.com/pages/refund-policy" target="_blank" rel="noopener noreferrer">Refund Policy</a></li>
+    </ul>
+  </div>
+
+  <!-- Column 4: Contact Us (md:col-span-3) -->
+  <div class="md:col-span-3 space-y-3">
+    <h5 class="text-[11px] tracking-[0.25em] uppercase font-semibold text-espresso">Contact Us</h5>
+    <ul class="text-xs space-y-2.5 text-warmgray font-light">
+      <li>
+        <span class="block text-[10px] uppercase tracking-wider text-espresso font-semibold">Email</span>
+        <a href="mailto:atelier@nubanbeauty.com" class="text-espresso hover:text-terracotta transition-colors font-medium">atelier@nubanbeauty.com</a>
+      </li>
+      <li>
+        <span class="block text-[10px] uppercase tracking-wider text-espresso font-semibold">WhatsApp Concierge</span>
+        <a href="https://wa.me/2348031234567" target="_blank" rel="noopener noreferrer" class="text-espresso hover:text-terracotta transition-colors font-medium inline-flex items-center space-x-1">
+          <span>+234 Shade Consultation Desk</span>
+          <span class="text-terracotta">→</span>
+        </a>
+      </li>
+      <li>
+        <span class="block text-[10px] uppercase tracking-wider text-espresso font-semibold">Atelier Locations</span>
+        <span class="text-espresso/90">Victoria Island, Lagos • Maitama, Abuja</span>
+      </li>
+      <li>
+        <span class="block text-[10px] uppercase tracking-wider text-espresso font-semibold">Support Hours</span>
+        <span class="text-espresso/90">Mon – Sat: 9:00 AM – 6:00 PM WAT</span>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- Bottom Meta Bar -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-cedar font-medium">
+  <span>© 2026 Nuban Beauty Ltd. African Luxury Defined.</span>
+  <span class="mt-2 sm:mt-0">Paystack Verified • SSL Secured</span>
+</div>
+
+</div>
+</footer>
+<!-- MINIMALIST CHECKOUT DIALOG -->
+<div class="fixed inset-0 z-50 bg-espresso/70 backdrop-blur-sm hidden items-center justify-center p-4" id="checkoutModal">
+<div class="bg-[#FAF6F0] border border-[#B8562D]/30 w-full max-w-lg p-8 sm:p-10 shadow-2xl relative">
+<button class="absolute top-6 right-6 text-espresso/60 hover:text-espresso text-xl font-light" onclick="closeCheckoutModal()">×</button>
+<span class="text-[10px] tracking-[0.3em] uppercase text-bronze font-semibold block mb-1">Direct Acquisition</span>
+<h3 class="serif-display text-2xl sm:text-3xl text-espresso font-normal mb-2" id="modalTitle">The Melt-Proof Melanin Suite</h3>
+<p class="text-xs text-warmgray font-light mb-6" id="modalSubtitle">4-Piece Complexion Protocol • ₦38,500 (Value: ₦51,500)</p>
+<form class="space-y-4" onsubmit="handleOrder(event)">
+<div>
+<label class="block text-[10px] tracking-widest uppercase font-medium text-espresso/80 mb-1">Full Name</label>
+<input class="w-full bg-[#EDE1D5]/50 border border-[#B8562D]/20 text-xs text-espresso p-3 focus:outline-none focus:border-terracotta" placeholder="e.g. Folashade Adeyemi" required="" type="text"/>
+</div>
+<div>
+<label class="block text-[10px] tracking-widest uppercase font-medium text-espresso/80 mb-1">WhatsApp Phone (for dispatch status)</label>
+<input class="w-full bg-[#EDE1D5]/50 border border-[#B8562D]/20 text-xs text-espresso p-3 focus:outline-none focus:border-terracotta" placeholder="0803 123 4567" required="" type="tel"/>
+</div>
+<div>
+<label class="block text-[10px] tracking-widest uppercase font-medium text-espresso/80 mb-1">Delivery Address &amp; State</label>
+<input class="w-full bg-[#EDE1D5]/50 border border-[#B8562D]/20 text-xs text-espresso p-3 focus:outline-none focus:border-terracotta" placeholder="e.g. Admiralty Way, Lekki Phase 1, Lagos" required="" type="text"/>
+</div>
+<div>
+<label class="block text-[10px] tracking-widest uppercase font-medium text-espresso/80 mb-1">Target Complexion Shade</label>
+<select class="w-full bg-[#EDE1D5]/50 border border-[#B8562D]/20 text-xs text-espresso p-3 focus:outline-none focus:border-terracotta" id="modalShade">
+<option value="Shade #06 Warm Amber">Shade #06 • Warm Amber (Golden Melanin)</option>
+<option value="Shade #05 Neutral Almond">Shade #05 • Neutral Almond (Harmonious Bronze)</option>
+<option value="Shade #07 Spiced Cinnamon">Shade #07 • Spiced Cinnamon (Warm Terracotta)</option>
+<option value="Shade #08 Deep Chestnut">Shade #08 • Deep Chestnut (Rich Cocoa Depth)</option>
+<option value="Consultation Needed">Unsure • Match via WhatsApp Concierge</option>
+</select>
+</div>
+<button class="w-full py-4 mt-2 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-medium shadow-md" id="modalSubmitBtn" type="submit">
+          Proceed to Paystack • ₦38,500
+        </button>
+<span class="block text-center text-[10px] text-cedar tracking-wider font-medium">
+          Includes Free Shade Replacement Guarantee
+        </span>
+</form>
+</div>
+</div>
+<!-- INTERACTIVE SCRIPTS -->
+<script>
+    // Mobile Navigation Toggle
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+      const btn = document.getElementById('hamburgerBtn');
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+
+      if (isExpanded) {
+        closeMobileMenu();
+      } else {
+        drawer.classList.remove('translate-x-full');
+        backdrop.classList.remove('opacity-0', 'pointer-events-none');
+        btn.setAttribute('aria-expanded', 'true');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    function closeMobileMenu() {
+      const drawer = document.getElementById('mobileDrawer');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+      const btn = document.getElementById('hamburgerBtn');
+      if (drawer) drawer.classList.add('translate-x-full');
+      if (backdrop) backdrop.classList.add('opacity-0', 'pointer-events-none');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    // Shade data mapping with user selected arm swatches from arm folder & fluid swatches
+    const tones = {
+      'warm-amber': {
+        title: 'In My Skin™ — Shade #06 (Warm Amber)',
+        desc: 'Engineered for medium-deep melanin with pure golden warmth. Eliminates the grey chalkiness of foreign standard foundations.',
+        arm: 'arm/warm-amber-arm.jpeg',
+        brush: 'in my skin 11.webp',
+        shadeValue: 'Shade #06 Warm Amber'
+      },
+      'neutral-almond': {
+        title: 'In My Skin™ — Shade #05 (Neutral Almond)',
+        desc: 'A flawless balance of warm bronze and neutral tones. Seamlessly bridges facial skin and décolletage without pulling yellow or red.',
+        arm: 'arm/neutral-almond-arm.jpeg',
+        brush: 'in my skin 12.webp',
+        shadeValue: 'Shade #05 Neutral Almond'
+      },
+      'spiced-terracotta': {
+        title: 'In My Skin™ — Shade #07 (Spiced Cinnamon)',
+        desc: 'Infused with terracotta and spiced mahogany warmth. Specifically formulated to neutralize hyperpigmentation without camera glare.',
+        arm: 'arm/spiced-terracotta-arm.jpeg',
+        brush: 'in my skin 14.webp',
+        shadeValue: 'Shade #07 Spiced Cinnamon'
+      },
+      'deep-espresso': {
+        title: 'In My Skin™ — Shade #08 (Deep Chestnut)',
+        desc: 'Rich multidimensional depth that preserves natural sculpted facial contours without turning muddy or oxidizing orange.',
+        arm: 'arm/deep-espresso-arm.png',
+        brush: 'in my skin 13.webp',
+        shadeValue: 'Shade #08 Deep Chestnut'
+      }
+    };
+
+    let selectedShade = 'Shade #06 Warm Amber';
+
+    function setTone(key, el) {
+      document.querySelectorAll('.tone-btn').forEach(btn => {
+        btn.classList.remove('swatch-active');
+        btn.classList.remove('bg-[#FAF6F0]');
+        btn.classList.add('bg-[#FAF6F0]/70');
+      });
+      el.classList.add('swatch-active');
+      el.classList.remove('bg-[#FAF6F0]/70');
+      el.classList.add('bg-[#FAF6F0]');
+
+      const data = tones[key];
+      if (data) {
+        document.getElementById('toneMatchTitle').textContent = data.title;
+        document.getElementById('toneMatchDesc').textContent = data.desc;
+        document.getElementById('toneArmImg').src = data.arm;
+        document.getElementById('toneBrushImg').src = data.brush;
+        selectedShade = data.shadeValue;
+      }
+    }
+
+    // Suite Component Gallery Previews
+    const suitePreviews = {
+      foundation: { tag: 'In My Skin™ Foundation (30ml)', img: 'foundation bottles/in my skin 2.webp' },
+      concealer: { tag: 'In My Skin™ Radiant Concealer', img: 'suite/concealer.webp' },
+      powder: { tag: 'Micro-Fine Oil-Lock Powder', img: 'suite/oil lock.webp' },
+      blender: { tag: 'Velvet Pro-Blender', img: 'suite/blender.webp' }
+    };
+
+    function setSuitePreview(key) {
+      const data = suitePreviews[key];
+      if (data) {
+        const img = document.getElementById('suiteMainImg');
+        const tag = document.getElementById('suiteImgTag');
+        if (img) img.src = data.img;
+        if (tag) tag.textContent = data.tag;
+      }
+      document.querySelectorAll('.suite-tile').forEach(t => {
+        t.classList.remove('border-2', 'border-terracotta');
+        t.classList.add('border', 'border-[#B8562D]/25');
+      });
+      const activeTile = document.getElementById('suiteTile-' + key);
+      if (activeTile) {
+        activeTile.classList.remove('border', 'border-[#B8562D]/25');
+        activeTile.classList.add('border-2', 'border-terracotta');
+      }
+    }
+
+    // Suite Quantities & Dynamic Pricing
+    const suiteItems = {
+      foundation: { name: 'In My Skin™ Foundation (30ml)', unitPrice: 15000, qty: 1 },
+      concealer: { name: 'In My Skin™ Radiant Concealer', unitPrice: 15000, qty: 1 },
+      powder: { name: 'Micro-Fine Oil-Lock Powder', unitPrice: 16000, qty: 1 },
+      blender: { name: 'Velvet Pro-Blender', unitPrice: 5500, qty: 1 }
+    };
+
+    function changeSuiteQty(key, delta) {
+      if (!suiteItems[key]) return;
+      suiteItems[key].qty = Math.max(0, suiteItems[key].qty + delta);
+      const qtyEl = document.getElementById('qty-' + key);
+      if (qtyEl) qtyEl.textContent = suiteItems[key].qty;
+      calculateSuiteTotal();
+    }
+
+    function selectFullSuiteBundle() {
+      suiteItems.foundation.qty = 1;
+      suiteItems.concealer.qty = 1;
+      suiteItems.powder.qty = 1;
+      suiteItems.blender.qty = 1;
+
+      ['foundation', 'concealer', 'powder', 'blender'].forEach(k => {
+        const el = document.getElementById('qty-' + k);
+        if (el) el.textContent = '1';
+      });
+      calculateSuiteTotal();
+      setSuitePreview('foundation');
+    }
+
+    function calculateSuiteTotal() {
+      const isFullBundle = suiteItems.foundation.qty >= 1 &&
+                           suiteItems.concealer.qty >= 1 &&
+                           suiteItems.powder.qty >= 1 &&
+                           suiteItems.blender.qty >= 1;
+
+      let total = 0;
+      let regularValue = 0;
+      let totalItemCount = 0;
+      let summaryParts = [];
+
+      for (const [k, item] of Object.entries(suiteItems)) {
+        regularValue += item.qty * item.unitPrice;
+        totalItemCount += item.qty;
+        if (item.qty > 0) {
+          summaryParts.push(`${item.qty}x ${item.name}`);
+        }
+      }
+
+      const calculatedPriceEl = document.getElementById('suiteCalculatedPrice');
+      const itemCountEl = document.getElementById('suiteItemCount');
+      const discountBadgeEl = document.getElementById('suiteDiscountBadge');
+      const regularValueEl = document.getElementById('suiteRegularValue');
+      const savingsTextEl = document.getElementById('suiteSavingsText');
+      const primaryBtn = document.getElementById('suitePrimaryBtn');
+      const blenderPriceLabel = document.getElementById('blenderPriceLabel');
+
+      if (isFullBundle && suiteItems.foundation.qty === 1 && suiteItems.concealer.qty === 1 && suiteItems.powder.qty === 1 && suiteItems.blender.qty === 1) {
+        total = 38500;
+        if (calculatedPriceEl) calculatedPriceEl.textContent = '₦38,500';
+        if (itemCountEl) itemCountEl.textContent = '(Full 4-Piece Protocol)';
+        if (discountBadgeEl) discountBadgeEl.style.display = 'block';
+        if (regularValueEl) regularValueEl.textContent = '₦51,500 Value';
+        if (savingsTextEl) savingsTextEl.textContent = 'Save ₦13,000 (25% Privilege)';
+        if (primaryBtn) primaryBtn.textContent = 'Acquire The Suite • ₦38,500';
+        if (blenderPriceLabel) blenderPriceLabel.textContent = 'Gift (FREE with Suite)';
+      } else {
+        if (isFullBundle) {
+          const extraFoundations = suiteItems.foundation.qty - 1;
+          const extraConcealers = suiteItems.concealer.qty - 1;
+          const extraPowders = suiteItems.powder.qty - 1;
+          const extraBlenders = suiteItems.blender.qty - 1;
+          total = 38500 + (extraFoundations * 15000) + (extraConcealers * 15000) + (extraPowders * 16000) + (extraBlenders * 5500);
+          if (discountBadgeEl) discountBadgeEl.style.display = 'block';
+          if (regularValueEl) regularValueEl.textContent = '₦' + regularValue.toLocaleString() + ' Value';
+          if (savingsTextEl) savingsTextEl.textContent = 'Bundle Privilege Applied';
+          if (blenderPriceLabel) blenderPriceLabel.textContent = 'Gift (FREE with Suite)';
+        } else {
+          total = regularValue;
+          if (discountBadgeEl) discountBadgeEl.style.display = totalItemCount > 0 ? 'block' : 'none';
+          if (regularValueEl) regularValueEl.textContent = totalItemCount > 1 ? `${totalItemCount} Items Selected` : '';
+          if (savingsTextEl) savingsTextEl.textContent = totalItemCount >= 3 ? 'Add missing item for ₦38,500 bundle' : '';
+          if (blenderPriceLabel) blenderPriceLabel.textContent = '₦5,500 (Free with Full Suite)';
+        }
+
+        if (totalItemCount === 0) {
+          if (calculatedPriceEl) calculatedPriceEl.textContent = '₦0';
+          if (itemCountEl) itemCountEl.textContent = '(Select items above)';
+          if (primaryBtn) primaryBtn.textContent = 'Select Items to Checkout';
+        } else {
+          if (calculatedPriceEl) calculatedPriceEl.textContent = '₦' + total.toLocaleString();
+          if (itemCountEl) itemCountEl.textContent = `(${totalItemCount} ${totalItemCount === 1 ? 'item' : 'items'})`;
+          if (primaryBtn) primaryBtn.textContent = `Proceed with Selection • ₦${total.toLocaleString()}`;
+        }
+      }
+
+      return { total, isFullBundle, summary: summaryParts.join(', ') || 'Custom Selection' };
+    }
+
+    function handleSuiteOrder() {
+      const orderData = calculateSuiteTotal();
+      if (orderData.total <= 0) {
+        alert('Please select at least 1 product to proceed.');
+        return;
+      }
+      openCheckoutModalWithData(orderData);
+    }
+
+    function openCheckoutModalWithData(orderData) {
+      const modal = document.getElementById('checkoutModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalSubtitle = document.getElementById('modalSubtitle');
+      const modalSubmitBtn = document.getElementById('modalSubmitBtn');
+
+      if (orderData.isFullBundle && suiteItems.foundation.qty === 1 && suiteItems.concealer.qty === 1 && suiteItems.powder.qty === 1 && suiteItems.blender.qty === 1) {
+        if (modalTitle) modalTitle.textContent = 'The Melt-Proof Melanin Suite';
+        if (modalSubtitle) modalSubtitle.textContent = '4-Piece Complexion Protocol • ₦38,500 (Value: ₦51,500)';
+        if (modalSubmitBtn) modalSubmitBtn.textContent = 'Proceed to Paystack • ₦38,500';
+      } else {
+        if (modalTitle) modalTitle.textContent = 'Custom Melanin Protocol';
+        if (modalSubtitle) modalSubtitle.textContent = `${orderData.summary} • ₦${orderData.total.toLocaleString()}`;
+        if (modalSubmitBtn) modalSubmitBtn.textContent = `Proceed to Paystack • ₦${orderData.total.toLocaleString()}`;
+      }
+
+      const modalShade = document.getElementById('modalShade');
+      if (modalShade) modalShade.value = selectedShade;
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    // Modal and Order Management
+    function openCheckoutModal(mode = 'suite') {
+      if (mode === 'single') {
+        suiteItems.foundation.qty = 1;
+        suiteItems.concealer.qty = 0;
+        suiteItems.powder.qty = 0;
+        suiteItems.blender.qty = 0;
+        ['foundation', 'concealer', 'powder', 'blender'].forEach(k => {
+          const el = document.getElementById('qty-' + k);
+          if (el) el.textContent = suiteItems[k].qty.toString();
+        });
+        calculateSuiteTotal();
+      }
+      handleSuiteOrder();
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('checkoutModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function selectShadeAndGoToSuite(shadeName) {
+      if (shadeName) {
+        selectedShade = shadeName;
+        const modalShade = document.getElementById('modalShade');
+        if (modalShade) modalShade.value = shadeName;
+        const suiteFoundationShade = document.getElementById('suiteFoundationShade');
+        if (suiteFoundationShade) suiteFoundationShade.value = shadeName;
+      }
+      setSuitePreview('foundation');
+      const suiteSection = document.getElementById('suite');
+      if (suiteSection) {
+        suiteSection.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.location.hash = 'suite';
+      }
+    }
+
+    function handleOrder(e) {
+      e.preventDefault();
+      const orderData = calculateSuiteTotal();
+      alert(`Order registered for ${orderData.summary} (Total: ₦${orderData.total.toLocaleString()}). Connecting you to secure Paystack checkout with Free Shade Swap guarantee applied.`);
+      closeCheckoutModal();
+    }
+
+    // FAQ Accordion
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.faq-icon');
+      if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+        content.style.maxHeight = '0px';
+        icon.textContent = '+';
+      } else {
+        document.querySelectorAll('.faq-content').forEach(c => c.style.maxHeight = '0px');
+        document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+        content.style.maxHeight = content.scrollHeight + 'px';
+        icon.textContent = '−';
+      }
+    }
+  
+    // Dermal Mobile Screen Interactive Slider & Synchronized Points
+    const phoneSlideData = [
+      {
+        img: 'in my skin 3.webp',
+        card1: { dot: 'bg-[#994F2B]', title: 'Skin Tone Matching', desc: 'Accurate warm and golden undertone matching', badge: 'Calibrated' },
+        card2: { dot: 'bg-[#B8562D]', title: 'Ash Cast Level', desc: 'No visible grey or chalky cast', badge: 'Neutralized' }
+      },
+      {
+        img: 'in my skin 4.webp',
+        card1: { dot: 'bg-[#C58337]', title: 'Optical Light Diffusion', desc: 'Soft light diffusion for a smoother-looking finish', badge: 'Calibrated' },
+        card2: { dot: 'bg-[#7D6458]', title: 'Camera Flash Glare', desc: 'No visible white cast in flash photography', badge: 'Neutralized' }
+      },
+      {
+        img: 'in my skin 5.webp',
+        card1: { dot: 'bg-[#B26A3B]', title: 'Hydration & Sebum Balance', desc: 'Breathable formula with oil-control performance', badge: 'Optimized' },
+        card2: { dot: 'bg-[#8C3A18]', title: 'Tropical Climate Lock', desc: 'Up to 16-hour matte wear in humid conditions', badge: 'Calibrated' }
+      },
+      {
+        img: 'in my skin 9.webp',
+        card1: { dot: 'bg-[#5E321E]', title: 'Oxidation Defence', desc: 'Antioxidant-supported colour stability', badge: 'Calibrated' },
+        card2: { dot: 'bg-[#994F2B]', title: 'Midday Colour Hold', desc: 'Resists unwanted darkening and orange colour shifts', badge: 'Locked' }
+      }
+    ];
+
+    let currentPhoneSlide = 0;
+    let phoneSlideInterval = null;
+
+    function setPhoneSlide(idx) {
+      currentPhoneSlide = idx;
+      const data = phoneSlideData[idx];
+      if (!data) return;
+
+      // Update Mobile Screen Image with smooth fade
+      const imgEl = document.getElementById('phoneScanImg');
+      if (imgEl) {
+        imgEl.style.opacity = '0';
+        setTimeout(() => {
+          imgEl.src = data.img;
+          imgEl.style.opacity = '1';
+        }, 180);
+      }
+
+      // Update Card 1 in exact sample style
+      const dot1 = document.getElementById('scanCardDot1');
+      const title1 = document.getElementById('scanCardTitle1');
+      const desc1 = document.getElementById('scanCardDesc1');
+      const badge1 = document.getElementById('scanCardBadge1');
+      if (dot1) dot1.className = 'w-3.5 h-3.5 rounded ' + data.card1.dot + ' flex-shrink-0 transition-colors duration-300';
+      if (title1) title1.textContent = data.card1.title;
+      if (desc1) desc1.textContent = data.card1.desc;
+      if (badge1) badge1.textContent = data.card1.badge;
+
+      // Update Card 2 in exact sample style
+      const dot2 = document.getElementById('scanCardDot2');
+      const title2 = document.getElementById('scanCardTitle2');
+      const desc2 = document.getElementById('scanCardDesc2');
+      const badge2 = document.getElementById('scanCardBadge2');
+      if (dot2) dot2.className = 'w-3.5 h-3.5 rounded ' + data.card2.dot + ' flex-shrink-0 transition-colors duration-300';
+      if (title2) title2.textContent = data.card2.title;
+      if (desc2) desc2.textContent = data.card2.desc;
+      if (badge2) badge2.textContent = data.card2.badge;
+
+      // Update Right-Hand Point Cards Active State (1, 2, 3, 4)
+      for (let i = 0; i < 4; i++) {
+        const card = document.getElementById('fixCard' + i);
+        if (card) {
+          if (i === idx) {
+            card.className = 'fix-item-card p-6 rounded-xl bg-[#FAF6F0] border-2 border-terracotta shadow-md transition-all duration-300 cursor-pointer';
+          } else {
+            card.className = 'fix-item-card p-6 rounded-xl bg-[#FAF6F0] border border-[#B8562D]/20 shadow-sm transition-all duration-300 cursor-pointer hover:border-terracotta';
+          }
+        }
+      }
+    }
+
+    function nextPhoneSlide() {
+      const nextIdx = (currentPhoneSlide + 1) % phoneSlideData.length;
+      setPhoneSlide(nextIdx);
+      restartPhoneSlideTimer();
+    }
+
+    function prevPhoneSlide() {
+      const prevIdx = (currentPhoneSlide - 1 + phoneSlideData.length) % phoneSlideData.length;
+      setPhoneSlide(prevIdx);
+      restartPhoneSlideTimer();
+    }
+
+    function restartPhoneSlideTimer() {
+      if (phoneSlideInterval) clearInterval(phoneSlideInterval);
+      phoneSlideInterval = setInterval(() => {
+        const nextIdx = (currentPhoneSlide + 1) % phoneSlideData.length;
+        setPhoneSlide(nextIdx);
+      }, 4500);
+    }
+
+    // Initialize auto-slide on DOM ready
+    document.addEventListener('DOMContentLoaded', () => {
+      setPhoneSlide(0);
+      restartPhoneSlideTimer();
+    });
+
+    // Also run immediately in case DOM is already loaded
+    setPhoneSlide(0);
+    restartPhoneSlideTimer();
+  </script>
+</body></html>
