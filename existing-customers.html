@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Nuban Beauty | Welcome Back: The Next-Generation In My Skin™ Suite</title>
-  <meta content="A special thank-you for our returning customers: Discover your favorite NUBAN look, now even better with the new In My Skin™ formula." name="description"/>
+  <meta content="A special thank-you for our returning customers: Discover your favorite NUBAN look, now even better with the new In My Skin™ formula. Never ashy, never ghastly." name="description"/>
   
   <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -164,6 +164,64 @@
     .custom-scroll::-webkit-scrollbar-thumb {
       background: rgba(184, 86, 45, 0.3);
     }
+
+    /* Seamless Luxury Image Transform (Fade & Smooth Cross-Dissolve) */
+    .image-transform-container {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .image-primary {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
+      will-change: opacity, transform;
+    }
+    .image-secondary {
+      position: absolute;
+      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      opacity: 0;
+      transform: scale(1.02);
+      transition: opacity 0.45s ease-in-out, transform 0.45s ease-in-out;
+      will-change: opacity, transform;
+    }
+
+    /* Apply :hover strictly on desktop devices with hover support */
+    @media (hover: hover) and (pointer: fine) {
+      .image-transform-container:hover .image-primary {
+        opacity: 0;
+        transform: scale(0.98);
+      }
+      .image-transform-container:hover .image-secondary {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Active states for clicks & mobile touch */
+    .image-transform-container.is-active .image-primary {
+      opacity: 0 !important;
+      transform: scale(0.98) !important;
+    }
+    .image-transform-container.is-active .image-secondary {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+
     /* Mobile Readability & Form Safeguard */
     @media (max-width: 768px) {
       body {
@@ -185,7 +243,7 @@
   <!-- 1. TOP ANNOUNCEMENT BAR -->
   <aside class="bg-accent-cocoa text-surface-ivory py-2.5 px-4 text-center border-b border-border-editorial-subtle sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex items-center justify-center gap-3">
-      <span class="inline-block w-2 h-2 rounded-full bg-status-emerald animate-pulse"></span>
+      <span class="inline-block w-2 h-2 rounded-full bg-brand-terracotta animate-pulse"></span>
       <p class="font-label-caption text-label-caption tracking-wider">
         <strong class="font-semibold text-secondary-fixed">A SPECIAL THANK-YOU FOR OUR RETURNING CUSTOMERS:</strong> Enjoy a complimentary shade swap and a FREE Velvet Pro-Blender when you purchase any 4-Piece In My Skin™ Suite.
       </p>
@@ -195,7 +253,7 @@
     </div>
   </aside>
 
-  <!-- 2. NAVIGATION -->
+  <!-- 2. NAVIGATION (Streamlined: Redundant Link Removed) -->
   <header class="bg-surface-alabaster/92 backdrop-blur-md border-b border-border-editorial-subtle sticky top-9 z-40">
     <div class="flex justify-between items-center w-full px-6 md:px-12 max-w-7xl mx-auto h-20">
       <!-- Brand Logo -->
@@ -217,19 +275,16 @@
         <a class="text-ink-cedar hover:text-ink-espresso tracking-widest uppercase transition-colors font-label-nav text-label-nav" href="#suite-protocol">
           Complete 4-Piece Suite
         </a>
-        <a class="text-ink-cedar hover:text-ink-espresso tracking-widest uppercase transition-colors font-label-nav text-label-nav" href="https://wa.me/2348031234567?text=Hello%20Nuban%20Beauty%2C%20I%20am%20a%20returning%20customer%20looking%20for%20help%20with%20my%20shade" target="_blank" rel="noopener noreferrer">
+        <a class="text-ink-cedar hover:text-brand-terracotta tracking-widest uppercase transition-colors font-label-nav text-label-nav flex items-center gap-1 font-medium" href="https://wa.me/2348031234567?text=Hello%20Nuban%20Beauty%2C%20I%20am%20a%20returning%20customer%20looking%20for%20help%20with%20my%20shade" target="_blank" rel="noopener noreferrer">
+          <span class="material-symbols-outlined text-[15px] text-brand-terracotta">chat</span>
           Need Help? Chat With Us
         </a>
       </nav>
 
-      <!-- Trailing Primary Actions -->
+      <!-- Trailing Actions (Only Primary Action + Cart + Storefront) -->
       <div class="flex items-center gap-4">
-        <a class="hidden sm:inline-block bg-brand-terracotta-dark text-surface-container-lowest font-label-button text-label-button uppercase px-5 py-2.5 transition-colors hover:bg-brand-terracotta" href="#shade-transition">
+        <a class="hidden sm:inline-block bg-brand-terracotta-dark text-surface-container-lowest font-label-button text-label-button uppercase px-5 py-2.5 transition-colors hover:bg-brand-terracotta shadow-xs" href="#shade-transition">
           Find My New Shade
-        </a>
-        <a class="hidden xl:inline-flex items-center gap-1.5 border border-border-editorial-strong text-ink-espresso font-label-button text-label-button uppercase px-4 py-2 hover:bg-surface-card-warm transition-colors" href="https://wa.me/2348031234567?text=Hello%20Nuban%20Beauty%2C%20I%20am%20a%20returning%20customer%20looking%20for%20help%20with%20my%20shade" target="_blank" rel="noopener noreferrer">
-          <span class="material-symbols-outlined text-[16px] text-brand-terracotta">support_agent</span>
-          Need Help? Chat With Us
         </a>
         <div class="flex items-center space-x-3 text-ink-espresso">
           <button aria-label="Shopping Bag" class="relative p-1 hover:text-primary transition-colors cursor-pointer" onclick="openCartModal()">
@@ -254,9 +309,17 @@
             <span class="w-1.5 h-1.5 rounded-full bg-brand-terracotta"></span>
             <span class="font-label-kicker text-label-kicker text-brand-terracotta-dark uppercase font-semibold">WELCOME BACK TO NUBAN</span>
           </div>
-          <h1 class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-display-hero text-ink-espresso font-normal">
-            Your favorite NUBAN look. Now even better.
-          </h1>
+
+          <!-- Hero Headline with User Requested Kicker Line -->
+          <div>
+            <p class="text-xs sm:text-sm tracking-[0.25em] uppercase text-brand-terracotta font-semibold mb-2">
+              never ashy, never ghastly
+            </p>
+            <h1 class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-display-hero text-ink-espresso font-normal">
+              Your favorite NUBAN look. Now even better.
+            </h1>
+          </div>
+
           <p class="font-body-lead text-body-lead text-ink-warmgray max-w-xl">
             You've been part of our journey, and we've listened to your feedback. That's why we've improved your favorite foundation with our new In My Skin™ formula.
           </p>
@@ -271,7 +334,8 @@
               Find My New Shade
             </a>
           </div>
-          <!-- Trust indicators -->
+
+          <!-- Trust indicators (Clean, No Low-Contrast Green) -->
           <div class="pt-8 border-t border-border-editorial-subtle grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="flex items-center gap-2.5">
               <span class="material-symbols-outlined text-brand-terracotta text-xl flex-shrink-0">verified_user</span>
@@ -297,14 +361,27 @@
           </div>
         </div>
 
-        <!-- Product Highlight Column -->
+        <!-- Product Highlight Column (Model as Hero Image, Bottle as Smooth Crossfade Back Image) -->
         <div class="lg:col-span-5 relative">
-          <div class="relative bg-surface-card-light p-4 border border-border-editorial-medium shadow-sm">
-            <img class="w-full aspect-[4/5] object-cover" alt="Editorial beauty portrait of a radiant Nigerian woman with luminous warm melanin skin wearing Nuban Beauty In My Skin foundation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAPYwvQNDKtXwl-Dyds4-WKS3SZiXNd-v8NAlyL0xK9RFskpzIHKI6kW2j7ReiWE8F_zMyWuxzfS34FUvBi-pXeOVLw_KIJht1WYrb-atHx2YyUeGrPTAw8oJfca0J2dUD76al2f4SbxnG-JwIdTYjE1TXG0Cu19zx22UCmPsqRkoQb2yfq-qRJp4_Ze0ApW6brx1nKo2GLXYstuNTtNE9mAWe8TSLAOmt6F2i7V0"/>
-            <div class="absolute bottom-8 left-8 right-8 bg-surface-alabaster/95 backdrop-blur-md p-4 border border-border-editorial-subtle">
+          <div class="relative bg-surface-card-light p-4 border border-border-editorial-medium shadow-md">
+            <div class="image-transform-container relative w-full aspect-[4/5] cursor-pointer overflow-hidden rounded-xs group select-none" onclick="this.classList.toggle('is-active')" title="Click or hover to reveal bottle">
+              <!-- Primary: Authentic Nuban Melanin Model from Page 1 -->
+              <img class="image-primary w-full h-full object-cover object-top filter brightness-[1.01]" alt="Nuban Beauty Melanin Model" src="in my skin 8.webp"/>
+              
+              <!-- Secondary: Blended Bottle Image on Soft Warm Paper Canvas -->
+              <div class="image-secondary w-full h-full bg-[#FAF6F0] flex items-center justify-center p-8">
+                <img class="max-h-full max-w-full object-contain filter contrast-[1.02]" alt="In My Skin Liquid Foundation Bottle" src="in my skin 2.webp"/>
+              </div>
+
+              <!-- Gentle warm gradient vignette overlay -->
+              <div class="absolute inset-0 pointer-events-none bg-gradient-to-t from-ink-espresso/30 via-transparent to-transparent"></div>
+            </div>
+
+            <!-- Product Highlight Overlay -->
+            <div class="absolute bottom-8 left-8 right-8 bg-surface-alabaster/95 backdrop-blur-md p-4 border border-border-editorial-subtle shadow-sm pointer-events-none">
               <div class="flex justify-between items-center mb-1">
                 <span class="font-label-kicker text-label-kicker text-brand-terracotta uppercase font-semibold">Shade #06 | Warm Amber</span>
-                <span class="font-label-caption text-label-caption text-status-emerald font-semibold">ALL-DAY WEAR</span>
+                <span class="font-label-caption text-[11px] text-brand-terracotta-dark font-bold uppercase">ALL-DAY WEAR</span>
               </div>
               <p class="font-headline-sm text-headline-sm text-ink-espresso leading-none font-normal">Your complexion, beautifully matched.</p>
               <p class="font-body-sm text-[12px] text-ink-cedar mt-1">Lightweight water-based formula · Comfortable all-day wear</p>
@@ -314,7 +391,7 @@
       </div>
     </section>
 
-    <!-- 4. PRODUCT EVOLUTION -->
+    <!-- 4. PRODUCT EVOLUTION (Perfect Height & Row Alignment, No Tacky Green) -->
     <section class="py-20 md:py-28 bg-surface-sand border-b border-border-editorial-subtle" id="whats-new">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="max-w-2xl mx-auto text-center space-y-3 mb-16">
@@ -330,106 +407,129 @@
           </p>
         </div>
 
-        <!-- Side-by-side Comparison -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Perfectly Aligned Comparison Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           <!-- The Classic Formulation Card -->
-          <div class="bg-surface-card-light/70 p-8 border border-border-editorial-subtle space-y-6">
-            <div class="flex items-center justify-between pb-4 border-b border-border-editorial-subtle">
-              <div>
-                <span class="font-label-caption text-label-caption text-ink-cedar uppercase tracking-wider">The original NUBAN experience</span>
-                <h3 class="font-headline-sm text-headline-sm text-ink-espresso font-normal">Your Previous Favorite: Classic Matte</h3>
+          <div class="bg-surface-card-light/80 p-8 border border-border-editorial-medium space-y-6 flex flex-col justify-between shadow-xs">
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-border-editorial-subtle">
+                <div>
+                  <span class="font-label-caption text-label-caption text-ink-cedar uppercase tracking-wider font-semibold">The original NUBAN experience</span>
+                  <h3 class="font-headline-sm text-headline-sm text-ink-espresso font-normal mt-0.5">Your Previous Favorite: Classic Matte</h3>
+                </div>
+                <span class="px-3 py-1 bg-surface-ivory border border-border-editorial-subtle font-label-caption text-[11px] text-ink-cedar font-semibold uppercase">Original</span>
               </div>
-              <span class="px-3 py-1 bg-surface-ivory font-label-caption text-[11px] text-ink-cedar uppercase">Original</span>
+
+              <!-- Matched Height Comparison Rows -->
+              <div class="space-y-3 mt-6">
+                <div class="p-3.5 bg-surface-alabaster border border-border-editorial-subtle/50 flex items-start gap-3 min-h-[58px]">
+                  <span class="w-2 h-2 rounded-full bg-ink-cedar mt-1.5 flex-shrink-0"></span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-medium">Rich, full coverage</span>
+                </div>
+                <div class="p-3.5 bg-surface-alabaster border border-border-editorial-subtle/50 flex items-start gap-3 min-h-[58px]">
+                  <span class="w-2 h-2 rounded-full bg-ink-cedar mt-1.5 flex-shrink-0"></span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-medium">A thicker feel on the skin</span>
+                </div>
+                <div class="p-3.5 bg-surface-alabaster border border-border-editorial-subtle/50 flex items-start gap-3 min-h-[58px]">
+                  <span class="w-2 h-2 rounded-full bg-ink-cedar mt-1.5 flex-shrink-0"></span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-medium">A quick-setting formula</span>
+                </div>
+                <div class="p-3.5 bg-surface-alabaster border border-border-editorial-subtle/50 flex items-start gap-3 min-h-[58px]">
+                  <span class="w-2 h-2 rounded-full bg-ink-cedar mt-1.5 flex-shrink-0"></span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-medium">Needed careful blending and powder setting</span>
+                </div>
+                <div class="p-3.5 bg-surface-alabaster border border-border-editorial-subtle/50 flex items-start gap-3 min-h-[58px]">
+                  <span class="w-2 h-2 rounded-full bg-ink-cedar mt-1.5 flex-shrink-0"></span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-medium">Could become slightly darker as the day went on</span>
+                </div>
+              </div>
             </div>
-            <ul class="space-y-3.5 text-body-md text-ink-espresso">
-              <li class="p-3 bg-surface-alabaster flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-ink-cedar flex-shrink-0"></span>
-                <span>Rich, full coverage</span>
-              </li>
-              <li class="p-3 bg-surface-alabaster flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-ink-cedar flex-shrink-0"></span>
-                <span>A thicker feel on the skin</span>
-              </li>
-              <li class="p-3 bg-surface-alabaster flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-ink-cedar flex-shrink-0"></span>
-                <span>A quick-setting formula</span>
-              </li>
-              <li class="p-3 bg-surface-alabaster flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-ink-cedar flex-shrink-0"></span>
-                <span>Needed careful blending and powder setting</span>
-              </li>
-              <li class="p-3 bg-surface-alabaster flex items-center gap-2.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-ink-cedar flex-shrink-0"></span>
-                <span>Could become slightly darker as the day went on</span>
-              </li>
-            </ul>
+
+            <p class="font-label-caption text-[11px] text-ink-cedar uppercase tracking-wider text-center pt-2 border-t border-border-editorial-subtle">
+              Historical Formulation Benchmark
+            </p>
           </div>
 
           <!-- The New In My Skin Suite Card -->
-          <div class="bg-surface-card-light p-8 border-2 border-brand-terracotta relative space-y-6 shadow-md">
-            <div class="absolute -top-3 right-6 bg-brand-terracotta-dark text-white font-label-button text-[10px] uppercase px-3 py-1 tracking-widest font-semibold">
+          <div class="bg-surface-card-light p-8 border-2 border-brand-terracotta relative space-y-6 flex flex-col justify-between shadow-md">
+            <div class="absolute -top-3.5 right-6 bg-brand-terracotta-dark text-white font-label-button text-[10px] uppercase px-3.5 py-1 tracking-widest font-semibold">
               THE IMPROVED EXPERIENCE
             </div>
-            <div class="flex items-center justify-between pb-4 border-b border-border-editorial-subtle">
-              <div>
-                <span class="font-label-caption text-label-caption text-brand-terracotta uppercase tracking-wider font-semibold">The improved NUBAN experience</span>
-                <h3 class="font-headline-sm text-headline-sm text-ink-espresso font-normal">Meet Your New Favorite: In My Skin™ Water-Infused Veil</h3>
+
+            <div>
+              <div class="flex items-center justify-between pb-4 border-b border-border-editorial-subtle">
+                <div>
+                  <span class="font-label-caption text-label-caption text-brand-terracotta uppercase tracking-wider font-semibold">The improved NUBAN experience</span>
+                  <h3 class="font-headline-sm text-headline-sm text-ink-espresso font-normal mt-0.5">Meet Your New Favorite: In My Skin™ Water-Infused Veil</h3>
+                </div>
+                <span class="px-3 py-1 bg-[#FAF6F0] border border-brand-terracotta/40 text-brand-terracotta-dark font-label-caption text-[11px] uppercase font-bold">New Formula</span>
               </div>
-              <span class="px-3 py-1 bg-status-emerald/10 text-status-emerald font-label-caption text-[11px] uppercase font-semibold">New Formula</span>
+
+              <!-- Matched Height Comparison Rows -->
+              <div class="space-y-3 mt-6">
+                <div class="p-3.5 bg-[#FAF6F0] border-l-3 border-brand-terracotta flex items-start gap-3 min-h-[58px] shadow-2xs">
+                  <span class="material-symbols-outlined text-base text-brand-terracotta flex-shrink-0 mt-0.5">check_circle</span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-semibold">A lightweight, water-based formula</span>
+                </div>
+                <div class="p-3.5 bg-[#FAF6F0] border-l-3 border-brand-terracotta flex items-start gap-3 min-h-[58px] shadow-2xs">
+                  <span class="material-symbols-outlined text-base text-brand-terracotta flex-shrink-0 mt-0.5">check_circle</span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-semibold">Comfortable, breathable feel</span>
+                </div>
+                <div class="p-3.5 bg-[#FAF6F0] border-l-3 border-brand-terracotta flex items-start gap-3 min-h-[58px] shadow-2xs">
+                  <span class="material-symbols-outlined text-base text-brand-terracotta flex-shrink-0 mt-0.5">check_circle</span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-semibold">Buildable coverage that still looks like skin</span>
+                </div>
+                <div class="p-3.5 bg-[#FAF6F0] border-l-3 border-brand-terracotta flex items-start gap-3 min-h-[58px] shadow-2xs">
+                  <span class="material-symbols-outlined text-base text-brand-terracotta flex-shrink-0 mt-0.5">check_circle</span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-semibold">More time to blend and perfect your finish</span>
+                </div>
+                <div class="p-3.5 bg-[#FAF6F0] border-l-3 border-brand-terracotta flex items-start gap-3 min-h-[58px] shadow-2xs">
+                  <span class="material-symbols-outlined text-base text-brand-terracotta flex-shrink-0 mt-0.5">check_circle</span>
+                  <span class="font-body-md text-body-md text-ink-espresso font-semibold">Improved color stability throughout the day</span>
+                </div>
+              </div>
             </div>
-            <ul class="space-y-3.5 text-body-md text-ink-espresso">
-              <li class="p-3 bg-surface-sand border-l-2 border-brand-terracotta flex items-center gap-2.5">
-                <span class="material-symbols-outlined text-sm text-status-emerald flex-shrink-0">check_circle</span>
-                <span class="font-medium">A lightweight, water-based formula</span>
-              </li>
-              <li class="p-3 bg-surface-sand border-l-2 border-brand-terracotta flex items-center gap-2.5">
-                <span class="material-symbols-outlined text-sm text-status-emerald flex-shrink-0">check_circle</span>
-                <span class="font-medium">Comfortable, breathable feel</span>
-              </li>
-              <li class="p-3 bg-surface-sand border-l-2 border-brand-terracotta flex items-center gap-2.5">
-                <span class="material-symbols-outlined text-sm text-status-emerald flex-shrink-0">check_circle</span>
-                <span class="font-medium">Buildable coverage that still looks like skin</span>
-              </li>
-              <li class="p-3 bg-surface-sand border-l-2 border-brand-terracotta flex items-center gap-2.5">
-                <span class="material-symbols-outlined text-sm text-status-emerald flex-shrink-0">check_circle</span>
-                <span class="font-medium">More time to blend and perfect your finish</span>
-              </li>
-              <li class="p-3 bg-surface-sand border-l-2 border-brand-terracotta flex items-center gap-2.5">
-                <span class="material-symbols-outlined text-sm text-status-emerald flex-shrink-0">check_circle</span>
-                <span class="font-medium">Improved color stability throughout the day</span>
-              </li>
-            </ul>
+
+            <p class="font-label-caption text-[11px] text-brand-terracotta font-semibold uppercase tracking-wider text-center pt-2 border-t border-border-editorial-subtle">
+              Calibrated for Tropical Nigerian Climate
+            </p>
           </div>
         </div>
 
         <!-- Closing Line -->
-        <div class="mt-12 text-center">
-          <p class="font-headline-sm text-xl sm:text-2xl text-ink-espresso italic font-normal">
+        <div class="mt-14 text-center">
+          <p class="font-headline-sm text-2xl sm:text-3xl text-ink-espresso italic font-normal">
             Same NUBAN commitment. A better foundation experience.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- 5. FORMULA BENEFITS -->
+    <!-- 5. FORMULA BENEFITS (Real Product Image with Blended Background) -->
     <section class="py-20 md:py-28 bg-surface-alabaster border-b border-border-editorial-subtle">
       <div class="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-        <!-- Visuals Column -->
+        <!-- Visuals Column: Real Foundation Bottle + Swatch Texture -->
         <div class="lg:col-span-6 order-2 lg:order-1">
           <div class="grid grid-cols-2 gap-4">
             <div class="space-y-4">
-              <img class="w-full aspect-[3/4] object-cover border border-border-editorial-subtle" alt="Close up product photograph of Nuban Beauty In My Skin glass foundation bottle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV4ubSgcUpl8QLP8podm6epF0UeMpXKbD0Jdf2l2AmW2U4ziMGBhU9UkvyY6pjV-4_zLMp2UU5W1erUrNpY0awwAJB7E4gp6s0LsE0BjzpW3wjCJghSbhOHo5CzdarMvuQOBkDvfY0ZTnrMt_Xk28P9TBRmc6UzsJmT4yXe1Xv-xdIEv23QTFpSsRp0nb88Urg7s3JAmTV82uDeXhiSqat9C-qQ1fHBXPDd7eH4r4"/>
+              <!-- Real Product Image on Seamless Blended Ivory Canvas -->
+              <div class="w-full aspect-[3/4] bg-[#FAF6F0] border border-border-editorial-subtle p-6 flex items-center justify-center shadow-xs">
+                <img class="max-h-full max-w-full object-contain filter contrast-[1.02]" alt="In My Skin Glass Foundation Bottle" src="foundation bottles/in my skin 2.webp"/>
+              </div>
               <div class="p-4 bg-surface-card-warm border border-border-editorial-subtle text-center">
                 <p class="font-headline-accent-numeral text-headline-accent-numeral text-primary">30 ml</p>
                 <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-cedar mt-1">Airless Pump Precision</p>
               </div>
             </div>
             <div class="space-y-4 pt-8">
-              <div class="p-4 bg-accent-cocoa text-surface-ivory border border-border-editorial-subtle text-center">
+              <div class="p-4 bg-accent-cocoa text-surface-ivory border border-border-editorial-subtle text-center shadow-xs">
                 <p class="font-headline-accent-numeral text-headline-accent-numeral text-brand-gold-muted">All-Day</p>
                 <p class="font-label-caption text-label-caption uppercase tracking-wider text-surface-dim mt-1">Comfortable Wear</p>
               </div>
-              <img class="w-full aspect-[3/4] object-cover border border-border-editorial-subtle" alt="Macro texture swatch of liquid foundation spread smoothly over deep brown melanin skin" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAE9jBN9dg1PDN-fT7N9xisaalSFnRO06-mN9ZPYo7GEvoJZ3ipXy4qTgrFz7F8H74bwz8aO5nWlafSngZfx8TZHk-scrbuFNJ-9m_iQ7pBQYSRZii_Mb-qBX2rTySVWZUvRkQVMKijYNuNHEsvBz6knFgDC9qqh2PpNOhhNGoMcpRnvmjzluzzoHFTbL8JISVXJfKDT7CSx-CgrOqu5w2HOgDAAyXcCbceJqvD8Ko"/>
+              <!-- Real Foundation Swatch Stroke on Skin -->
+              <div class="w-full aspect-[3/4] bg-[#FAF6F0] border border-border-editorial-subtle overflow-hidden shadow-xs">
+                <img class="w-full h-full object-cover" alt="Real liquid foundation texture swatch spread on melanin skin" src="in my skin 11.webp"/>
+              </div>
             </div>
           </div>
         </div>
@@ -473,7 +573,7 @@
       </div>
     </section>
 
-    <!-- 6. SHADE TRANSITION SECTION -->
+    <!-- 6. SHADE TRANSITION SECTION (Real Arm Photos from Folder + High-Contrast Typography) -->
     <section class="py-20 md:py-28 bg-surface-sand border-b border-border-editorial-subtle" id="shade-transition">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="max-w-3xl mx-auto text-center space-y-4 mb-14">
@@ -517,7 +617,7 @@
           <div class="pt-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center" id="shade-display-panel">
             <div class="md:col-span-5 space-y-4">
               <div class="flex items-center gap-3">
-                <span id="target-swatch-dot" class="w-8 h-8 rounded-full bg-swatch-amber inline-block border-2 border-surface-alabaster shadow"></span>
+                <span id="target-swatch-dot" class="w-8 h-8 rounded-full bg-swatch-amber inline-block border-2 border-surface-alabaster shadow-xs"></span>
                 <div>
                   <span class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold">Your Match:</span>
                   <h3 class="font-headline-md text-headline-md text-ink-espresso leading-none font-normal" id="target-shade-name">#06 Warm Amber</h3>
@@ -534,10 +634,10 @@
                 </div>
                 <div class="flex justify-between">
                   <span class="text-ink-cedar font-medium">New formula:</span>
-                  <span class="text-status-emerald font-semibold" id="target-formula-benefit">Improved true-to-color finish</span>
+                  <span class="text-brand-terracotta font-semibold" id="target-formula-benefit">Improved true-to-color finish</span>
                 </div>
               </div>
-              <p class="font-body-sm text-body-sm text-ink-warmgray" id="target-notes">
+              <p class="font-body-sm text-body-sm text-ink-warmgray leading-relaxed" id="target-notes">
                 If Classic 06 was your previous shade, Warm Amber is your recommended match in the new collection. Enjoy the same beautiful warmth with an improved formula.
               </p>
               <button id="target-cta-btn" class="w-full bg-brand-terracotta-dark text-white font-label-button text-label-button uppercase py-3.5 tracking-widest hover:bg-brand-terracotta transition cursor-pointer shadow-sm font-semibold" onclick="quickSelectPathShade(state.selectedShade)">
@@ -545,13 +645,13 @@
               </button>
             </div>
 
-            <!-- Visual Arm Swatch Container -->
-            <div class="md:col-span-7 bg-surface-card-warm p-4 border border-border-editorial-subtle">
-              <div class="relative">
-                <img class="w-full aspect-[16/10] object-cover" alt="Arm swatch demonstration showing warm melanin foundation shades applied on skin in natural daylight" id="target-swatch-img" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB88Djz8-xqJdITR03CoS4WPvPTPVt_oUdAHk2fMqypELfXTI_UxDvi2BvkuF4fi4lW1KHXfYx29vUt39ILnoZIdJdzX1QLiPpO0rJzfcm0s3HeXfDf0fUfhToNXWxNkxVspnnB1fYdb3Irwi507-7lcJVe_SJbA1GSdilvlXFLnq6vMxM1qyKeuTbS9DNE07XYCjwOfomtzQVeIZpYAOyXHDdZMfHMKkuOD1_YrHA"/>
-                <div class="absolute bottom-3 left-3 bg-surface-alabaster/90 backdrop-blur px-3 py-1.5 border border-border-editorial-subtle flex items-center gap-2">
-                  <span class="material-symbols-outlined text-sm text-brand-terracotta">water</span>
-                  <span class="font-label-caption text-[11px] text-ink-espresso font-semibold uppercase">Liquid Viscosity: Lightweight Pro-Glide</span>
+            <!-- Visual Arm Swatch Container with Real Local Photos from arm/ folder -->
+            <div class="md:col-span-7 bg-surface-card-warm p-3 sm:p-4 border border-border-editorial-subtle shadow-xs">
+              <div class="relative overflow-hidden rounded-xs aspect-[4/3] bg-white flex items-center justify-center">
+                <img class="w-full h-full object-cover transition-all duration-500" alt="Arm swatch demonstration showing matching foundation shade on melanin skin" id="target-swatch-img" src="arm/warm-amber-arm.jpeg"/>
+                <div class="absolute bottom-3 left-3 bg-surface-alabaster/95 backdrop-blur px-3 py-1.5 border border-border-editorial-subtle flex items-center gap-2 shadow-2xs">
+                  <span class="material-symbols-outlined text-sm text-brand-terracotta">water_drop</span>
+                  <span class="font-label-caption text-[11px] text-ink-espresso font-semibold uppercase tracking-wider" id="target-swatch-label">Shade #06 Real Arm Match</span>
                 </div>
               </div>
             </div>
@@ -574,7 +674,7 @@
       </div>
     </section>
 
-    <!-- 7. PURCHASE OPTIONS -->
+    <!-- 7. PURCHASE OPTIONS (With Real Product Imagery & Authentic Payment Icons) -->
     <section class="py-20 md:py-28 bg-surface-alabaster border-b border-border-editorial-subtle" id="purchase-path">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="max-w-2xl mx-auto text-center space-y-3 mb-16">
@@ -589,11 +689,18 @@
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <!-- OPTION A: JUST THE FOUNDATION (5 cols) -->
-          <div class="lg:col-span-5 bg-surface-card-light p-8 border border-border-editorial-strong space-y-6">
+          <div class="lg:col-span-5 bg-surface-card-light p-8 border border-border-editorial-strong space-y-6 shadow-sm">
             <div class="border-b border-border-editorial-subtle pb-4">
               <span class="font-label-caption text-label-caption uppercase tracking-wider text-ink-cedar font-semibold">OPTION A: JUST THE FOUNDATION</span>
               <h3 class="font-headline-md text-headline-md text-ink-espresso font-normal">Replace Your Favorite Foundation</h3>
               <p class="font-body-sm text-body-sm text-ink-cedar mt-1">Get your In My Skin™ Water-Infused Foundation in the shade that suits you.</p>
+            </div>
+
+            <!-- Single Foundation Visual Preview Card -->
+            <div class="bg-white border border-border-editorial-subtle p-4 flex items-center justify-center rounded-xs shadow-2xs">
+              <div class="h-44 w-auto flex items-center justify-center overflow-hidden">
+                <img src="foundation bottles/in my skin 2.webp" alt="In My Skin Liquid Foundation" class="max-h-full max-w-full object-contain"/>
+              </div>
             </div>
             
             <ul class="space-y-2.5 text-body-sm text-ink-espresso">
@@ -606,7 +713,7 @@
                 <span>Choose from our available shades</span>
               </li>
               <li class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-sm text-status-emerald">check_circle</span>
+                <span class="material-symbols-outlined text-sm text-brand-terracotta">verified_user</span>
                 <span>FREE shade exchange guarantee</span>
               </li>
               <li class="flex items-center gap-2">
@@ -625,7 +732,7 @@
                 <label class="block font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold mb-2" for="single-shade-select">
                   Select Your Shade:
                 </label>
-                <select class="w-full bg-surface-alabaster border border-border-editorial-medium py-3 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0" id="single-shade-select">
+                <select class="w-full bg-surface-alabaster border border-border-editorial-medium py-3 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0 rounded-none" id="single-shade-select">
                   <option value="05">Shade #05 Neutral Almond (Warm Golden undertone)</option>
                   <option selected="" value="06">Shade #06 Warm Amber (Rich Warm undertone)</option>
                   <option value="07">Shade #07 Spiced Cinnamon (Terracotta Red undertone)</option>
@@ -649,7 +756,35 @@
               <p class="font-body-sm text-body-sm text-ink-cedar mt-1">Why stop at foundation? Get your complete complexion routine in one convenient package.</p>
             </div>
 
-            <!-- Suite items breakdown -->
+            <!-- Suite items image grid displaying all 4 products together -->
+            <div class="grid grid-cols-4 gap-2.5 bg-white p-3 border border-border-editorial-subtle rounded-xs">
+              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs">
+                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
+                  <img src="foundation bottles/in my skin 2.webp" alt="Foundation" class="max-h-full max-w-full object-contain"/>
+                </div>
+                <span class="text-[10px] font-semibold text-ink-espresso">Foundation</span>
+              </div>
+              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs">
+                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
+                  <img src="suite/concealer.webp" alt="Concealer" class="max-h-full max-w-full object-contain"/>
+                </div>
+                <span class="text-[10px] font-semibold text-ink-espresso">Concealer</span>
+              </div>
+              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs">
+                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
+                  <img src="suite/oil lock.webp" alt="Oil-Lock Powder" class="max-h-full max-w-full object-contain"/>
+                </div>
+                <span class="text-[10px] font-semibold text-ink-espresso">Powder</span>
+              </div>
+              <div class="flex flex-col items-center text-center p-2 bg-[#FAF6F0] rounded-2xs border border-brand-terracotta/40">
+                <div class="h-14 sm:h-16 flex items-center justify-center overflow-hidden mb-1">
+                  <img src="suite/blender.webp" alt="Pro-Blender Sponge" class="max-h-full max-w-full object-contain"/>
+                </div>
+                <span class="text-[10px] font-bold text-brand-terracotta">FREE Gift</span>
+              </div>
+            </div>
+
+            <!-- Suite items text breakdown -->
             <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold">Your suite includes:</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-body-sm">
               <div class="p-3 bg-surface-alabaster border border-border-editorial-subtle flex items-start gap-2.5">
@@ -674,10 +809,10 @@
                 </div>
               </div>
               <div class="p-3 bg-surface-sand border border-brand-terracotta/40 flex items-start gap-2.5">
-                <span class="material-symbols-outlined text-status-emerald text-lg mt-0.5">card_giftcard</span>
+                <span class="material-symbols-outlined text-brand-terracotta text-lg mt-0.5">card_giftcard</span>
                 <div>
                   <p class="font-medium text-ink-espresso">4. Velvet Pro-Blender Sponge</p>
-                  <p class="text-[11px] text-status-emerald font-semibold">FREE gift worth ₦5,500</p>
+                  <p class="text-[11px] text-brand-terracotta font-semibold">FREE gift worth ₦5,500</p>
                 </div>
               </div>
             </div>
@@ -688,7 +823,7 @@
                 <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-cedar">Total individual value: <span class="line-through">₦51,500</span></p>
                 <div class="flex items-baseline gap-3">
                   <span class="font-display-hero-mobile md:font-display-hero text-display-hero-mobile md:text-headline-lg text-brand-terracotta-dark font-semibold leading-none" id="suite-live-price">₦38,500</span>
-                  <span class="px-2 py-0.5 bg-status-emerald text-white text-[11px] font-label-button uppercase font-semibold">You save ₦13,000!</span>
+                  <span class="px-2 py-0.5 bg-brand-terracotta text-white text-[11px] font-label-button uppercase font-semibold">You save ₦13,000!</span>
                 </div>
               </div>
               <!-- Quantity Selector -->
@@ -707,7 +842,7 @@
               <label class="block font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold mb-2" for="suite-shade-select">
                 Choose your foundation shade and get everything you need for a beautifully finished look:
               </label>
-              <select class="w-full bg-surface-alabaster border border-border-editorial-medium py-3 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0" id="suite-shade-select">
+              <select class="w-full bg-surface-alabaster border border-border-editorial-medium py-3 px-4 font-body-md text-ink-espresso focus:border-brand-terracotta focus:ring-0 rounded-none" id="suite-shade-select">
                 <option value="05">Suite Shade #05 Neutral Almond (Pairs with Concealer 05 + Honey Powder)</option>
                 <option selected="" value="06">Suite Shade #06 Warm Amber (Pairs with Concealer 06 + Caramel Powder)</option>
                 <option value="07">Suite Shade #07 Spiced Cinnamon (Pairs with Concealer 07 + Deep Sand Powder)</option>
@@ -721,14 +856,48 @@
               <span>Get My Complete Suite</span>
             </button>
 
-            <!-- Supported Local Gateway Strip -->
-            <div class="pt-4 border-t border-border-editorial-subtle flex flex-wrap items-center justify-between gap-2 text-ink-cedar text-xs">
-              <span class="font-label-caption text-[11px] uppercase tracking-wider text-ink-warmgray">Secure checkout with:</span>
-              <div class="flex items-center gap-3 font-semibold text-ink-espresso">
-                <span class="px-2 py-0.5 border border-border-editorial-subtle bg-white">Mastercard</span>
-                <span class="px-2 py-0.5 border border-border-editorial-subtle bg-white">Visa</span>
-                <span class="px-2 py-0.5 border border-border-editorial-subtle bg-white">Verve</span>
-                <span class="px-2 py-0.5 border border-border-editorial-subtle bg-white">Direct Bank Transfer</span>
+            <!-- Supported Local Gateway Strip with Authentic SVGs -->
+            <div class="pt-4 border-t border-border-editorial-subtle flex flex-wrap items-center justify-between gap-2.5">
+              <div class="flex items-center space-x-2 text-xs font-semibold text-ink-espresso">
+                <svg class="w-3.5 h-3.5 text-brand-terracotta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                <span>Secure checkout with:</span>
+                <span class="text-[9px] px-1.5 py-0.5 rounded bg-[#FAF6F0] text-ink-espresso border border-[#B8562D]/25 font-semibold">256-Bit SSL</span>
+              </div>
+
+              <!-- Authentic Graphical Card Brand Badges -->
+              <div class="flex flex-wrap items-center gap-1.5">
+                <!-- Mastercard Badge -->
+                <div class="px-2 py-1 bg-white border border-[#B8562D]/20 rounded flex items-center space-x-1 shadow-2xs" title="Mastercard Accepted">
+                  <svg class="w-4 h-3 flex-shrink-0" viewBox="0 0 32 20" fill="none">
+                    <circle cx="10" cy="10" r="10" fill="#EB001B"/>
+                    <circle cx="22" cy="10" r="10" fill="#F79E1B"/>
+                    <path d="M16 3.167A9.97 9.97 0 0 1 19.866 10 9.97 9.97 0 0 1 16 16.833 9.97 9.97 0 0 1 12.134 10 9.97 9.97 0 0 1 16 3.167Z" fill="#FF5F00"/>
+                  </svg>
+                  <span class="text-[9px] font-bold text-ink-espresso tracking-tight">Mastercard</span>
+                </div>
+
+                <!-- Visa Badge -->
+                <div class="px-2 py-1 bg-white border border-[#B8562D]/20 rounded flex items-center space-x-1 shadow-2xs" title="Visa Accepted">
+                  <svg class="w-5 h-2.5 flex-shrink-0" viewBox="0 0 36 12" fill="none">
+                    <path d="M14.12 0.3L9.26 11.66H6.06L3.68 2.5C3.54 1.94 3.4 1.74 2.96 1.5C2.26 1.12 1.06 0.76 0 0.52L0.08 0.3H5.16C5.82 0.3 6.42 0.74 6.56 1.48L7.8 8.04L10.96 0.3H14.12ZM26.48 7.9C26.5 4.88 22.3 4.72 22.32 3.38C22.34 2.98 22.72 2.54 23.6 2.42C24.04 2.36 25.22 2.32 26.54 2.92L27.08 0.44C26.34 0.18 25.4 0 24.2 0C21.24 0 19.18 1.56 19.16 3.8C19.14 5.46 20.64 6.38 21.78 6.94C22.94 7.5 23.34 7.86 23.34 8.36C23.32 9.12 22.4 9.46 21.56 9.48C20.06 9.5 19.18 9.08 18.5 8.76L17.94 11.36C18.66 11.7 20 12 21.38 12C24.52 12 26.46 10.46 26.48 7.9ZM34.28 11.66H37.04L34.64 0.3H32.22C31.58 0.3 31.04 0.68 30.82 1.28L26.34 11.66H29.54L30.18 9.9H33.86L34.28 11.66ZM31.06 7.52L32.58 3.34L33.44 7.52H31.06ZM18.72 0.3L16.2 11.66H13.18L15.7 0.3H18.72Z" fill="#1A1F71"/>
+                  </svg>
+                </div>
+
+                <!-- Verve Badge -->
+                <div class="px-2 py-1 bg-white border border-[#B8562D]/20 rounded flex items-center space-x-1 shadow-2xs" title="Verve Card Accepted">
+                  <svg class="w-3.5 h-3 flex-shrink-0" viewBox="0 0 24 20" fill="none">
+                    <path d="M5.5 2C3.567 2 2 3.567 2 5.5v9C2 16.433 3.567 18 5.5 18h4.5v-3H5.5A1.5 1.5 0 0 1 4 13.5v-7A1.5 1.5 0 0 1 5.5 5H10V2H5.5Z" fill="#ED1C24"/>
+                    <path d="M18.5 2H14v3h4.5A1.5 1.5 0 0 1 20 6.5v7a1.5 1.5 0 0 1-1.5 1.5H14v3h4.5c1.933 0 3.5-1.567 3.5-3.5v-9C22 3.567 20.433 2 18.5 2Z" fill="#0072BC"/>
+                    <path d="M12 5.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Z" fill="#ED1C24"/>
+                  </svg>
+                  <span class="text-[9px] font-bold text-[#0072BC] tracking-tight">verve</span>
+                </div>
+
+                <!-- Transfer Badge -->
+                <div class="px-2 py-1 bg-white border border-[#B8562D]/20 rounded flex items-center space-x-1 shadow-2xs" title="Direct Bank Transfer & USSD">
+                  <svg class="w-3.5 h-3.5 text-brand-terracotta flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+                  <span class="text-[9px] font-bold text-ink-espresso tracking-tight">Transfer</span>
+                </div>
               </div>
             </div>
           </div>
@@ -736,7 +905,7 @@
       </div>
     </section>
 
-    <!-- 8. SHADE GALLERY -->
+    <!-- 8. SHADE GALLERY (Real Models with Smooth Hover to Matching Product Photo) -->
     <section class="py-20 md:py-28 bg-surface-sand border-b border-border-editorial-subtle">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="max-w-2xl mx-auto text-center space-y-3 mb-16">
@@ -752,8 +921,13 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <!-- Shade 05 -->
           <div class="bg-surface-card-light border border-border-editorial-subtle overflow-hidden group shadow-xs">
-            <div class="overflow-hidden">
-              <img class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" alt="Editorial portrait of a woman wearing Shade 05 Neutral Almond" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-b23P0ButZ987BCvrDb9Hz1Eb9NHFZK6rghBcDV765DzTRNWzRlG3wwKxXiEmeBhkmpWUqQKmBzj9w2JuMHPs0uupF6aIlYJxhMOgYc5k9VHsf1ewCGJmwrLYJi55ZgANcmZVmaqqfXBmlV6Di2joythI6ru_TaytP2NUnCRvCxYq8XHW6OSv_F13IwUWiLD4IcjjtoRptgvo1IVjqLmSDAidTs8-Keo3D-pHylA"/>
+            <div class="image-transform-container aspect-[3/4] cursor-pointer" onclick="this.classList.toggle('is-active')" title="Click or hover to reveal bottle">
+              <!-- Primary: Authentic Shade 05 Model -->
+              <img class="image-primary w-full h-full object-cover" alt="Model wearing Shade 05 Neutral Almond" src="in my skin 9.webp"/>
+              <!-- Secondary: Matching Shade 05 Foundation Bottle -->
+              <div class="image-secondary w-full h-full bg-[#FAF6F0] p-6 flex items-center justify-center">
+                <img class="max-h-full max-w-full object-contain" alt="Shade 05 Neutral Almond Foundation Bottle" src="foundation bottles/L3_2.webp"/>
+              </div>
             </div>
             <div class="p-5 space-y-2">
               <div class="flex items-center justify-between">
@@ -770,8 +944,13 @@
 
           <!-- Shade 06 -->
           <div class="bg-surface-card-light border border-border-editorial-subtle overflow-hidden group shadow-xs">
-            <div class="overflow-hidden">
-              <img class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" alt="Editorial portrait of a woman wearing Shade 06 Warm Amber" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeTCdk_H3KM17Z0V95s80OnYwrr3PmMhLzA7zUp8Y5bJQObquyAFJ6jBlTnd8GmCxktcKdf8p_KtcLSVWvda96Wswr6FYm5mJPsjnKFNCv0oWdideulFXh6fj3fOEhTm6bzTiRixExWcKba9TmRM0ZY6FgykjMb_-3xy3zOe-KvHudvwAHlN35FEIYgq8Yfc0vUu0_AMkc6hzT9PBxM6VBK_0AaoYcLBN51LuHl1s"/>
+            <div class="image-transform-container aspect-[3/4] cursor-pointer" onclick="this.classList.toggle('is-active')" title="Click or hover to reveal bottle">
+              <!-- Primary: Authentic Shade 06 Model -->
+              <img class="image-primary w-full h-full object-cover" alt="Model wearing Shade 06 Warm Amber" src="in my skin 3.webp"/>
+              <!-- Secondary: Matching Shade 06 Foundation Bottle -->
+              <div class="image-secondary w-full h-full bg-[#FAF6F0] p-6 flex items-center justify-center">
+                <img class="max-h-full max-w-full object-contain" alt="Shade 06 Warm Amber Foundation Bottle" src="foundation bottles/in my skin 2.webp"/>
+              </div>
             </div>
             <div class="p-5 space-y-2">
               <div class="flex items-center justify-between">
@@ -788,8 +967,13 @@
 
           <!-- Shade 07 -->
           <div class="bg-surface-card-light border border-border-editorial-subtle overflow-hidden group shadow-xs">
-            <div class="overflow-hidden">
-              <img class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" alt="Editorial portrait of a woman wearing Shade 07 Spiced Terracotta" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-NARmWA4cYBkmezxgxuqXYLLqRCUroTfj5JHZJf2bYuFpFUS8lthuRZZTvqaEVC41Tji4BC-VfZpxV0ow0VPv107wWdUa9AYAl7zTZfnTuZHJqbFZKnogi2FZEMrWpVPboZOpw6F0khaaJg2tDR-RMghXde_2V9g3ZJbM-Hx2LDiEW1y22W0lh9CkA3fRR30ffVztvCRQ-gFHP1frF1ZHybVfvbscOD5MQ3ACJTU"/>
+            <div class="image-transform-container aspect-[3/4] cursor-pointer" onclick="this.classList.toggle('is-active')" title="Click or hover to reveal bottle">
+              <!-- Primary: Authentic Shade 07 Model -->
+              <img class="image-primary w-full h-full object-cover" alt="Model wearing Shade 07 Spiced Terracotta" src="in my skin 4.webp"/>
+              <!-- Secondary: Matching Shade 07 Foundation Bottle -->
+              <div class="image-secondary w-full h-full bg-[#FAF6F0] p-6 flex items-center justify-center">
+                <img class="max-h-full max-w-full object-contain" alt="Shade 07 Spiced Terracotta Foundation Bottle" src="foundation bottles/a2.webp"/>
+              </div>
             </div>
             <div class="p-5 space-y-2">
               <div class="flex items-center justify-between">
@@ -806,8 +990,13 @@
 
           <!-- Shade 08 -->
           <div class="bg-surface-card-light border border-border-editorial-subtle overflow-hidden group shadow-xs">
-            <div class="overflow-hidden">
-              <img class="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-500" alt="Editorial portrait of a woman wearing Shade 08 Deep Chestnut" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYQ5zAl2B46K47hm1NO8OfeGedVbA8M6WB_kTbp7BsUocHEpw1R4eltPMbPCcqxohHJ5oSZHOWufcOYc6M1FhPdr8X8ZOalgepC-i-qdrG6vWEn9KC3ax_yknv1lg8MFc92OOIWghqVj53pnkU2FshewcwsaRTT3q3kLUI6fcas0Ew7gGiz0si3ipgFf1G0seDxIwN3oiUwgDU5A5_f1924NL4CIJzsinIaqYS5bs"/>
+            <div class="image-transform-container aspect-[3/4] cursor-pointer" onclick="this.classList.toggle('is-active')" title="Click or hover to reveal bottle">
+              <!-- Primary: Authentic Shade 08 Model -->
+              <img class="image-primary w-full h-full object-cover" alt="Model wearing Shade 08 Deep Chestnut" src="in my skin 5.webp"/>
+              <!-- Secondary: Matching Shade 08 Foundation Bottle -->
+              <div class="image-secondary w-full h-full bg-[#FAF6F0] p-6 flex items-center justify-center">
+                <img class="max-h-full max-w-full object-contain" alt="Shade 08 Deep Chestnut Foundation Bottle" src="foundation bottles/L1_2.webp"/>
+              </div>
             </div>
             <div class="p-5 space-y-2">
               <div class="flex items-center justify-between">
@@ -825,7 +1014,7 @@
       </div>
     </section>
 
-    <!-- 9. CUSTOMER REVIEWS -->
+    <!-- 9. CUSTOMER REVIEWS (Authentic Reviewer Portraits Added) -->
     <section class="py-20 md:py-28 bg-surface-alabaster border-b border-border-editorial-subtle">
       <div class="max-w-7xl mx-auto px-6 md:px-12">
         <div class="max-w-2xl mx-auto text-center space-y-3 mb-16">
@@ -840,54 +1029,66 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Review 1 -->
-          <div class="bg-surface-card-light p-8 border border-border-editorial-subtle space-y-4 flex flex-col justify-between shadow-xs">
+          <div class="bg-surface-card-light p-8 border border-border-editorial-subtle space-y-6 flex flex-col justify-between shadow-xs">
             <div class="space-y-4">
               <div class="flex text-brand-terracotta text-sm">★★★★★</div>
               <p class="font-body-lead text-[16px] text-ink-espresso font-normal italic leading-relaxed">
                 "I used Classic 06 for three years, so I was excited but a little nervous about trying the new formula. I love how lightweight it feels, and my shade still looks beautiful hours after application."
               </p>
             </div>
-            <div class="pt-4 border-t border-border-editorial-subtle">
-              <p class="font-headline-sm text-[18px] text-ink-espresso font-normal">Tiwa Balogun</p>
-              <p class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold">NUBAN Customer Since 2019 · Verified Buyer</p>
-              <span class="inline-block mt-2 px-2 py-0.5 bg-surface-card-warm font-label-caption text-[11px] text-brand-terracotta-dark font-semibold">Now using Shade #06</span>
+            <!-- Authentic Customer Portrait Strip -->
+            <div class="pt-5 border-t border-border-editorial-subtle flex items-center space-x-3.5">
+              <img src="in my skin 1.webp" alt="Tiwa Balogun" class="w-12 h-12 rounded-full object-cover border-2 border-brand-terracotta/30 flex-shrink-0 shadow-xs"/>
+              <div>
+                <p class="font-headline-sm text-[18px] text-ink-espresso font-normal leading-tight">Tiwa Balogun</p>
+                <p class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold mt-0.5">NUBAN Customer Since 2019 · Verified Buyer</p>
+                <span class="inline-block mt-1 px-2 py-0.5 bg-surface-card-warm font-label-caption text-[11px] text-brand-terracotta-dark font-semibold">Now using Shade #06</span>
+              </div>
             </div>
           </div>
 
           <!-- Review 2 -->
-          <div class="bg-surface-card-light p-8 border border-border-editorial-subtle space-y-4 flex flex-col justify-between shadow-xs">
+          <div class="bg-surface-card-light p-8 border border-border-editorial-subtle space-y-6 flex flex-col justify-between shadow-xs">
             <div class="space-y-4">
               <div class="flex text-brand-terracotta text-sm">★★★★★</div>
               <p class="font-body-lead text-[16px] text-ink-espresso font-normal italic leading-relaxed">
                 "As a bridal makeup artist, I pay close attention to how foundation looks in photographs. The new formula gives my clients a beautiful finish, even under event lighting. It's become a regular part of my kit."
               </p>
             </div>
-            <div class="pt-4 border-t border-border-editorial-subtle">
-              <p class="font-headline-sm text-[18px] text-ink-espresso font-normal">Banke Adewale-Davies</p>
-              <p class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold">Professional Makeup Artist</p>
-              <span class="inline-block mt-2 px-2 py-0.5 bg-surface-card-warm font-label-caption text-[11px] text-brand-terracotta-dark font-semibold">Uses the Complete 4-Piece Suite</span>
+            <!-- Authentic MUA Portrait Strip -->
+            <div class="pt-5 border-t border-border-editorial-subtle flex items-center space-x-3.5">
+              <img src="in my skin 9.webp" alt="Banke Adewale-Davies" class="w-12 h-12 rounded-full object-cover border-2 border-brand-terracotta/30 flex-shrink-0 shadow-xs"/>
+              <div>
+                <p class="font-headline-sm text-[18px] text-ink-espresso font-normal leading-tight">Banke Adewale-Davies</p>
+                <p class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold mt-0.5">Professional Makeup Artist</p>
+                <span class="inline-block mt-1 px-2 py-0.5 bg-surface-card-warm font-label-caption text-[11px] text-brand-terracotta-dark font-semibold">Uses the Complete 4-Piece Suite</span>
+              </div>
             </div>
           </div>
 
           <!-- Review 3 -->
-          <div class="bg-surface-card-light p-8 border border-border-editorial-subtle space-y-4 flex flex-col justify-between shadow-xs">
+          <div class="bg-surface-card-light p-8 border border-border-editorial-subtle space-y-6 flex flex-col justify-between shadow-xs">
             <div class="space-y-4">
               <div class="flex text-brand-terracotta text-sm">★★★★★</div>
               <p class="font-body-lead text-[16px] text-ink-espresso font-normal italic leading-relaxed">
                 "I wasn't sure whether I would need a completely different shade, but the shade guide made the transition so easy. The new foundation feels comfortable, and I love how it looks on my skin."
               </p>
             </div>
-            <div class="pt-4 border-t border-border-editorial-subtle">
-              <p class="font-headline-sm text-[18px] text-ink-espresso font-normal">Ngozi Ekwueme</p>
-              <p class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold">NUBAN Customer · Verified Buyer</p>
-              <span class="inline-block mt-2 px-2 py-0.5 bg-surface-card-warm font-label-caption text-[11px] text-brand-terracotta-dark font-semibold">Now using Shade #08</span>
+            <!-- Authentic VIP Member Portrait Strip -->
+            <div class="pt-5 border-t border-border-editorial-subtle flex items-center space-x-3.5">
+              <img src="in my skin 5.webp" alt="Ngozi Ekwueme" class="w-12 h-12 rounded-full object-cover border-2 border-brand-terracotta/30 flex-shrink-0 shadow-xs"/>
+              <div>
+                <p class="font-headline-sm text-[18px] text-ink-espresso font-normal leading-tight">Ngozi Ekwueme</p>
+                <p class="font-label-caption text-label-caption text-ink-cedar uppercase font-semibold mt-0.5">NUBAN Customer · Verified Buyer</p>
+                <span class="inline-block mt-1 px-2 py-0.5 bg-surface-card-warm font-label-caption text-[11px] text-brand-terracotta-dark font-semibold">Now using Shade #08</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 10. SHADE EXCHANGE GUARANTEE -->
+    <!-- 10. SHADE EXCHANGE GUARANTEE (Clean Prompt with Direct WhatsApp Support CTA) -->
     <section class="py-16 md:py-24 bg-surface-card-warm border-b border-border-editorial-subtle">
       <div class="max-w-4xl mx-auto px-6 md:px-12 text-center space-y-6">
         <div class="inline-flex p-3 bg-surface-alabaster rounded-full text-brand-terracotta shadow-xs">
@@ -904,17 +1105,17 @@
           We'll help arrange an exchange for a more suitable shade, with no return or delivery charges.
         </p>
         
-        <div class="pt-4 max-w-lg mx-auto bg-surface-alabaster p-6 border border-border-editorial-subtle text-left space-y-2.5">
-          <p class="font-label-caption text-label-caption uppercase tracking-wider text-ink-espresso font-semibold mb-2">Your purchase includes:</p>
-          <p class="flex items-center gap-2 text-body-sm text-ink-espresso"><span class="w-2 h-2 rounded-full bg-status-emerald"></span> 7-day shade exchange period</p>
-          <p class="flex items-center gap-2 text-body-sm text-ink-espresso"><span class="w-2 h-2 rounded-full bg-status-emerald"></span> FREE return courier service</p>
-          <p class="flex items-center gap-2 text-body-sm text-ink-espresso"><span class="w-2 h-2 rounded-full bg-status-emerald"></span> FREE replacement shade delivery</p>
-          <p class="flex items-center gap-2 text-body-sm text-ink-espresso"><span class="w-2 h-2 rounded-full bg-status-emerald"></span> Personal assistance from our beauty team</p>
-        </div>
-
-        <p class="font-headline-sm text-xl text-brand-terracotta font-semibold pt-2">
+        <p class="font-headline-sm text-2xl text-brand-terracotta font-normal pt-2">
           Your perfect match matters to us.
         </p>
+
+        <!-- Direct WhatsApp Support CTA Button -->
+        <div class="pt-4">
+          <a href="https://wa.me/2348031234567?text=Hello%20Nuban%20Beauty%2C%20I%20am%20a%20returning%20customer%20looking%20for%20shade%20support" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 px-10 py-4 bg-brand-terracotta-dark text-white font-label-button text-label-button uppercase tracking-widest hover:bg-brand-terracotta transition shadow-md font-semibold cursor-pointer">
+            <span class="material-symbols-outlined text-lg">chat</span>
+            <span>Chat With WhatsApp Support →</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -935,7 +1136,7 @@
               <span class="font-headline-sm text-[20px] text-ink-espresso font-normal">Will I need to change my old foundation shade?</span>
               <span class="material-symbols-outlined text-brand-terracotta transition-transform" id="faq1-icon">expand_more</span>
             </button>
-            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4" id="faq1-content">
+            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4 leading-relaxed" id="faq1-content">
               Not necessarily. Many of our previous shades have a corresponding shade in the new collection. However, the updated formula has a different finish, so we recommend checking our shade transition guide before ordering.
             </div>
           </div>
@@ -946,7 +1147,7 @@
               <span class="font-headline-sm text-[20px] text-ink-espresso font-normal">Can I still use my old NUBAN setting powder?</span>
               <span class="material-symbols-outlined text-brand-terracotta transition-transform" id="faq2-icon">expand_more</span>
             </button>
-            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4" id="faq2-content">
+            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4 leading-relaxed" id="faq2-content">
               Yes! Your previous NUBAN compact and loose setting powders can still be used with the new foundation. You can also explore our new translucent powder for a complete matching routine.
             </div>
           </div>
@@ -957,7 +1158,7 @@
               <span class="font-headline-sm text-[20px] text-ink-espresso font-normal">How long will delivery take?</span>
               <span class="material-symbols-outlined text-brand-terracotta transition-transform" id="faq3-icon">expand_more</span>
             </button>
-            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4" id="faq3-content">
+            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4 leading-relaxed" id="faq3-content">
               Lagos orders placed before 1:00 PM may qualify for same-day or 24-hour delivery. Orders to Abuja, Port Harcourt, and other states typically arrive within 48–72 hours through our courier partners.
             </div>
           </div>
@@ -968,7 +1169,7 @@
               <span class="font-headline-sm text-[20px] text-ink-espresso font-normal">Is the new formula suitable for acne-prone skin?</span>
               <span class="material-symbols-outlined text-brand-terracotta transition-transform" id="faq4-icon">expand_more</span>
             </button>
-            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4" id="faq4-content">
+            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4 leading-relaxed" id="faq4-content">
               In My Skin™ is formulated to feel lightweight and comfortable on the skin. It is also non-comedogenic, fragrance-free, and dermatologically tested.
             </div>
           </div>
@@ -979,7 +1180,7 @@
               <span class="font-headline-sm text-[20px] text-ink-espresso font-normal">What if I receive the wrong shade?</span>
               <span class="material-symbols-outlined text-brand-terracotta transition-transform" id="faq5-icon">expand_more</span>
             </button>
-            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4" id="faq5-content">
+            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4 leading-relaxed" id="faq5-content">
               Don't worry. Contact our VIP Concierge within seven days of receiving your order. We'll help you arrange a shade exchange under our free shade exchange guarantee.
             </div>
           </div>
@@ -990,7 +1191,7 @@
               <span class="font-headline-sm text-[20px] text-ink-espresso font-normal">What comes with the 4-Piece Suite?</span>
               <span class="material-symbols-outlined text-brand-terracotta transition-transform" id="faq6-icon">expand_more</span>
             </button>
-            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4" id="faq6-content">
+            <div class="hidden px-6 pb-6 text-body-md text-ink-warmgray border-t border-border-editorial-subtle pt-4 leading-relaxed" id="faq6-content">
               The complete suite includes the In My Skin™ Foundation, Under-Eye Serum Concealer, 16H Oil-Lock Translucent Powder, and a complimentary Velvet Pro-Blender Sponge.
             </div>
           </div>
@@ -1023,46 +1224,91 @@
     </section>
   </main>
 
-  <!-- 13. FOOTER -->
-  <footer class="bg-ink-richblack text-surface-ivory border-t border-border-editorial-subtle">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 py-16 flex flex-col md:flex-row justify-between items-start gap-8">
-      <!-- Left info -->
-      <div class="space-y-4 max-w-md">
-        <span class="font-headline-sm text-headline-sm tracking-widest uppercase text-surface-card-warm font-semibold">
-          NUBAN BEAUTY
-        </span>
-        <p class="font-body-sm text-body-sm text-surface-ivory font-medium">
-          Beauty made with melanin in mind.
-        </p>
-        <p class="font-body-sm text-body-sm text-ink-cedar">
-          Premium complexion products created to celebrate, complement, and enhance the beauty of deeper skin tones.
-        </p>
-        <p class="font-label-caption text-label-caption text-ink-cedar uppercase">
-          © 2026 NUBAN BEAUTY COSMETICS. All rights reserved.
-        </p>
-      </div>
-
-      <!-- Links Column: Customer Support -->
-      <div class="space-y-3">
-        <p class="font-label-caption text-label-caption text-brand-terracotta uppercase tracking-wider font-semibold">Customer Support</p>
-        <ul class="space-y-2">
-          <li><a class="text-ink-cedar hover:text-surface-card-warm transition-colors font-body-sm text-body-sm" href="#shade-transition">Free Shade Exchange</a></li>
-          <li><a class="text-ink-cedar hover:text-surface-card-warm transition-colors font-body-sm text-body-sm" href="#purchase-path">Delivery Information</a></li>
-          <li><a class="text-ink-cedar hover:text-surface-card-warm transition-colors font-body-sm text-body-sm" href="https://wa.me/2348031234567?text=Hello%20Nuban%20Beauty%2C%20I%20am%20chatting%20with%20your%20beauty%20team" target="_blank" rel="noopener noreferrer">Chat With Our Beauty Team</a></li>
-          <li><a class="text-ink-cedar hover:text-surface-card-warm transition-colors font-body-sm text-body-sm" href="https://nubanbeauty.com/pages/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy &amp; Terms</a></li>
-        </ul>
-      </div>
-
-      <!-- Local payment badges in footer -->
-      <div class="space-y-3">
-        <p class="font-label-caption text-label-caption text-brand-terracotta uppercase tracking-wider font-semibold">Secure Payment Options</p>
-        <div class="flex items-center gap-3 text-surface-dim font-medium text-xs">
-          <span class="px-2.5 py-1 bg-accent-cocoa border border-border-editorial-subtle">Paystack</span>
-          <span class="px-2.5 py-1 bg-accent-cocoa border border-border-editorial-subtle">Verve</span>
-          <span class="px-2.5 py-1 bg-accent-cocoa border border-border-editorial-subtle">Mastercard</span>
-          <span class="px-2.5 py-1 bg-accent-cocoa border border-border-editorial-subtle">Visa</span>
+  <!-- 13. EDITORIAL FOOTER (Matched to Page 1 with Philosophy, Links, & Concierge) -->
+  <footer class="bg-[#EDE1D5] text-ink-espresso pt-16 sm:pt-20 pb-12 border-t border-[#B8562D]/20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
+      <!-- Newsletter Block -->
+      <div class="pb-12 mb-12 border-b border-[#B8562D]/20 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-6">
+          <span class="text-xs tracking-[0.3em] uppercase text-brand-bronze font-semibold block mb-1">Stay Connected</span>
+          <h4 class="font-headline-sm text-2xl sm:text-3xl text-ink-espresso font-normal">Newsletter</h4>
+          <p class="text-sm text-ink-espresso/80 font-normal mt-1">Sign up to our newsletter to receive exclusive VIP offers.</p>
         </div>
-        <p class="font-body-sm text-[11px] text-ink-cedar mt-1">Your transactions are processed through secure payment channels.</p>
+        <div class="lg:col-span-6">
+          <form class="flex flex-col sm:flex-row gap-2.5" onsubmit="event.preventDefault(); alert('Thank you for subscribing to Nuban Beauty.');">
+            <input type="email" placeholder="E-mail" required class="flex-1 bg-[#FAF6F0] border border-[#B8562D]/30 px-4 py-3 text-base sm:text-xs text-ink-espresso placeholder:text-ink-cedar/70 focus:outline-none focus:border-brand-terracotta rounded-none"/>
+            <button type="submit" class="px-8 py-3 bg-[#A7461F] text-[#FFF7F0] hover:bg-[#B8562D] transition-colors text-xs tracking-[0.2em] uppercase font-semibold shadow-sm cursor-pointer whitespace-nowrap">
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Main 4-Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 lg:gap-12 pb-16 border-b border-[#B8562D]/20">
+        <!-- Column 1: Philosophy -->
+        <div class="md:col-span-4 space-y-3">
+          <span class="font-display-hero text-2xl lg:text-3xl tracking-[0.2em] font-light block text-ink-espresso">NUBAN</span>
+          <h5 class="text-xs tracking-[0.25em] uppercase font-semibold text-brand-terracotta">Our Philosophy</h5>
+          <p class="text-xs sm:text-sm text-ink-espresso/80 font-normal leading-relaxed">
+            Beauty made with melanin in mind. Through premium makeup and science-led skincare, we celebrate, care for, and enhance melanin-rich skin with confidence at the heart of everything we create.
+          </p>
+        </div>
+
+        <!-- Column 2: Collections -->
+        <div class="md:col-span-3 space-y-3">
+          <h5 class="text-xs tracking-[0.25em] uppercase font-semibold text-ink-espresso">Collections</h5>
+          <ul class="text-xs sm:text-sm space-y-2.5 text-ink-espresso/80 font-normal">
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#purchase-path">In My Skin™ Foundation</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#suite-protocol">The Melanin Suite</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#suite-protocol">Radiant Concealer</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#suite-protocol">Micro-Fine Oil-Lock Powder</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#shade-transition">Shade Transition Matrix</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Useful Links -->
+        <div class="md:col-span-2 space-y-3">
+          <h5 class="text-xs tracking-[0.25em] uppercase font-semibold text-ink-espresso">Useful Links</h5>
+          <ul class="text-xs sm:text-sm space-y-2.5 text-ink-espresso/80 font-normal">
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#shade-transition">Free Shade Exchange</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="#purchase-path">Delivery Information</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="https://nubanbeauty.com/pages/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><a class="hover:text-brand-terracotta transition-colors" href="https://nubanbeauty.com/pages/refund-policy" target="_blank" rel="noopener noreferrer">Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Contact Us -->
+        <div class="md:col-span-3 space-y-3">
+          <h5 class="text-xs tracking-[0.25em] uppercase font-semibold text-ink-espresso">Customer Support</h5>
+          <ul class="text-xs sm:text-sm space-y-2.5 text-ink-espresso/80 font-normal">
+            <li>
+              <span class="block text-[10px] uppercase tracking-wider text-ink-espresso font-semibold">Email</span>
+              <a href="mailto:atelier@nubanbeauty.com" class="text-ink-espresso hover:text-brand-terracotta transition-colors font-medium">atelier@nubanbeauty.com</a>
+            </li>
+            <li>
+              <span class="block text-[10px] uppercase tracking-wider text-ink-espresso font-semibold">WhatsApp Concierge</span>
+              <a href="https://wa.me/2348031234567?text=Hello%20Nuban%20Beauty%2C%20I%20am%20chatting%20with%20your%20beauty%20team" target="_blank" rel="noopener noreferrer" class="text-ink-espresso hover:text-brand-terracotta transition-colors font-medium inline-flex items-center space-x-1">
+                <span>+234 Shade Consultation Desk</span>
+                <span class="text-brand-terracotta">→</span>
+              </a>
+            </li>
+            <li>
+              <span class="block text-[10px] uppercase tracking-wider text-ink-espresso font-semibold">Atelier Locations</span>
+              <span class="text-ink-espresso/90">Victoria Island, Lagos • Maitama, Abuja</span>
+            </li>
+            <li>
+              <span class="block text-[10px] uppercase tracking-wider text-ink-espresso font-semibold">Support Hours</span>
+              <span class="text-ink-espresso/90">Mon – Sat: 9:00 AM – 6:00 PM WAT</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bottom Meta Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-ink-cedar font-medium">
+        <span>© 2026 Nuban Beauty Ltd. African Luxury Defined.</span>
+        <span class="mt-2 sm:mt-0">Paystack Verified • SSL Secured</span>
       </div>
     </div>
   </footer>
@@ -1088,7 +1334,7 @@
       <div class="p-4 bg-surface-sand border border-border-editorial-subtle space-y-2">
         <div class="flex justify-between text-body-sm">
           <span class="text-ink-cedar font-medium">Delivery:</span>
-          <span class="text-status-emerald font-semibold">Free VIP Lagos Dispatch</span>
+          <span class="text-brand-terracotta font-semibold">Free VIP Lagos Dispatch</span>
         </div>
         <div class="flex justify-between font-headline-sm text-ink-espresso text-[22px] pt-2 border-t border-border-editorial-subtle">
           <span>Subtotal:</span>
@@ -1127,15 +1373,17 @@
       ]
     };
 
-    // Shade matrix definitions based strictly on user specification
+    // Shade matrix definitions based strictly on user specification with real arm photos
     const shadeData = {
       '05': {
         name: '#05 Neutral Almond',
-        buttonLabel: 'Choose Neutral Almond',
+        buttonLabel: 'Choose Shade #05',
         prev: 'Golden Tan (Classic)',
         undertone: 'Golden Olive Balance',
         swatchColor: '#C28254',
         formulaBenefit: 'Improved true-to-color finish',
+        armImg: 'arm/neutral-almond-arm.jpeg',
+        armLabel: 'Shade #05 Real Arm Match',
         notes: 'If Golden Tan was your previous shade, Neutral Almond is your recommended match in the new collection. Enjoy balanced golden-olive warmth with an improved formula.'
       },
       '06': {
@@ -1145,6 +1393,8 @@
         undertone: 'Warm Golden Honey',
         swatchColor: '#B26A3B',
         formulaBenefit: 'Improved true-to-color finish',
+        armImg: 'arm/warm-amber-arm.jpeg',
+        armLabel: 'Shade #06 Real Arm Match',
         notes: 'If Classic 06 was your previous shade, Warm Amber is your recommended match in the new collection. Enjoy the same beautiful warmth with an improved formula.'
       },
       '07': {
@@ -1154,6 +1404,8 @@
         undertone: 'Rich Terracotta Red',
         swatchColor: '#994F2B',
         formulaBenefit: 'Improved true-to-color finish',
+        armImg: 'arm/spiced-terracotta-arm.jpeg',
+        armLabel: 'Shade #07 Real Arm Match',
         notes: 'If Cinnamon Red was your previous shade, Spiced Cinnamon is your recommended match in the new collection. Enjoy true terracotta warmth with an improved formula.'
       },
       '08': {
@@ -1163,11 +1415,13 @@
         undertone: 'Rich Deep Cocoa',
         swatchColor: '#5E321E',
         formulaBenefit: 'Improved true-to-color finish',
+        armImg: 'arm/deep-espresso-arm.png',
+        armLabel: 'Shade #08 Real Arm Match',
         notes: 'If Rich Espresso was your previous shade, Deep Chestnut is your recommended match in the new collection. Enjoy deep cocoa richness with an improved formula.'
       }
     };
 
-    // Safe Shade Tab Switcher
+    // Safe Shade Tab Switcher with Real Arm Swatch Image Update
     function selectShade(shadeKey, event) {
       state.selectedShade = shadeKey;
       const data = shadeData[shadeKey];
@@ -1179,6 +1433,8 @@
       const targetFormula = document.getElementById('target-formula-benefit');
       const targetNotes = document.getElementById('target-notes');
       const swatchDot = document.getElementById('target-swatch-dot');
+      const swatchImg = document.getElementById('target-swatch-img');
+      const swatchLabel = document.getElementById('target-swatch-label');
       const ctaBtn = document.getElementById('target-cta-btn');
 
       if (targetName) targetName.innerText = data.name;
@@ -1187,6 +1443,8 @@
       if (targetFormula) targetFormula.innerText = data.formulaBenefit;
       if (targetNotes) targetNotes.innerText = data.notes;
       if (swatchDot) swatchDot.style.backgroundColor = data.swatchColor;
+      if (swatchImg && data.armImg) swatchImg.src = data.armImg;
+      if (swatchLabel && data.armLabel) swatchLabel.innerText = data.armLabel;
       if (ctaBtn) ctaBtn.innerText = data.buttonLabel;
 
       // Update button styles
@@ -1249,7 +1507,7 @@
             <div>
               <p class="font-medium text-ink-espresso text-sm">${item.title}</p>
               <p class="text-xs text-ink-cedar">${item.shade} (Qty: ${item.quantity})</p>
-              ${item.isSuite ? '<p class="text-[10px] text-status-emerald font-semibold uppercase mt-0.5">+ Free Velvet Pro-Blender Included</p>' : ''}
+              ${item.isSuite ? '<p class="text-[10px] text-brand-terracotta font-semibold uppercase mt-0.5">+ Free Velvet Pro-Blender Included</p>' : ''}
             </div>
             <div class="text-right">
               <p class="font-semibold text-ink-espresso text-sm">₦${(item.price * item.quantity).toLocaleString()}</p>
