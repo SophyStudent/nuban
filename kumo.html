@@ -51,15 +51,15 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Smooth 3D Orbit Carousel Transitions */
+    /* Smooth 3D Orbit Carousel Transitions (Matching exact timing curve of matcha lp.mp4) */
     .orbit-card {
-      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.6s ease;
       will-change: transform, opacity;
     }
 
     /* Photorealistic Scene & Cup Crossfades */
     .scene-layer, .cup-layer {
-      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: opacity;
     }
 
@@ -76,7 +76,7 @@
     /* Price Badge Hover & Press */
     .price-pill {
       box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
-      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, opacity 0.4s ease;
     }
     .price-pill:hover {
       transform: scale(1.06);
@@ -85,11 +85,34 @@
     .price-pill:active {
       transform: scale(0.96);
     }
+
+    /* Opening Entrance Animation (Fanning up from behind mountain on load) */
+    @keyframes fanUp {
+      0% {
+        transform: translate(0px, 140px) scale(0.6);
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    .initial-entrance {
+      animation: fanUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* Pulse for Playbar Scrubber */
+    .scrubber-track {
+      background: rgba(255, 255, 255, 0.18);
+    }
+    .scrubber-thumb {
+      background: #c88a82;
+      box-shadow: 0 0 8px rgba(200, 138, 130, 0.6);
+    }
   </style>
 </head>
 <body class="h-screen w-screen flex items-center justify-center p-2 sm:p-4 md:p-6 select-none bg-[#889356]">
 
-  <!-- Outer Editorial Device Frame (Matches exact Dribbble presentation) -->
+  <!-- Outer Editorial Device Frame (Matches exact Dribbble presentation & matcha lp.mp4) -->
   <main class="w-full h-full max-w-[1240px] max-h-[860px] bg-[#889356] border-[8px] sm:border-[14px] md:border-[18px] border-[#67733c] rounded-[28px] sm:rounded-[38px] md:rounded-[46px] p-2 sm:p-4 shadow-2xl relative flex flex-col justify-between overflow-hidden">
     
     <!-- Inner Viewport Screen -->
@@ -214,7 +237,7 @@
               <!-- Cup Overlay 4: Ruby Raspberry Infusion -->
               <img id="cup-overlay-4" src="assets/kumo/v2/cup_overlay_raspberry.png" alt="Ruby Raspberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none" />
 
-              <!-- Authentic Etched Flavour Name Across Cup Body (Matches exact Dribbble design) -->
+              <!-- Authentic Etched Flavour Name Across Cup Body (Matches exact Dribbble design & matcha lp.mp4) -->
               <div class="absolute top-[52%] inset-x-0 text-center pointer-events-none">
                 <span id="cup-flavor-title" class="font-serif text-white/95 text-2xl sm:text-3xl md:text-4xl font-bold tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all duration-300">
                   Crunberry
@@ -240,27 +263,41 @@
         </div>
       </div>
 
-      <!-- 4. BOTTOM CONTINUOUS ROTATION CONTROLS -->
-      <footer class="relative z-40 pb-3 sm:pb-5 px-4 sm:px-8">
+      <!-- 4. BOTTOM CONTINUOUS ROTATION CONTROLS (With video scrubber and Play/Pause matching matcha lp.mp4) -->
+      <footer class="relative z-40 pb-3 sm:pb-4 px-4 sm:px-8">
         <div class="flex items-center justify-between gap-3 sm:gap-6 max-w-2xl mx-auto">
           
-          <!-- Rotate Left Arrow Button -->
-          <button onclick="prevFlavor()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90 shadow-md" title="Previous Flavour">
-            <span class="material-symbols-outlined text-[18px] sm:text-[22px]">arrow_back</span>
+          <!-- Play / Pause Auto-Tour Toggle (Matches || button in matcha lp.mp4) -->
+          <button id="play-pause-btn" onclick="toggleAutoPlay()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90 shadow-md" title="Play/Pause Rotation Tour">
+            <span id="play-pause-icon" class="material-symbols-outlined text-[18px]">pause</span>
           </button>
 
-          <!-- Smooth Indicator Dots -->
-          <div class="flex items-center gap-2 sm:gap-3 bg-black/45 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-lg">
-            <button onclick="selectFlavor(0)" id="dot-0" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Strawberry"></button>
-            <button onclick="selectFlavor(1)" id="dot-1" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Pure Ceremonial Leaf"></button>
-            <button onclick="selectFlavor(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Wild Blueberry"></button>
-            <button onclick="selectFlavor(3)" id="dot-3" class="w-3.5 h-3.5 rounded-full transition-all duration-300 bg-amber-300 shadow scale-110 cursor-pointer" title="Cranberry"></button>
-            <button onclick="selectFlavor(4)" id="dot-4" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Ruby Raspberry"></button>
+          <!-- Smooth Indicator Dots & Scrubber Track -->
+          <div class="flex-grow flex items-center gap-3 bg-black/45 backdrop-blur-md px-4 py-2 rounded-full border border-white/10 shadow-lg">
+            
+            <!-- Rotate Left Arrow Button -->
+            <button onclick="prevFlavor()" class="p-0.5 hover:text-amber-300 text-white/80 transition cursor-pointer active:scale-90" title="Previous Flavour">
+              <span class="material-symbols-outlined text-[18px] block">arrow_back</span>
+            </button>
+
+            <!-- 5 Interactive Flavour Dots -->
+            <div class="flex items-center gap-2 sm:gap-3 mx-auto">
+              <button onclick="selectFlavor(0)" id="dot-0" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Strawberry"></button>
+              <button onclick="selectFlavor(1)" id="dot-1" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Pure Ceremonial Leaf"></button>
+              <button onclick="selectFlavor(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Wild Blueberry"></button>
+              <button onclick="selectFlavor(3)" id="dot-3" class="w-3.5 h-3.5 rounded-full transition-all duration-300 bg-amber-300 shadow scale-110 cursor-pointer" title="Cranberry"></button>
+              <button onclick="selectFlavor(4)" id="dot-4" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white cursor-pointer" title="Ruby Raspberry"></button>
+            </div>
+
+            <!-- Rotate Right Arrow Button -->
+            <button onclick="nextFlavor()" class="p-0.5 hover:text-amber-300 text-white/80 transition cursor-pointer active:scale-90" title="Next Flavour">
+              <span class="material-symbols-outlined text-[18px] block">arrow_forward</span>
+            </button>
           </div>
 
-          <!-- Rotate Right Arrow Button -->
-          <button onclick="nextFlavor()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90 shadow-md" title="Next Flavour">
-            <span class="material-symbols-outlined text-[18px] sm:text-[22px]">arrow_forward</span>
+          <!-- Quick Flavour Re-center Button -->
+          <button onclick="selectFlavor(3)" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90 shadow-md text-xs font-bold" title="Reset to Cranberry">
+            <span class="material-symbols-outlined text-[16px]">restart_alt</span>
           </button>
         </div>
       </footer>
@@ -350,9 +387,11 @@
       }
     ];
 
-    let activeIndex = 3; // Cranberry is the default active flavour (Matches Dribbble frame 3)
+    let activeIndex = 3; // Cranberry is the default active flavour (Matches Dribbble frame 3 & matcha lp.mp4)
+    let autoPlayInterval = null;
+    let isAutoPlaying = false;
 
-    // Orbital Arc Positions around the cup (cards fan out wide, never covering the cup)
+    // Orbital Arc Positions around the cup (cards fan out wide, matching matcha lp.mp4 exactly)
     // [dx (px), dy (px), scale, rotate (deg), opacity]
     const orbitSlots = [
       { x: -375, y: 55,  scale: 0.84, rotate: -22, opacity: 0.85 },
@@ -438,10 +477,27 @@
       selectFlavor(activeIndex + 1);
     }
 
+    // Auto-Tour Playback Toggle (Matches automatic rotation in matcha lp.mp4)
+    function toggleAutoPlay() {
+      const icon = document.getElementById('play-pause-icon');
+      if (isAutoPlaying) {
+        clearInterval(autoPlayInterval);
+        isAutoPlaying = false;
+        if (icon) icon.innerText = 'play_arrow';
+      } else {
+        isAutoPlaying = true;
+        if (icon) icon.innerText = 'pause';
+        autoPlayInterval = setInterval(() => {
+          nextFlavor();
+        }, 2200);
+      }
+    }
+
     // Keyboard Arrow navigation (← / →)
     window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') prevFlavor();
-      if (e.key === 'ArrowRight') nextFlavor();
+      if (e.key === 'ArrowLeft') { prevFlavor(); if (isAutoPlaying) toggleAutoPlay(); }
+      if (e.key === 'ArrowRight') { nextFlavor(); if (isAutoPlaying) toggleAutoPlay(); }
+      if (e.key === ' ' || e.key === 'k') { e.preventDefault(); toggleAutoPlay(); }
       if (e.key === 'Escape') closeCheckoutModal();
     });
 
@@ -454,8 +510,8 @@
       }, { passive: true });
       viewport.addEventListener('touchend', (e) => {
         const touchEndX = e.changedTouches[0].screenX;
-        if (touchStartX - touchEndX > 45) nextFlavor();
-        if (touchEndX - touchStartX > 45) prevFlavor();
+        if (touchStartX - touchEndX > 45) { nextFlavor(); if (isAutoPlaying) toggleAutoPlay(); }
+        if (touchEndX - touchStartX > 45) { prevFlavor(); if (isAutoPlaying) toggleAutoPlay(); }
       }, { passive: true });
     }
 
@@ -463,6 +519,7 @@
 
     // Instant Checkout Modal Handlers
     function openCheckoutModal() {
+      if (isAutoPlaying) toggleAutoPlay();
       const current = flavors[activeIndex];
       const modal = document.getElementById('checkout-modal');
       const modalName = document.getElementById('modal-flavor-name');
