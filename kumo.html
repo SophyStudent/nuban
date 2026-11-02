@@ -51,62 +51,70 @@
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
 
-    /* Smooth 3D Orbit Carousel Transitions (Matching exact timing curve of matcha lp.mp4) */
+    /* 3D Orbit Card Transitions */
     .orbit-card {
-      transition: transform 0.8s cubic-bezier(0.25, 1, 0.4, 1), opacity 0.6s ease;
+      transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
       will-change: transform, opacity;
     }
 
-    /* Photorealistic Scene & Cup Crossfades */
-    .scene-layer, .cup-layer {
-      transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Seamless Photorealistic Scene Crossfades */
+    .scene-layer {
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
       will-change: opacity;
     }
 
     /* Squircle Card 3D Depth & Lighting */
     .squircle-card {
       background-color: #f7f6f0;
-      box-shadow: 0 18px 38px -6px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+      box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(255, 255, 255, 0.65) inset;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .squircle-card.active-card {
-      box-shadow: 0 22px 48px -4px rgba(0, 0, 0, 0.48), 0 0 0 3px rgba(247, 223, 148, 0.85) inset;
+    .squircle-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 42px -4px rgba(0, 0, 0, 0.45), 0 0 0 1.5px rgba(255, 255, 255, 0.9) inset;
     }
 
-    /* Price Badge Hover & Press */
+    /* Minimalist Price Badge */
     .price-pill {
-      box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.7) inset;
-      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease, opacity 0.4s ease;
+      box-shadow: 0 12px 28px -4px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.8) inset;
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
     }
     .price-pill:hover {
-      transform: scale(1.06);
-      box-shadow: 0 16px 36px -2px rgba(0, 0, 0, 0.55), 0 0 0 1.5px rgba(255, 255, 255, 0.9) inset;
+      transform: scale(1.08);
+      box-shadow: 0 16px 34px -2px rgba(0, 0, 0, 0.55), 0 0 0 1.5px rgba(255, 255, 255, 1) inset;
     }
     .price-pill:active {
-      transform: scale(0.96);
+      transform: scale(0.95);
     }
 
-    /* Opening Entrance Animation (Fanning up from behind mountain on load) */
-    @keyframes fanUp {
+    /* Headline Entrance */
+    .headline-appear {
+      animation: fadeInHeadline 1.0s cubic-bezier(0.16, 1, 0.3, 1) 0.6s both;
+    }
+    @keyframes fadeInHeadline {
       0% {
-        transform: translate(0px, 140px) scale(0.6);
         opacity: 0;
+        transform: translateY(18px);
       }
       100% {
         opacity: 1;
+        transform: translateY(0);
       }
     }
-    .initial-entrance {
-      animation: fanUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
 
-    /* Pulse for Playbar Scrubber */
-    .scrubber-track {
-      background: rgba(255, 255, 255, 0.18);
+    /* Price Badge Pop-in */
+    .price-appear {
+      animation: popInPrice 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s both;
     }
-    .scrubber-thumb {
-      background: #c88a82;
-      box-shadow: 0 0 8px rgba(200, 138, 130, 0.6);
+    @keyframes popInPrice {
+      0% {
+        opacity: 0;
+        transform: scale(0.4) translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
   </style>
 </head>
@@ -118,7 +126,8 @@
     <!-- Inner Viewport Screen -->
     <div id="screen-viewport" class="w-full h-full rounded-[20px] sm:rounded-[28px] md:rounded-[34px] overflow-hidden relative shadow-inner bg-[#1e2716] flex flex-col justify-between">
       
-      <!-- 1. FULL PHOTOREALISTIC 3D SCENE BACKGROUNDS (Studio Lighting + Mountain + Real Caustics) -->
+      <!-- LAYER 1: BASE 3D SCENES (Studio Lighting + Single Photorealistic Cup + Mountain Base) -->
+      <!-- ONLY ONE CUP EXISTS, PROPORTIONED NATURALLY ON THE PEAK -->
       <div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <!-- Scene 0: Strawberry Infusion -->
         <img id="scene-bg-0" src="assets/kumo/v2/scene_strawberry.webp" alt="Strawberry Matcha Scene" class="scene-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
@@ -134,12 +143,9 @@
         
         <!-- Scene 4: Ruby Raspberry Infusion -->
         <img id="scene-bg-4" src="assets/kumo/v2/scene_raspberry.webp" alt="Ruby Raspberry Matcha Scene" class="scene-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
-        
-        <!-- Subtle Vignette to integrate seamlessly -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-black/15 pointer-events-none"></div>
       </div>
 
-      <!-- 2. TOP FLOATING NAVIGATION BAR -->
+      <!-- LAYER 2: TOP FLOATING NAVIGATION BAR -->
       <header class="relative z-40 pt-3 sm:pt-5 px-4 sm:px-8 flex items-center justify-between">
         <!-- Brand Logo -->
         <a href="#" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
@@ -173,73 +179,56 @@
         </button>
       </header>
 
-      <!-- 3. MAIN COMPOSITION: ORBIT CAROUSEL BEHIND (z-10), CUP FOREGROUND (z-20), PRICE BADGE (z-30) -->
+      <!-- LAYER 3: 3D ORBIT CAROUSEL (z-10, BETWEEN SKY AND MOUNTAIN FOREGROUND) -->
       <div class="relative flex-grow flex flex-col items-center justify-center -mt-2 sm:-mt-6">
         
         <!-- Center Stage Visual Anchor Container -->
         <div class="w-full max-w-4xl relative h-64 sm:h-80 md:h-[400px] flex items-center justify-center">
           
-          <!-- LAYER A: THE 5 FRUIT CARDS IN CONTINUOUS CIRCULAR ORBIT (BEHIND THE CUP, z-10) -->
+          <!-- ORBIT CAROUSEL CONTAINER (Cards rise from behind mountain and fan into arc) -->
           <div id="orbit-carousel" class="absolute inset-0 z-10 flex items-center justify-center pointer-events-auto">
             
             <!-- Card 0: Real 3D Strawberry -->
             <div id="orbit-item-0" onclick="selectFlavor(0)" class="orbit-card absolute cursor-pointer select-none flex flex-col items-center group">
-              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2 sm:p-3.5 flex items-center justify-center group-hover:scale-105">
+              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2.5 sm:p-3.5 flex items-center justify-center">
                 <img src="assets/kumo/v2/fruit_strawberry.png" alt="Fresh 3D Strawberry" class="w-full h-full object-contain pointer-events-none drop-shadow-md" />
               </div>
             </div>
 
             <!-- Card 1: Real 3D Pure Tea Leaves -->
             <div id="orbit-item-1" onclick="selectFlavor(1)" class="orbit-card absolute cursor-pointer select-none flex flex-col items-center group">
-              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2 sm:p-3.5 flex items-center justify-center group-hover:scale-105">
+              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2.5 sm:p-3.5 flex items-center justify-center">
                 <img src="assets/kumo/v2/fruit_leaf.png" alt="Glossy 3D Tea Leaves" class="w-full h-full object-contain pointer-events-none drop-shadow-md" />
               </div>
             </div>
 
             <!-- Card 2: Real 3D Wild Blueberry -->
             <div id="orbit-item-2" onclick="selectFlavor(2)" class="orbit-card absolute cursor-pointer select-none flex flex-col items-center group">
-              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2 sm:p-3.5 flex items-center justify-center group-hover:scale-105">
+              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2.5 sm:p-3.5 flex items-center justify-center">
                 <img src="assets/kumo/v2/fruit_blueberry.png" alt="Plump 3D Blueberry" class="w-full h-full object-contain pointer-events-none drop-shadow-md" />
               </div>
             </div>
 
             <!-- Card 3: Real 3D Cranberries (Default Active) -->
             <div id="orbit-item-3" onclick="selectFlavor(3)" class="orbit-card absolute cursor-pointer select-none flex flex-col items-center group">
-              <div class="squircle-card active-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2 sm:p-3.5 flex items-center justify-center group-hover:scale-105">
+              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2.5 sm:p-3.5 flex items-center justify-center">
                 <img src="assets/kumo/v2/fruit_cranberry.png" alt="Red 3D Cranberries" class="w-full h-full object-contain pointer-events-none drop-shadow-md" />
               </div>
             </div>
 
             <!-- Card 4: Real 3D Ripe Raspberry -->
             <div id="orbit-item-4" onclick="selectFlavor(4)" class="orbit-card absolute cursor-pointer select-none flex flex-col items-center group">
-              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2 sm:p-3.5 flex items-center justify-center group-hover:scale-105">
+              <div class="squircle-card w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-[22px] sm:rounded-[30px] md:rounded-[34px] p-2.5 sm:p-3.5 flex items-center justify-center">
                 <img src="assets/kumo/v2/fruit_raspberry.png" alt="Ripe 3D Raspberry" class="w-full h-full object-contain pointer-events-none drop-shadow-md" />
               </div>
             </div>
           </div>
 
-          <!-- LAYER B: FOREGROUND CUP OVERLAY (z-20, PERFECT DEPTH OVER ORBIT CARDS) -->
-          <div class="absolute inset-0 z-20 flex items-center justify-center pointer-events-none">
+          <!-- Etched Flavour Name Across Cup Body (z-25, crisp text right over the single cup) -->
+          <div class="absolute inset-0 z-25 flex items-center justify-center pointer-events-none">
             <div class="relative w-48 sm:w-64 md:w-80 h-full flex items-center justify-center">
-              
-              <!-- Cup Overlay 0: Strawberry Infusion -->
-              <img id="cup-overlay-0" src="assets/kumo/v2/cup_overlay_strawberry.png" alt="Strawberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none" />
-
-              <!-- Cup Overlay 1: Pure Ceremonial Leaf -->
-              <img id="cup-overlay-1" src="assets/kumo/v2/cup_overlay_leaf.png" alt="Pure Leaf Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none" />
-
-              <!-- Cup Overlay 2: Wild Blueberry Infusion -->
-              <img id="cup-overlay-2" src="assets/kumo/v2/cup_overlay_blueberry.png" alt="Wild Blueberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none" />
-
-              <!-- Cup Overlay 3: Cranberry Swirl (Default Active) -->
-              <img id="cup-overlay-3" src="assets/kumo/v2/cup_overlay_cranberry.png" alt="Cranberry Swirl Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain opacity-100 pointer-events-none" />
-
-              <!-- Cup Overlay 4: Ruby Raspberry Infusion -->
-              <img id="cup-overlay-4" src="assets/kumo/v2/cup_overlay_raspberry.png" alt="Ruby Raspberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none" />
-
-              <!-- Authentic Etched Flavour Name Across Cup Body (Matches exact Dribbble design & matcha lp.mp4) -->
-              <div class="absolute top-[52%] inset-x-0 text-center pointer-events-none">
-                <span id="cup-flavor-title" class="font-serif text-white/95 text-2xl sm:text-3xl md:text-4xl font-bold tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] transition-all duration-300">
+              <div class="absolute top-[49%] inset-x-0 text-center pointer-events-none">
+                <span id="cup-flavor-title" class="font-serif text-white/95 text-2xl sm:text-3xl md:text-4xl font-bold tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] transition-all duration-300">
                   Crunberry
                 </span>
               </div>
@@ -247,29 +236,35 @@
           </div>
         </div>
 
-        <!-- LAYER C: MINIMAL FLOATING PRICE CARD & CART BUTTON (Directly resting on mountain peak) -->
-        <div class="relative z-30 -mt-3 sm:-mt-5 flex flex-col items-center">
+        <!-- LAYER 4: MINIMAL FLOATING PRICE CARD & CART BUTTON (z-30, Directly resting on mountain peak) -->
+        <div class="relative z-30 -mt-2 sm:-mt-4 flex flex-col items-center price-appear">
           <button onclick="openCheckoutModal()" class="price-pill bg-white text-neutral-900 w-12 sm:w-14 h-16 sm:h-18 py-2 px-1 rounded-xl sm:rounded-2xl flex flex-col items-center justify-between cursor-pointer border border-white/80" title="Add to Cart">
             <span id="flavor-price-tag" class="text-[11px] sm:text-xs font-bold tracking-tight text-neutral-800">19.33$</span>
             <span class="material-symbols-outlined text-[18px] sm:text-[20px] text-neutral-950 font-medium">shopping_cart</span>
           </button>
         </div>
 
-        <!-- LAYER D: HEADLINE: "Chooise you matcha tea" (Centered across mountain slope) -->
-        <div class="relative z-20 mt-2 sm:mt-4 text-center pointer-events-none px-4">
+        <!-- LAYER 5: HEADLINE: "Chooise you matcha tea" (z-30, Centered across mountain slope) -->
+        <div class="relative z-30 mt-2 sm:mt-4 text-center pointer-events-none px-4 headline-appear">
           <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
             Chooise you matcha tea
           </h2>
         </div>
       </div>
 
-      <!-- 4. BOTTOM CONTINUOUS ROTATION CONTROLS (With video scrubber and Play/Pause matching matcha lp.mp4) -->
+      <!-- LAYER 6: FOREGROUND MOUNTAIN OCCLUDER (z-20) -->
+      <!-- Scales identically to scene-bg; hides bottom of fruit cards so they rise from behind the mountain -->
+      <div class="absolute inset-0 pointer-events-none z-20 overflow-hidden">
+        <img src="assets/kumo/v2/mountain_foreground.webp" alt="Mountain Peak Foreground" class="absolute inset-0 w-full h-full object-cover object-center" />
+      </div>
+
+      <!-- LAYER 7: BOTTOM CONTROLS & AUTO-TOUR (z-40) -->
       <footer class="relative z-40 pb-3 sm:pb-4 px-4 sm:px-8">
         <div class="flex items-center justify-between gap-3 sm:gap-6 max-w-2xl mx-auto">
           
           <!-- Play / Pause Auto-Tour Toggle (Matches || button in matcha lp.mp4) -->
           <button id="play-pause-btn" onclick="toggleAutoPlay()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90 shadow-md" title="Play/Pause Rotation Tour">
-            <span id="play-pause-icon" class="material-symbols-outlined text-[18px]">pause</span>
+            <span id="play-pause-icon" class="material-symbols-outlined text-[18px]">play_arrow</span>
           </button>
 
           <!-- Smooth Indicator Dots & Scrubber Track -->
@@ -305,7 +300,7 @@
     </div>
   </main>
 
-  <!-- 5. ONE-CLICK INSTANT ORDER MODAL (Simple, Clean, Fast) -->
+  <!-- INSTANT ORDER MODAL -->
   <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md transition-opacity duration-300 opacity-0 pointer-events-none">
     <div class="bg-gradient-to-b from-[#222d1b] to-[#141b10] border border-white/20 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-white shadow-2xl relative text-center transform scale-95 transition-transform duration-300" id="checkout-modal-card">
       
@@ -342,7 +337,7 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT: CONTINUOUS ORBITAL CAROUSEL & ZERO-JITTER DRINK SWITCHING -->
+  <!-- JAVASCRIPT: CAROUSEL GEOMETRY, ENTRANCE FAN-UP, & SYNCED TOUR -->
   <script>
     const flavors = [
       {
@@ -387,21 +382,23 @@
       }
     ];
 
-    let activeIndex = 3; // Cranberry is the default active flavour (Matches Dribbble frame 3 & matcha lp.mp4)
+    let activeIndex = 3; // Cranberry is the default active flavour
     let autoPlayInterval = null;
     let isAutoPlaying = false;
+    let hasEntered = false;
 
-    // Orbital Arc Positions around the cup (cards fan out wide, matching matcha lp.mp4 exactly)
-    // [dx (px), dy (px), scale, rotate (deg), opacity]
+    // 4 Visible Flavour Cards fan around the cup (matching matcha lp.mp4)
+    // 2 on left, 2 on right, center is open for the single prominent cup!
+    // Offset -2, -1, 0 (behind/off), +1, +2
     const orbitSlots = [
-      { x: -375, y: 55,  scale: 0.84, rotate: -22, opacity: 0.85 },
-      { x: -205, y: -45, scale: 0.96, rotate: -11, opacity: 0.95 },
-      { x: 0,    y: -85, scale: 1.12, rotate: 0,   opacity: 1.00 },
-      { x: 205,  y: -45, scale: 0.96, rotate: 11,  opacity: 0.95 },
-      { x: 375,  y: 55,  scale: 0.84, rotate: 22,  opacity: 0.85 }
+      { x: -365, y: 55,  scale: 0.84, rotate: -22, opacity: 0.88 }, // Far Left
+      { x: -200, y: -40, scale: 0.98, rotate: -11, opacity: 1.00 }, // Inner Left
+      { x: 0,    y: -90, scale: 0.80, rotate: 0,   opacity: 0.00 }, // Center Slot (Off-screen/Hidden)
+      { x: 200,  y: -40, scale: 0.98, rotate: 11,  opacity: 1.00 }, // Inner Right
+      { x: 365,  y: 55,  scale: 0.84, rotate: 22,  opacity: 0.88 }  // Far Right
     ];
 
-    function updateOrbit() {
+    function updateOrbit(animate = true) {
       const isMobile = window.innerWidth < 640;
       const isTablet = window.innerWidth >= 640 && window.innerWidth < 1024;
       const spreadFactor = isMobile ? 0.44 : (isTablet ? 0.72 : 1.0);
@@ -411,7 +408,6 @@
         const cardEl = document.getElementById('orbit-item-' + i);
         const dotEl = document.getElementById('dot-' + i);
         const sceneEl = document.getElementById('scene-bg-' + i);
-        const cupEl = document.getElementById('cup-overlay-' + i);
         if (!cardEl) continue;
 
         // Circular slot offset relative to activeIndex
@@ -423,16 +419,10 @@
         const posX = slot.x * spreadFactor;
         const posY = slot.y * yFactor;
 
-        cardEl.style.transform = `translate(${posX}px, ${posY}px) rotate(${slot.rotate}deg) scale(${slot.scale})`;
-        cardEl.style.opacity = slot.opacity;
-
-        const squircle = cardEl.querySelector('.squircle-card');
-        if (squircle) {
-          if (offset === 0) {
-            squircle.classList.add('active-card');
-          } else {
-            squircle.classList.remove('active-card');
-          }
+        if (hasEntered) {
+          cardEl.style.transition = animate ? 'transform 0.85s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease' : 'none';
+          cardEl.style.transform = `translate(${posX}px, ${posY}px) rotate(${slot.rotate}deg) scale(${slot.scale})`;
+          cardEl.style.opacity = slot.opacity;
         }
 
         // Indicator dot styling
@@ -448,11 +438,6 @@
         if (sceneEl) {
           sceneEl.style.opacity = (i === activeIndex) ? '1' : '0';
         }
-
-        // Smooth foreground cup overlay crossfade
-        if (cupEl) {
-          cupEl.style.opacity = (i === activeIndex) ? '1' : '0';
-        }
       }
 
       // Update Flavour Title & Price Tag
@@ -464,9 +449,32 @@
       if (priceEl) priceEl.innerText = current.price;
     }
 
+    // Opening Entrance Animation (Cards rise from behind mountain and fan out)
+    function playEntranceAnimation() {
+      // Step 1: Start cards down behind the mountain (hidden behind mountain_foreground at z-20)
+      for (let i = 0; i < 5; i++) {
+        const cardEl = document.getElementById('orbit-item-' + i);
+        if (!cardEl) continue;
+        cardEl.style.transition = 'none';
+        cardEl.style.transform = 'translate(0px, 200px) scale(0.5)';
+        cardEl.style.opacity = '0';
+      }
+
+      // Step 2: After a brief pause (0.4s), smoothly rise and fan into arc (matching matcha lp.mp4)
+      setTimeout(() => {
+        hasEntered = true;
+        for (let i = 0; i < 5; i++) {
+          const cardEl = document.getElementById('orbit-item-' + i);
+          if (!cardEl) continue;
+          cardEl.style.transition = 'transform 1.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease';
+        }
+        updateOrbit(true);
+      }, 400);
+    }
+
     function selectFlavor(index) {
       activeIndex = (index + 5) % 5;
-      updateOrbit();
+      updateOrbit(true);
     }
 
     function prevFlavor() {
@@ -515,7 +523,7 @@
       }, { passive: true });
     }
 
-    window.addEventListener('resize', updateOrbit);
+    window.addEventListener('resize', () => updateOrbit(false));
 
     // Instant Checkout Modal Handlers
     function openCheckoutModal() {
@@ -556,8 +564,12 @@
       closeCheckoutModal();
     }
 
-    // Initialize orbit on load
-    updateOrbit();
+    // Trigger opening entrance animation on page load
+    window.addEventListener('DOMContentLoaded', playEntranceAnimation);
+    // Fallback if already loaded
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      playEntranceAnimation();
+    }
   </script>
 </body>
 </html>
