@@ -155,7 +155,62 @@
         <img src="assets/kumo/v2/bg_studio_wall.webp" alt="Studio Backdrop" class="absolute inset-0 w-full h-full object-cover object-center" />
       </div>
 
-      <!-- LAYER 2: 3D ORBIT CAROUSEL (z-10) -->
+      <!-- LAYER 2: FOREGROUND MASTER SCENE (z-20) -->
+      <!-- Contains BOTH the single 3D matcha cup AND the matcha powder mountain! -->
+      <!-- Sky above the mountain on the left & right is transparent; cards pass BEHIND the cup and BEHIND the mountain dust! -->
+      <!-- Scales identically to the viewport with object-cover; strictly ONE cup exists! -->
+      <div class="absolute inset-0 pointer-events-none z-20 overflow-hidden">
+        <!-- Foreground 0: Strawberry -->
+        <img id="fg-scene-0" src="assets/kumo/v2/fg_scene_strawberry.webp" alt="Strawberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
+        
+        <!-- Foreground 1: Pure Ceremonial Leaf -->
+        <img id="fg-scene-1" src="assets/kumo/v2/fg_scene_leaf.webp" alt="Pure Leaf Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
+        
+        <!-- Foreground 2: Wild Blueberry -->
+        <img id="fg-scene-2" src="assets/kumo/v2/fg_scene_blueberry.webp" alt="Blueberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
+        
+        <!-- Foreground 3: Cranberry (Default Active) -->
+        <img id="fg-scene-3" src="assets/kumo/v2/fg_scene_cranberry.webp" alt="Cranberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-100" />
+        
+        <!-- Foreground 4: Ruby Raspberry -->
+        <img id="fg-scene-4" src="assets/kumo/v2/fg_scene_raspberry.webp" alt="Raspberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
+      </div>
+
+      <!-- 1. TOP FLOATING NAVIGATION BAR (z-40) - ALWAYS PINNED AT THE VERY TOP -->
+      <header class="relative z-40 pt-3 sm:pt-5 px-4 sm:px-8 flex items-center justify-between">
+        <!-- Brand Logo: Sochi at the very top -->
+        <a href="#" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+          Sochi
+        </a>
+
+        <!-- Floating Glassmorphic Pill with Socials & Cart -->
+        <div class="flex items-center gap-2 sm:gap-3.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 shadow-lg text-white/90">
+          <button class="p-1 hover:text-white transition cursor-pointer" title="Menu">
+            <span class="material-symbols-outlined text-[17px] sm:text-[19px] block">grid_view</span>
+          </button>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100" title="Instagram">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://threads.net" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100" title="Threads">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.213-8.184-3.535C2.26 18.232 1.5 15.357 1.5 11.954c0-3.616.924-6.621 2.748-8.932C6.115.654 8.835 0 12.33 0c3.488 0 6.208.647 8.082 1.923 1.874 1.276 2.878 3.123 2.983 5.49.034.787-.52 1.449-1.296 1.449-.714 0-1.309-.553-1.345-1.267-.075-1.758-.809-3.08-2.182-3.927-1.373-.847-3.473-1.298-6.242-1.298-2.906 0-5.127.525-6.602 1.562-1.475 1.036-2.223 2.57-2.223 4.561 0 1.83.693 3.322 2.062 4.435 1.368 1.113 3.393 1.677 6.02 1.677h.459c2.316 0 4.197-.565 5.59-1.68 1.394-1.115 2.12-2.736 2.16-4.819.04-2.083-.628-3.753-1.986-4.964-1.358-1.211-3.284-1.849-5.726-1.897-2.317-.046-4.3.504-5.895 1.636-1.595 1.132-2.451 2.74-2.545 4.779-.094 2.04.607 3.666 2.085 4.832 1.478 1.166 3.493 1.764 5.99 1.777.787.004 1.423.642 1.42 1.429-.003.787-.643 1.422-1.43 1.418-3.048-.016-5.592-.767-7.561-2.233-1.969-1.465-2.92-3.645-2.827-6.48.093-2.834 1.258-5.068 3.463-6.64 2.204-1.571 5.01-2.348 8.341-2.308 3.197.039 5.823.868 7.807 2.464 1.984 1.596 3.011 3.901 3.052 6.853.041 2.952-.924 5.385-2.868 7.23-1.944 1.846-4.664 2.788-8.084 2.802h-.534c-2.41 0-4.364-.473-5.808-1.405-1.444-.933-2.222-2.28-2.312-4.004z"/></svg>
+          </a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100" title="X (Twitter)">
+            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <!-- Cart Button -->
+          <button onclick="openCheckoutModal()" class="ml-1 sm:ml-2 px-2.5 sm:px-3 py-1 rounded-lg bg-black/70 hover:bg-black text-white flex items-center gap-1.5 transition cursor-pointer" title="Cart">
+            <span class="material-symbols-outlined text-[15px] sm:text-[17px]">shopping_cart</span>
+            <span id="nav-cart-qty" class="text-[11px] font-bold text-amber-300">1</span>
+          </button>
+        </div>
+
+        <!-- Location Pin -->
+        <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition cursor-pointer shadow-lg" title="Find Store">
+          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">location_on</span>
+        </button>
+      </header>
+
+      <!-- 2. CENTER STAGE & 3D ORBIT CAROUSEL (z-10) -->
       <!-- Positioned BEHIND the cup (z-20) and BEHIND the mountain dust (z-20) -->
       <!-- Cards slide behind the cup across the center, and vanish down into the matcha dust at the extremes! -->
       <div class="relative flex-grow flex flex-col items-center justify-center -mt-2 sm:-mt-6 z-10 pointer-events-none">
@@ -203,39 +258,19 @@
         </div>
       </div>
 
-      <!-- LAYER 3: FOREGROUND MASTER SCENE (z-20) -->
-      <!-- Contains BOTH the single 3D matcha cup AND the matcha powder mountain! -->
-      <!-- Sky above the mountain on the left & right is transparent; cards pass BEHIND the cup and BEHIND the mountain dust! -->
-      <!-- Scales identically to the viewport with object-cover; strictly ONE cup exists! -->
-      <div class="absolute inset-0 pointer-events-none z-20 overflow-hidden">
-        <!-- Foreground 0: Strawberry -->
-        <img id="fg-scene-0" src="assets/kumo/v2/fg_scene_strawberry.webp" alt="Strawberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
-        
-        <!-- Foreground 1: Pure Ceremonial Leaf -->
-        <img id="fg-scene-1" src="assets/kumo/v2/fg_scene_leaf.webp" alt="Pure Leaf Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
-        
-        <!-- Foreground 2: Wild Blueberry -->
-        <img id="fg-scene-2" src="assets/kumo/v2/fg_scene_blueberry.webp" alt="Blueberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
-        
-        <!-- Foreground 3: Cranberry (Default Active) -->
-        <img id="fg-scene-3" src="assets/kumo/v2/fg_scene_cranberry.webp" alt="Cranberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-100" />
-        
-        <!-- Foreground 4: Ruby Raspberry -->
-        <img id="fg-scene-4" src="assets/kumo/v2/fg_scene_raspberry.webp" alt="Raspberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
-      </div>
-
-      <!-- LAYER 4: FLOATING PRICE BADGE & HEADLINE (z-30) -->
-      <div class="absolute inset-x-0 bottom-16 sm:bottom-20 z-30 flex flex-col items-center pointer-events-none px-4">
+      <!-- 3. FLOATING PRICE BADGE & UNOBSTRUCTED HEADLINE (z-30) -->
+      <!-- Pinned clearly across the mountain slope; nothing blocks it! -->
+      <div class="relative z-30 mb-2 sm:mb-4 flex flex-col items-center pointer-events-none px-4">
         
         <!-- Minimalist Price Badge resting at the mountain peak -->
-        <div class="pointer-events-auto price-appear mb-3 sm:mb-4">
+        <div class="pointer-events-auto price-appear mb-2 sm:mb-3">
           <button onclick="openCheckoutModal()" class="price-pill bg-white text-neutral-900 w-12 sm:w-14 h-16 sm:h-18 py-2 px-1 rounded-xl sm:rounded-2xl flex flex-col items-center justify-between cursor-pointer border border-white/80" title="Add to Cart">
             <span id="flavor-price-tag" class="text-[11px] sm:text-xs font-bold tracking-tight text-neutral-800">19.33$</span>
             <span class="material-symbols-outlined text-[18px] sm:text-[20px] text-neutral-950 font-medium">shopping_cart</span>
           </button>
         </div>
 
-        <!-- Headline "Choose your matcha tea" -->
+        <!-- Headline "Choose your matcha tea" - completely free and unobstructed -->
         <div class="text-center headline-appear">
           <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
             Choose your matcha tea
@@ -243,41 +278,7 @@
         </div>
       </div>
 
-      <!-- LAYER 5: TOP FLOATING NAVIGATION BAR (z-40) -->
-      <header class="relative z-40 pt-3 sm:pt-5 px-4 sm:px-8 flex items-center justify-between">
-        <!-- Brand Logo: Sochi at the top -->
-        <a href="#" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-          Sochi
-        </a>
-
-        <!-- Floating Glassmorphic Pill -->
-        <div class="flex items-center gap-2 sm:gap-3.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 shadow-lg text-white/90">
-          <button class="p-1 hover:text-white transition cursor-pointer" title="Menu">
-            <span class="material-symbols-outlined text-[17px] sm:text-[19px] block">grid_view</span>
-          </button>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100" title="Instagram">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          </a>
-          <a href="https://threads.net" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100" title="Threads">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.213-8.184-3.535C2.26 18.232 1.5 15.357 1.5 11.954c0-3.616.924-6.621 2.748-8.932C6.115.654 8.835 0 12.33 0c3.488 0 6.208.647 8.082 1.923 1.874 1.276 2.878 3.123 2.983 5.49.034.787-.52 1.449-1.296 1.449-.714 0-1.309-.553-1.345-1.267-.075-1.758-.809-3.08-2.182-3.927-1.373-.847-3.473-1.298-6.242-1.298-2.906 0-5.127.525-6.602 1.562-1.475 1.036-2.223 2.57-2.223 4.561 0 1.83.693 3.322 2.062 4.435 1.368 1.113 3.393 1.677 6.02 1.677h.459c2.316 0 4.197-.565 5.59-1.68 1.394-1.115 2.12-2.736 2.16-4.819.04-2.083-.628-3.753-1.986-4.964-1.358-1.211-3.284-1.849-5.726-1.897-2.317-.046-4.3.504-5.895 1.636-1.595 1.132-2.451 2.74-2.545 4.779-.094 2.04.607 3.666 2.085 4.832 1.478 1.166 3.493 1.764 5.99 1.777.787.004 1.423.642 1.42 1.429-.003.787-.643 1.422-1.43 1.418-3.048-.016-5.592-.767-7.561-2.233-1.969-1.465-2.92-3.645-2.827-6.48.093-2.834 1.258-5.068 3.463-6.64 2.204-1.571 5.01-2.348 8.341-2.308 3.197.039 5.823.868 7.807 2.464 1.984 1.596 3.011 3.901 3.052 6.853.041 2.952-.924 5.385-2.868 7.23-1.944 1.846-4.664 2.788-8.084 2.802h-.534c-2.41 0-4.364-.473-5.808-1.405-1.444-.933-2.222-2.28-2.312-4.004z"/></svg>
-          </a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100" title="X (Twitter)">
-            <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
-          <!-- Cart Button -->
-          <button onclick="openCheckoutModal()" class="ml-1 sm:ml-2 px-2.5 sm:px-3 py-1 rounded-lg bg-black/70 hover:bg-black text-white flex items-center gap-1.5 transition cursor-pointer" title="Cart">
-            <span class="material-symbols-outlined text-[15px] sm:text-[17px]">shopping_cart</span>
-            <span id="nav-cart-qty" class="text-[11px] font-bold text-amber-300">1</span>
-          </button>
-        </div>
-
-        <!-- Location Pin -->
-        <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:bg-black/80 transition cursor-pointer shadow-lg" title="Find Store">
-          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">location_on</span>
-        </button>
-      </header>
-
-      <!-- LAYER 6: BOTTOM CONTROLS & AUTO-TOUR (z-40) -->
+      <!-- 4. BOTTOM CONTROLS & AUTO-TOUR (z-40) -->
       <footer class="relative z-40 pb-3 sm:pb-4 px-4 sm:px-8">
         <div class="flex items-center justify-between gap-3 sm:gap-6 max-w-2xl mx-auto">
           
