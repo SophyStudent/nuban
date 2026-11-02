@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>kumo — choose your matcha tea</title>
+  <title>Sochi — choose your matcha tea</title>
 
   <!-- Google Fonts: Fraunces & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,12 +20,13 @@
       theme: {
         extend: {
           colors: {
-            kumo: {
+            sochi: {
               frame: '#889356',
               frameDark: '#67733c',
               cream: '#f4f3ec',
               card: '#f7f6f0',
-              gold: '#e0c078'
+              gold: '#e0c078',
+              goldHover: '#ebd28f'
             }
           },
           fontFamily: {
@@ -116,6 +117,28 @@
         transform: scale(1) translateY(0);
       }
     }
+
+    /* Modal Cup Floating Animation */
+    @keyframes cupFloat {
+      0%, 100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(-1.5deg);
+      }
+    }
+    .modal-cup-float {
+      animation: cupFloat 4s ease-in-out infinite;
+    }
+
+    /* Custom Scrollbar for modal content */
+    .modal-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .modal-scroll::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+    }
   </style>
 </head>
 <body class="h-screen w-screen flex items-center justify-center p-2 sm:p-4 md:p-6 select-none bg-[#889356]">
@@ -201,20 +224,7 @@
         <img id="fg-scene-4" src="assets/kumo/v2/fg_scene_raspberry.webp" alt="Raspberry Matcha Cup and Mountain" class="fg-layer absolute inset-0 w-full h-full object-cover object-center opacity-0" />
       </div>
 
-      <!-- LAYER 4: ETCHED FLAVOUR TITLE OVER CUP (z-25) -->
-      <div class="absolute inset-0 z-25 flex items-center justify-center pointer-events-none -mt-2 sm:-mt-6">
-        <div class="w-full max-w-4xl relative h-64 sm:h-80 md:h-[400px] flex items-center justify-center">
-          <div class="relative w-48 sm:w-64 md:w-80 h-full flex items-center justify-center">
-            <div class="absolute top-[49%] inset-x-0 text-center pointer-events-none">
-              <span id="cup-flavor-title" class="font-serif text-white/95 text-2xl sm:text-3xl md:text-4xl font-bold tracking-normal drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] transition-all duration-300">
-                Crunberry
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- LAYER 5: FLOATING PRICE BADGE & HEADLINE (z-30) -->
+      <!-- LAYER 4: FLOATING PRICE BADGE & HEADLINE (z-30) -->
       <div class="absolute inset-x-0 bottom-16 sm:bottom-20 z-30 flex flex-col items-center pointer-events-none px-4">
         
         <!-- Minimalist Price Badge resting at the mountain peak -->
@@ -225,19 +235,19 @@
           </button>
         </div>
 
-        <!-- Headline "Chooise you matcha tea" -->
+        <!-- Headline "Choose your matcha tea" -->
         <div class="text-center headline-appear">
           <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-[0_4px_16px_rgba(0,0,0,0.85)]">
-            Chooise you matcha tea
+            Choose your matcha tea
           </h2>
         </div>
       </div>
 
-      <!-- LAYER 6: TOP FLOATING NAVIGATION BAR (z-40) -->
+      <!-- LAYER 5: TOP FLOATING NAVIGATION BAR (z-40) -->
       <header class="relative z-40 pt-3 sm:pt-5 px-4 sm:px-8 flex items-center justify-between">
-        <!-- Brand Logo -->
+        <!-- Brand Logo: Sochi at the top -->
         <a href="#" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-          kumo
+          Sochi
         </a>
 
         <!-- Floating Glassmorphic Pill -->
@@ -267,7 +277,7 @@
         </button>
       </header>
 
-      <!-- LAYER 7: BOTTOM CONTROLS & AUTO-TOUR (z-40) -->
+      <!-- LAYER 6: BOTTOM CONTROLS & AUTO-TOUR (z-40) -->
       <footer class="relative z-40 pb-3 sm:pb-4 px-4 sm:px-8">
         <div class="flex items-center justify-between gap-3 sm:gap-6 max-w-2xl mx-auto">
           
@@ -309,40 +319,91 @@
     </div>
   </main>
 
-  <!-- INSTANT ORDER MODAL -->
-  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md transition-opacity duration-300 opacity-0 pointer-events-none">
-    <div class="bg-gradient-to-b from-[#222d1b] to-[#141b10] border border-white/20 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-white shadow-2xl relative text-center transform scale-95 transition-transform duration-300" id="checkout-modal-card">
+  <!-- ALLURING, REDESIGNED ARTISAN CART MODAL (Delicious, high-end, featuring 3D cup with lid & straw) -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-5 bg-black/80 backdrop-blur-lg transition-opacity duration-300 opacity-0 pointer-events-none">
+    
+    <div class="relative bg-gradient-to-b from-[#1b2816] via-[#131d10] to-[#0a1008] border border-white/20 rounded-[28px] sm:rounded-[36px] max-w-lg w-full text-white shadow-[0_25px_70px_rgba(0,0,0,0.85)] overflow-hidden transform scale-95 transition-transform duration-300 modal-scroll" id="checkout-modal-card">
       
-      <!-- Close button -->
-      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition cursor-pointer">
-        <span class="material-symbols-outlined text-sm">close</span>
+      <!-- Ambient Backlight Glow -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-amber-400/15 blur-3xl pointer-events-none"></div>
+
+      <!-- Close Button -->
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 z-20 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 hover:bg-white/25 border border-white/10 flex items-center justify-center text-white/90 hover:text-white transition cursor-pointer" title="Close">
+        <span class="material-symbols-outlined text-base sm:text-lg">close</span>
       </button>
 
-      <!-- Active Fruit Thumbnail -->
-      <div class="w-24 h-24 mx-auto rounded-3xl bg-[#f7f6f0] p-3 flex items-center justify-center mb-3 shadow-lg border border-white/30 overflow-hidden">
-        <img id="modal-fruit-img" src="assets/kumo/v2/fruit_cranberry.png" alt="Selected Fruit" class="w-full h-full object-contain filter drop-shadow" />
-      </div>
-
-      <span class="text-xs uppercase tracking-widest text-amber-300 font-bold">Kumo Fresh Brew</span>
-      <h3 class="font-serif text-2xl font-bold mt-1 text-white" id="modal-flavor-name">Cranberry Iced Matcha</h3>
-      <p class="text-xs text-white/70 mt-1" id="modal-flavor-desc">Authentic single-origin ceremonial Uji matcha swirled with fresh tart cranberries.</p>
-
-      <div class="bg-white/5 border border-white/10 rounded-2xl p-4 my-5 flex items-center justify-between">
-        <div class="text-left">
-          <span class="text-[11px] text-white/60 block">Price</span>
-          <span class="text-xl font-bold font-serif text-white" id="modal-price-display">$19.33</span>
+      <div class="p-6 sm:p-8 relative z-10 flex flex-col items-center text-center">
+        
+        <!-- Header Badge -->
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-[10px] sm:text-[11px] font-semibold text-amber-300 tracking-wider uppercase mb-3">
+          <span class="material-symbols-outlined text-[13px] text-amber-300">verified</span>
+          <span>Sochi Cold Brew • Kyoto Ceremonial Uji</span>
         </div>
-        <div class="text-right">
-          <span class="text-[11px] text-emerald-400 block font-semibold">Freshly Made</span>
-          <span class="text-[11px] text-white/60">Glass Straw Included</span>
-        </div>
-      </div>
 
-      <button onclick="confirmPurchase()" class="w-full bg-amber-300 hover:bg-amber-400 text-black font-bold py-3.5 rounded-xl uppercase tracking-wider text-xs transition cursor-pointer shadow-lg flex items-center justify-center gap-2">
-        <span class="material-symbols-outlined text-base">shopping_bag</span>
-        <span>Confirm Order &amp; Pay</span>
-      </button>
-      <p class="text-[10px] text-white/40 mt-3">Ready for pickup or local delivery in 15 mins</p>
+        <!-- Hero 3D Matcha Cup with Lid & Straw -->
+        <div class="relative w-44 h-56 sm:w-52 sm:h-64 my-1 flex items-center justify-center">
+          <!-- Spotlight Disc under cup -->
+          <div class="absolute bottom-2 w-32 h-6 rounded-full bg-black/60 blur-md pointer-events-none"></div>
+          
+          <img id="modal-cup-img" src="assets/kumo/v2/modal_cup_cranberry.webp" alt="Artisan Matcha Cup" class="w-full h-full object-contain filter drop-shadow-[0_16px_28px_rgba(0,0,0,0.7)] modal-cup-float pointer-events-none" />
+        </div>
+
+        <!-- Flavour Title & Taste Profile -->
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1" id="modal-flavor-name">
+          Cranberry Iced Matcha
+        </h3>
+        
+        <p class="text-xs sm:text-sm text-white/75 max-w-sm mt-1.5 leading-relaxed font-sans" id="modal-flavor-desc">
+          Single-origin ceremonial Uji green tea cold-whisked over sweet oat cream and tart crushed mountain cranberries.
+        </p>
+
+        <!-- Taste Profile Notes -->
+        <div class="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 my-3.5">
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] sm:text-[11px] text-amber-200/90 font-medium">🍵 100% Ceremonial Uji</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] sm:text-[11px] text-emerald-300/90 font-medium">✨ Real Pressed Fruit</span>
+          <span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-[10px] sm:text-[11px] text-white/80 font-medium">🥛 Silky Cold Foam</span>
+        </div>
+
+        <!-- Interactive Options: Sweetness & Milk -->
+        <div class="w-full bg-white/5 border border-white/10 rounded-2xl p-3 sm:p-4 my-2 text-left flex flex-col gap-2.5 text-xs">
+          
+          <div class="flex items-center justify-between">
+            <span class="text-white/60 text-[11px]">Milk Choice</span>
+            <span class="text-white font-medium bg-black/30 px-2.5 py-0.5 rounded-md border border-white/10 text-[11px]">Organic Oat Milk (Barista)</span>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <span class="text-white/60 text-[11px]">Sweetness</span>
+            <span class="text-white font-medium bg-black/30 px-2.5 py-0.5 rounded-md border border-white/10 text-[11px]">Naturally Sweetened (Balanced)</span>
+          </div>
+
+          <div class="pt-2 border-t border-white/10 flex items-center justify-between">
+            <span class="text-white/70 font-medium text-xs">Quantity</span>
+            
+            <!-- Quantity Control -->
+            <div class="flex items-center gap-2.5 bg-black/50 px-2.5 py-1 rounded-xl border border-white/15">
+              <button onclick="changeQty(-1)" class="w-5 h-5 rounded-md hover:bg-white/20 flex items-center justify-center text-white transition cursor-pointer text-sm font-bold">
+                −
+              </button>
+              <span id="modal-qty" class="text-xs font-bold text-amber-300 min-w-[14px] text-center">1</span>
+              <button onclick="changeQty(1)" class="w-5 h-5 rounded-md hover:bg-white/20 flex items-center justify-center text-white transition cursor-pointer text-sm font-bold">
+                +
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Final Action CTA Button -->
+        <button onclick="confirmPurchase()" class="w-full mt-3 bg-gradient-to-r from-[#e0c078] to-[#f4d99b] hover:from-[#e9cd87] hover:to-[#fae2ab] active:scale-[0.98] text-neutral-950 font-bold py-3.5 sm:py-4 rounded-xl sm:rounded-2xl shadow-[0_10px_25px_rgba(224,192,120,0.35)] flex items-center justify-center gap-2 transition-all cursor-pointer">
+          <span class="material-symbols-outlined text-lg sm:text-xl font-bold">shopping_bag</span>
+          <span class="text-xs sm:text-sm uppercase tracking-wider font-extrabold" id="modal-cta-text">Add to Bag • $19.33</span>
+        </button>
+
+        <span class="text-[10px] text-white/50 mt-2.5">
+          Whisked fresh to order • Includes reusable glass straw &amp; eco-lid
+        </span>
+
+      </div>
     </div>
   </div>
 
@@ -351,47 +412,48 @@
     const flavors = [
       {
         id: 'strawberry',
-        cupTitle: 'Strawberry',
         fullName: 'Strawberry Swirl Matcha',
-        fruitImg: 'assets/kumo/v2/fruit_strawberry.png',
-        desc: 'Sweet ripe strawberries layered into velvety oat milk and freshly whisked ceremonial Uji matcha.',
-        price: '18.50$'
+        cupImg: 'assets/kumo/v2/modal_cup_strawberry.webp',
+        desc: 'Ripe sweet strawberries layered over stone-ground Kyoto ceremonial matcha and velvety cold-frothed oat milk.',
+        price: '18.50$',
+        unitPrice: 18.50
       },
       {
         id: 'leaf',
-        cupTitle: 'Pure Leaf',
         fullName: '100% Ceremonial Uji Matcha',
-        fruitImg: 'assets/kumo/v2/fruit_leaf.png',
-        desc: 'Pure, shade-grown ceremonial green tea leaves from Kyoto with stone-ground creamy oat milk.',
-        price: '16.00$'
+        cupImg: 'assets/kumo/v2/modal_cup_leaf.webp',
+        desc: 'Pure, shade-grown first-harvest green tea leaves from Kyoto with smooth oat milk and rich umami finish.',
+        price: '16.00$',
+        unitPrice: 16.00
       },
       {
         id: 'blueberry',
-        cupTitle: 'Blueberry',
         fullName: 'Wild Blueberry Matcha',
-        fruitImg: 'assets/kumo/v2/fruit_blueberry.png',
-        desc: 'Wild mountain blueberries bursting with natural antioxidants and smooth layered matcha.',
-        price: '19.00$'
+        cupImg: 'assets/kumo/v2/modal_cup_blueberry.webp',
+        desc: 'Crushed wild alpine blueberries bursting with antioxidants, swirled into crisp iced ceremonial green tea.',
+        price: '19.00$',
+        unitPrice: 19.00
       },
       {
         id: 'cranberry',
-        cupTitle: 'Crunberry',
         fullName: 'Cranberry Iced Matcha',
-        fruitImg: 'assets/kumo/v2/fruit_cranberry.png',
-        desc: 'Lush tart ruby cranberries swirled into sweet cream and vivid green ceremonial matcha.',
-        price: '19.33$'
+        cupImg: 'assets/kumo/v2/modal_cup_cranberry.webp',
+        desc: 'Tart ruby cranberries layered with sweet cold cream and stone-ground ceremonial matcha over clear artisan ice.',
+        price: '19.33$',
+        unitPrice: 19.33
       },
       {
         id: 'raspberry',
-        cupTitle: 'Raspberry',
         fullName: 'Ripe Raspberry Matcha',
-        fruitImg: 'assets/kumo/v2/fruit_raspberry.png',
-        desc: 'Tangy fresh raspberries crushed over iced milk and rich stone-ground green tea.',
-        price: '18.75$'
+        cupImg: 'assets/kumo/v2/modal_cup_raspberry.webp',
+        desc: 'Tangy fresh raspberries crushed over cold-whisked Kyoto tea and velvety cream for a vibrant berry finish.',
+        price: '18.75$',
+        unitPrice: 18.75
       }
     ];
 
     let activeIndex = 3; // Cranberry default active
+    let currentQty = 1;
     let autoPlayInterval = null;
     let isAutoPlaying = false;
     let hasEntered = false;
@@ -444,24 +506,20 @@
           }
         }
 
-        // Smooth foreground scene crossfade (Cup + Mountain change flavor seamlessly)
+        // Smooth foreground scene crossfade (Single Cup + Mountain change flavor seamlessly)
         if (fgEl) {
           fgEl.style.opacity = (i === activeIndex) ? '1' : '0';
         }
       }
 
-      // Update Flavour Title & Price Tag
+      // Update Price Tag
       const current = flavors[activeIndex];
-      const titleEl = document.getElementById('cup-flavor-title');
       const priceEl = document.getElementById('flavor-price-tag');
-
-      if (titleEl) titleEl.innerText = current.cupTitle;
       if (priceEl) priceEl.innerText = current.price;
     }
 
     // Opening Entrance Animation (Cards rise up from behind the matcha mountain dust)
     function playEntranceAnimation() {
-      // Step 1: Start cards deep down behind the mountain dust (z-10 behind foreground at z-20)
       for (let i = 0; i < 5; i++) {
         const cardEl = document.getElementById('orbit-item-' + i);
         if (!cardEl) continue;
@@ -470,7 +528,6 @@
         cardEl.style.opacity = '0';
       }
 
-      // Step 2: Smoothly rise and fan out into the uninterrupted arc
       setTimeout(() => {
         hasEntered = true;
         for (let i = 0; i < 5; i++) {
@@ -535,20 +592,38 @@
 
     window.addEventListener('resize', () => updateOrbit(false));
 
-    // Instant Checkout Modal Handlers
+    // Cart Modal Handlers
+    function updateModalPricing() {
+      const current = flavors[activeIndex];
+      const total = (current.unitPrice * currentQty).toFixed(2);
+      const ctaEl = document.getElementById('modal-cta-text');
+      const qtyEl = document.getElementById('modal-qty');
+      const navQtyEl = document.getElementById('nav-cart-qty');
+
+      if (qtyEl) qtyEl.innerText = currentQty;
+      if (ctaEl) ctaEl.innerText = `Add to Bag • $${total}`;
+      if (navQtyEl) navQtyEl.innerText = currentQty;
+    }
+
+    function changeQty(delta) {
+      currentQty = Math.max(1, Math.min(10, currentQty + delta));
+      updateModalPricing();
+    }
+
     function openCheckoutModal() {
       if (isAutoPlaying) toggleAutoPlay();
+      currentQty = 1;
       const current = flavors[activeIndex];
       const modal = document.getElementById('checkout-modal');
       const modalName = document.getElementById('modal-flavor-name');
       const modalDesc = document.getElementById('modal-flavor-desc');
-      const modalPrice = document.getElementById('modal-price-display');
-      const modalImg = document.getElementById('modal-fruit-img');
+      const modalCupImg = document.getElementById('modal-cup-img');
 
       if (modalName) modalName.innerText = current.fullName;
       if (modalDesc) modalDesc.innerText = current.desc;
-      if (modalPrice) modalPrice.innerText = '$' + current.price.replace('$', '');
-      if (modalImg) modalImg.src = current.fruitImg;
+      if (modalCupImg) modalCupImg.src = current.cupImg;
+
+      updateModalPricing();
 
       if (modal) {
         modal.classList.remove('opacity-0', 'pointer-events-none');
@@ -570,7 +645,8 @@
 
     function confirmPurchase() {
       const current = flavors[activeIndex];
-      alert(`Order confirmed for 1x ${current.fullName} (${current.price})! Thank you for choosing Kumo.`);
+      const total = (current.unitPrice * currentQty).toFixed(2);
+      alert(`Order confirmed for ${currentQty}x ${current.fullName} ($${total})! Whisked fresh at Sochi.`);
       closeCheckoutModal();
     }
 
