@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kumo — Interactive Matcha Tea Experience</title>
-  
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>kumo — choose your matcha tea</title>
+
+  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
   
   <!-- Material Symbols Outlined -->
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@200..700,0..1&display=swap" rel="stylesheet"/>
@@ -22,632 +22,465 @@
           colors: {
             kumo: {
               frame: '#889356',
-              frameDark: '#6a763f',
-              frameDeep: '#4d572d',
-              bgDeep: '#1b2315',
-              bgCard: '#27341e',
-              pillDark: '#222d1b',
+              frameDark: '#6b7740',
+              bgDeep: '#182112',
               cream: '#f4f3ec',
-              gold: '#c4ad73',
-              berry: '#9c2444'
+              gold: '#d9ba79'
             }
           },
           fontFamily: {
+            serif: ['"Fraunces"', '"Playfair Display"', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            serif: ['"Playfair Display"', 'serif'],
           }
         }
       }
     }
   </script>
+
   <style>
-    body {
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
       background-color: #889356;
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    /* Custom Scrubber Track */
-    .scrubber-track {
-      background: rgba(255, 255, 255, 0.18);
+
+    /* 3D Orbit Carousel Animation */
+    .flavor-card {
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform, opacity;
     }
-    .scrubber-fill {
-      background: #c86358;
-      transition: width 0.15s linear;
-    }
-    /* Smooth Pulse Glow */
-    @keyframes subtlePulse {
-      0%, 100% { transform: scale(1); opacity: 0.9; }
-      50% { transform: scale(1.04); opacity: 1; }
-    }
-    .active-card-pulse {
-      animation: subtlePulse 2s infinite ease-in-out;
+
+    /* Liquid Swirl Blend Filters */
+    .drink-swirl-filter {
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
   </style>
 </head>
-<body class="min-h-screen p-3 sm:p-6 md:p-10 flex flex-col items-center justify-start text-kumo-cream selection:bg-kumo-gold selection:text-kumo-bgDeep">
+<body class="h-screen w-screen flex items-center justify-center p-2 sm:p-4 md:p-6 select-none bg-[#889356]">
 
-  <!-- Top Page Utility Bar -->
-  <div class="w-full max-w-6xl mb-6 flex flex-col sm:flex-row items-center justify-between gap-4 px-2">
-    <div>
-      <div class="flex items-center gap-2">
-        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="text-xs font-semibold tracking-widest uppercase text-kumo-bgDeep">Kumo Interactive Prototype</span>
-      </div>
-      <h1 class="text-xl sm:text-2xl font-serif font-bold text-kumo-bgDeep mt-0.5">
-        Choose Your Matcha Tea · Live Experience
-      </h1>
-    </div>
-
-    <!-- Quick Controls -->
-    <div class="flex items-center gap-2">
-      <button onclick="jumpToStage(0)" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-kumo-bgDeep/90 text-white hover:bg-black transition shadow-sm cursor-pointer">
-        1. Clean View
-      </button>
-      <button onclick="jumpToStage(1)" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-kumo-bgDeep/90 text-white hover:bg-black transition shadow-sm cursor-pointer">
-        2. Orbit Cards
-      </button>
-      <button onclick="selectFlavor('cranberry')" class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-kumo-berry text-white hover:bg-red-800 transition shadow-sm cursor-pointer flex items-center gap-1">
-        <span>3. Cranberry Infusion</span>
-        <span class="material-symbols-outlined text-[13px]">sparkles</span>
-      </button>
-    </div>
-  </div>
-
-  <!-- THE MAIN KUMO MATCHA INTERACTIVE DEVICE CANVAS -->
-  <div class="w-full max-w-6xl bg-kumo-frame border-8 sm:border-[14px] border-kumo-frameDark rounded-[28px] sm:rounded-[38px] p-3 sm:p-6 shadow-2xl relative overflow-hidden select-none">
+  <!-- Outer Editorial Device Frame (Matches exact mockup bezel) -->
+  <main class="w-full h-full max-w-[1240px] max-h-[860px] bg-[#889356] border-[8px] sm:border-[14px] md:border-[18px] border-[#6b7740] rounded-[28px] sm:rounded-[38px] md:rounded-[46px] p-2 sm:p-4 shadow-2xl relative flex flex-col justify-between overflow-hidden">
     
-    <!-- Inner App Container (16:10 Aspect Ratio) -->
-    <div id="kumo-canvas-wrapper" class="w-full aspect-[16/10.5] sm:aspect-[16/10.2] bg-kumo-bgDeep rounded-[20px] sm:rounded-[26px] overflow-hidden relative shadow-inner flex flex-col justify-between">
+    <!-- Inner Canvas Screen (Exact Matcha Mountain Landscape) -->
+    <div id="screen-viewport" class="w-full h-full rounded-[20px] sm:rounded-[28px] md:rounded-[34px] overflow-hidden relative shadow-inner bg-[#1b2515] flex flex-col justify-between">
       
-      <!-- Visual Stage Layers (Smooth Cross-dissolve Stack) -->
-      <div class="absolute inset-0 z-0">
-        <!-- Stage 0: Initial Landscape -->
-        <img id="stage-img-0" src="kumo-1.png" alt="Kumo Initial Landscape" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-100" />
+      <!-- 1. BACKGROUND SCENIC LAYER (Matcha Mountain + Studio Lighting) -->
+      <div class="absolute inset-0 pointer-events-none z-0">
+        <!-- Base scenic image (Screen 2 with powder mountain & studio lighting) -->
+        <img src="kumo-2.png" alt="Matcha landscape" class="w-full h-full object-cover object-bottom filter brightness-[0.98]" />
         
-        <!-- Stage 1: Choose Your Matcha (Ingredient Orbit) -->
-        <img id="stage-img-1" src="kumo-2.png" alt="Kumo Ingredient Selection" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 pointer-events-none" />
-        
-        <!-- Stage 2: Cranberry Infused Drink -->
-        <img id="stage-img-2" src="kumo-3.png" alt="Kumo Cranberry Matcha" class="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out opacity-0 pointer-events-none" />
-
-        <!-- Dynamic Flavor Overlay Shading for alternative fruit selections -->
-        <div id="custom-flavor-overlay" class="absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none mix-blend-color"></div>
+        <!-- Subtle dark vignette gradient -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-black/25"></div>
       </div>
 
-      <!-- TOP FLOATING HEADER NAVIGATION (Layered UI) -->
-      <div class="relative z-30 pt-4 sm:pt-6 px-4 sm:px-8 flex items-center justify-between">
-        <!-- Brand Logo -->
-        <div class="flex items-center gap-2 cursor-pointer" onclick="jumpToStage(0)">
-          <span class="font-serif text-2xl sm:text-3xl font-bold tracking-tight text-white drop-shadow-md">kumo</span>
-        </div>
+      <!-- 2. TOP FLOATING NAVIGATION BAR -->
+      <header class="relative z-30 pt-3 sm:pt-5 px-4 sm:px-8 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#" class="font-serif text-2xl sm:text-3xl md:text-4xl font-bold tracking-tight text-white drop-shadow">
+          kumo
+        </a>
 
-        <!-- Central Floating Navigation Squircle Pill -->
-        <div class="flex items-center gap-2 sm:gap-3 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/55 backdrop-blur-md border border-white/10 shadow-lg text-white/90">
-          <!-- Grid Icon -->
-          <button class="p-1 sm:p-1.5 hover:text-white transition cursor-pointer" title="Menu">
-            <span class="material-symbols-outlined text-[16px] sm:text-[19px] block">grid_view</span>
+        <!-- Floating Glassmorphic Pill -->
+        <div class="flex items-center gap-2 sm:gap-3.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 shadow-lg text-white/90">
+          <button class="p-1 hover:text-white transition cursor-pointer" title="Menu">
+            <span class="material-symbols-outlined text-[17px] sm:text-[19px] block">grid_view</span>
           </button>
-          <!-- Socials -->
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100">
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
-          <!-- Threads -->
-          <a href="https://threads.net" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition">
+          <a href="https://threads.net" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100">
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.213-8.184-3.535C2.26 18.232 1.5 15.357 1.5 11.954c0-3.616.924-6.621 2.748-8.932C6.115.654 8.835 0 12.33 0c3.488 0 6.208.647 8.082 1.923 1.874 1.276 2.878 3.123 2.983 5.49.034.787-.52 1.449-1.296 1.449-.714 0-1.309-.553-1.345-1.267-.075-1.758-.809-3.08-2.182-3.927-1.373-.847-3.473-1.298-6.242-1.298-2.906 0-5.127.525-6.602 1.562-1.475 1.036-2.223 2.57-2.223 4.561 0 1.83.693 3.322 2.062 4.435 1.368 1.113 3.393 1.677 6.02 1.677h.459c2.316 0 4.197-.565 5.59-1.68 1.394-1.115 2.12-2.736 2.16-4.819.04-2.083-.628-3.753-1.986-4.964-1.358-1.211-3.284-1.849-5.726-1.897-2.317-.046-4.3.504-5.895 1.636-1.595 1.132-2.451 2.74-2.545 4.779-.094 2.04.607 3.666 2.085 4.832 1.478 1.166 3.493 1.764 5.99 1.777.787.004 1.423.642 1.42 1.429-.003.787-.643 1.422-1.43 1.418-3.048-.016-5.592-.767-7.561-2.233-1.969-1.465-2.92-3.645-2.827-6.48.093-2.834 1.258-5.068 3.463-6.64 2.204-1.571 5.01-2.348 8.341-2.308 3.197.039 5.823.868 7.807 2.464 1.984 1.596 3.011 3.901 3.052 6.853.041 2.952-.924 5.385-2.868 7.23-1.944 1.846-4.664 2.788-8.084 2.802h-.534c-2.41 0-4.364-.473-5.808-1.405-1.444-.933-2.222-2.28-2.312-4.004z"/></svg>
           </a>
-          <!-- X (Twitter) -->
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition">
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="p-1 hover:text-white transition opacity-90 hover:opacity-100">
             <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
           </a>
-          <!-- Cart Button inside Pill -->
-          <button onclick="toggleCartDrawer()" class="ml-1 sm:ml-2 px-2.5 sm:px-3 py-1 rounded-lg bg-black/80 hover:bg-black text-white flex items-center gap-1.5 transition cursor-pointer group">
-            <span class="material-symbols-outlined text-[15px] sm:text-[17px] group-hover:scale-110 transition-transform">shopping_cart</span>
-            <span id="header-cart-badge" class="text-[11px] font-bold text-kumo-gold">0</span>
+          <!-- Cart trigger inside nav -->
+          <button onclick="openCheckoutModal()" class="ml-1 sm:ml-2 px-2.5 sm:px-3 py-1 rounded-lg bg-black/70 hover:bg-black text-white flex items-center gap-1.5 transition cursor-pointer">
+            <span class="material-symbols-outlined text-[15px] sm:text-[17px]">shopping_cart</span>
+            <span id="nav-cart-qty" class="text-[11px] font-bold text-kumo-gold">1</span>
           </button>
         </div>
 
-        <!-- Location Pin Squircle Button -->
-        <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-black/55 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/90 hover:text-white hover:bg-black/80 transition cursor-pointer shadow-lg" title="Store Location">
-          <span class="material-symbols-outlined text-[18px] sm:text-[21px]">location_on</span>
+        <!-- Location Pin -->
+        <button class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-black/60 backdrop-blur-md border border-white/10 flex items-center justify-center text-white hover:text-white hover:bg-black/80 transition cursor-pointer shadow-lg" title="Find Store">
+          <span class="material-symbols-outlined text-[18px] sm:text-[20px]">location_on</span>
         </button>
-      </div>
+      </header>
 
-      <!-- MIDDLE INTERACTIVE LAYER (Cards Hotspots + Price Cart Trigger) -->
-      <div class="relative z-20 flex-grow flex flex-col justify-end pb-8 sm:pb-12 pointer-events-auto">
+      <!-- 3. CENTER STAGE: ROTATING FLAVOR CARDS ORBIT & DYNAMIC MATCH CUP -->
+      <div class="relative z-20 flex-grow flex flex-col items-center justify-center -mt-2 sm:-mt-4">
         
-        <!-- INGREDIENT CARDS INTERACTIVE ORBIT HOTSPOTS -->
-        <!-- These invisible/hoverable hotspots map directly over the 5 cards in Screen 2 & 3 -->
-        <div id="ingredient-hotspots" class="absolute inset-x-0 top-1/4 sm:top-1/3 bottom-12 flex items-center justify-center transition-opacity duration-300 opacity-0 pointer-events-none">
-          <div class="relative w-full max-w-4xl h-full flex items-center justify-center">
+        <!-- THE ROTATING ORBIT OF SQUIRCLE CARDS -->
+        <div class="w-full max-w-4xl relative h-40 sm:h-52 md:h-64 flex items-center justify-center">
+          
+          <!-- 5 Rotatable Flavor Cards placed along the orbital arc -->
+          <div id="cards-orbit-container" class="relative w-full h-full flex items-center justify-center">
             
-            <!-- 1. Strawberry Hotspot -->
-            <button onclick="selectFlavor('strawberry')" title="Infuse Fresh Strawberry" class="flavor-card-btn absolute left-[6%] sm:left-[8%] top-[25%] sm:top-[22%] w-16 sm:w-24 md:w-28 aspect-square rounded-2xl sm:rounded-3xl hover:bg-white/15 border-2 border-transparent hover:border-red-400 transition-all cursor-pointer flex flex-col items-center justify-center group shadow-lg">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-[10px] sm:text-xs text-white px-2 py-0.5 rounded-full whitespace-nowrap -top-6 absolute">Strawberry</span>
-            </button>
+            <!-- Card 0: Strawberry -->
+            <div id="card-item-0" onclick="rotateToFlavor(0)" class="flavor-card absolute cursor-pointer select-none group flex flex-col items-center">
+              <div class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-2xl p-2.5 sm:p-4 flex items-center justify-center border-2 border-white/40 group-hover:scale-110 transition-transform">
+                <span class="text-2xl sm:text-4xl md:text-5xl filter drop-shadow">🍓</span>
+              </div>
+              <span class="text-[10px] sm:text-xs font-semibold text-white/90 bg-black/60 px-2.5 py-0.5 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Strawberry</span>
+            </div>
 
-            <!-- 2. Pure Green Leaf Hotspot -->
-            <button onclick="selectFlavor('matcha-leaf')" title="Pure Ceremonial Matcha" class="flavor-card-btn absolute left-[21%] sm:left-[24%] top-[8%] sm:top-[6%] w-16 sm:w-24 md:w-28 aspect-square rounded-2xl sm:rounded-3xl hover:bg-white/15 border-2 border-transparent hover:border-emerald-400 transition-all cursor-pointer flex flex-col items-center justify-center group shadow-lg">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-[10px] sm:text-xs text-white px-2 py-0.5 rounded-full whitespace-nowrap -top-6 absolute">Pure Leaf</span>
-            </button>
+            <!-- Card 1: Pure Leaf -->
+            <div id="card-item-1" onclick="rotateToFlavor(1)" class="flavor-card absolute cursor-pointer select-none group flex flex-col items-center">
+              <div class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-2xl p-2.5 sm:p-4 flex items-center justify-center border-2 border-white/40 group-hover:scale-110 transition-transform">
+                <span class="text-2xl sm:text-4xl md:text-5xl filter drop-shadow">🍃</span>
+              </div>
+              <span class="text-[10px] sm:text-xs font-semibold text-white/90 bg-black/60 px-2.5 py-0.5 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Pure Leaf</span>
+            </div>
 
-            <!-- 3. Wild Blueberry Hotspot -->
-            <button onclick="selectFlavor('blueberry')" title="Infuse Wild Blueberry" class="flavor-card-btn absolute left-[40%] sm:left-[41%] top-[12%] sm:top-[14%] w-16 sm:w-24 md:w-28 aspect-square rounded-2xl sm:rounded-3xl hover:bg-white/15 border-2 border-transparent hover:border-indigo-400 transition-all cursor-pointer flex flex-col items-center justify-center group shadow-lg">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-[10px] sm:text-xs text-white px-2 py-0.5 rounded-full whitespace-nowrap -top-6 absolute">Blueberry</span>
-            </button>
+            <!-- Card 2: Wild Blueberry -->
+            <div id="card-item-2" onclick="rotateToFlavor(2)" class="flavor-card absolute cursor-pointer select-none group flex flex-col items-center">
+              <div class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-2xl p-2.5 sm:p-4 flex items-center justify-center border-2 border-white/40 group-hover:scale-110 transition-transform">
+                <span class="text-2xl sm:text-4xl md:text-5xl filter drop-shadow">🫐</span>
+              </div>
+              <span class="text-[10px] sm:text-xs font-semibold text-white/90 bg-black/60 px-2.5 py-0.5 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Wild Blueberry</span>
+            </div>
 
-            <!-- 4. Cranberry Hotspot (Primary from Mockup 3) -->
-            <button onclick="selectFlavor('cranberry')" title="Infuse Tart Cranberry" class="flavor-card-btn absolute right-[21%] sm:right-[24%] top-[8%] sm:top-[6%] w-16 sm:w-24 md:w-28 aspect-square rounded-2xl sm:rounded-3xl hover:bg-white/15 border-2 border-transparent hover:border-kumo-berry transition-all cursor-pointer flex flex-col items-center justify-center group shadow-lg">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-kumo-berry text-[10px] sm:text-xs text-white px-2 py-0.5 rounded-full whitespace-nowrap -top-6 absolute font-semibold">Cranberry · $19.33</span>
-            </button>
+            <!-- Card 3: Cranberry (Default Active) -->
+            <div id="card-item-3" onclick="rotateToFlavor(3)" class="flavor-card absolute cursor-pointer select-none group flex flex-col items-center">
+              <div class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-2xl p-2.5 sm:p-4 flex items-center justify-center border-2 border-white/40 group-hover:scale-110 transition-transform">
+                <span class="text-2xl sm:text-4xl md:text-5xl filter drop-shadow">🍒</span>
+              </div>
+              <span class="text-[10px] sm:text-xs font-semibold text-white/90 bg-black/60 px-2.5 py-0.5 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Cranberry</span>
+            </div>
 
-            <!-- 5. Raspberry Hotspot -->
-            <button onclick="selectFlavor('raspberry')" title="Infuse Ripe Raspberry" class="flavor-card-btn absolute right-[6%] sm:right-[8%] top-[25%] sm:top-[22%] w-16 sm:w-24 md:w-28 aspect-square rounded-2xl sm:rounded-3xl hover:bg-white/15 border-2 border-transparent hover:border-pink-400 transition-all cursor-pointer flex flex-col items-center justify-center group shadow-lg">
-              <span class="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-[10px] sm:text-xs text-white px-2 py-0.5 rounded-full whitespace-nowrap -top-6 absolute">Raspberry</span>
-            </button>
+            <!-- Card 4: Raspberry -->
+            <div id="card-item-4" onclick="rotateToFlavor(4)" class="flavor-card absolute cursor-pointer select-none group flex flex-col items-center">
+              <div class="w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-2xl p-2.5 sm:p-4 flex items-center justify-center border-2 border-white/40 group-hover:scale-110 transition-transform">
+                <span class="text-2xl sm:text-4xl md:text-5xl filter drop-shadow">🍇</span>
+              </div>
+              <span class="text-[10px] sm:text-xs font-semibold text-white/90 bg-black/60 px-2.5 py-0.5 rounded-full mt-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Raspberry</span>
+            </div>
           </div>
-        </div>
 
-        <!-- ACTIVE FLAVOR BADGE & PRICE CART BUTTON (Screen 3 Interactive Element) -->
-        <div id="price-cart-wrapper" class="relative z-30 mx-auto flex flex-col items-center transition-all duration-500 transform translate-y-4 opacity-0 pointer-events-none mt-auto">
-          <!-- Floating Interactive Add to Cart Pill -->
-          <button onclick="addItemToCart()" class="bg-white text-black hover:bg-kumo-cream px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl shadow-2xl border border-white/40 flex flex-col items-center justify-center cursor-pointer group active:scale-95 transition-all">
-            <span id="active-price-text" class="text-[11px] sm:text-[13px] font-bold tracking-tight text-neutral-800">19.33$</span>
-            <span class="material-symbols-outlined text-[17px] sm:text-[20px] text-neutral-900 group-hover:scale-125 transition-transform mt-0.5">shopping_cart</span>
-          </button>
-          <span class="text-[10px] sm:text-xs tracking-wider uppercase text-white/80 font-medium mt-1.5 drop-shadow bg-black/30 px-2 py-0.5 rounded-full">
-            Tap to Order <span id="active-flavor-name">Cranberry</span>
-          </span>
-        </div>
-      </div>
+          <!-- THE CENTER DRINK CUP (Positioned precisely over the matcha hill) -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+            <div class="relative w-44 sm:w-60 md:w-72 aspect-[3/4] flex items-center justify-center">
+              
+              <!-- Clean Matcha Base Cup -->
+              <img id="drink-base-img" src="cup-base.png" alt="Pure Matcha Cup" class="absolute max-h-full max-w-full object-contain filter drop-shadow-2xl transition-opacity duration-500 opacity-0" />
+              
+              <!-- Cranberry Swirl Cup (Exact Screen 3 Photorealistic Asset) -->
+              <img id="drink-cranberry-img" src="cup-cranberry.png" alt="Cranberry Swirl Cup" class="absolute max-h-full max-w-full object-contain filter drop-shadow-2xl transition-opacity duration-500 opacity-100" />
 
-      <!-- BOTTOM MEDIA SCRUBBER / TIMELINE CONTROLS -->
-      <div class="relative z-30 pb-3 sm:pb-5 px-4 sm:px-8">
-        <div class="flex items-center gap-3 sm:gap-4">
-          <!-- Play / Pause Button -->
-          <button id="play-pause-btn" onclick="togglePlayPause()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer shadow flex-shrink-0" title="Play / Pause Animation">
-            <span id="play-pause-icon" class="material-symbols-outlined text-[18px] sm:text-[22px]">pause</span>
-          </button>
+              <!-- Smooth Dynamic Color Swirl Overlay for other fruits -->
+              <div id="drink-swirl-tint" class="absolute inset-x-4 top-1/4 bottom-1/4 rounded-full mix-blend-color transition-all duration-500 opacity-0 filter blur-md pointer-events-none"></div>
 
-          <!-- Interactive Timeline Track -->
-          <div class="flex-grow flex items-center">
-            <div id="scrubber-bar" onclick="scrubTimeline(event)" class="w-full h-2.5 sm:h-3 rounded-full scrubber-track overflow-hidden relative cursor-pointer group">
-              <!-- Animated Progress Fill -->
-              <div id="scrubber-fill" class="h-full rounded-full scrubber-fill relative w-0">
-                <span class="absolute right-0 top-0 bottom-0 w-2.5 bg-white rounded-full opacity-80 shadow"></span>
+              <!-- Animated Typography Label Over Drink (e.g. "Cranberry") -->
+              <div class="absolute top-[52%] inset-x-0 text-center pointer-events-none">
+                <span id="drink-flavor-title" class="font-serif italic text-white/95 text-xl sm:text-2xl md:text-3xl font-semibold tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] transition-all duration-300">
+                  Cranberry
+                </span>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Stage Badge indicator -->
-          <span id="stage-indicator-pill" class="text-[10px] sm:text-xs uppercase tracking-widest text-white/80 font-mono bg-black/40 px-2 sm:px-3 py-1 rounded-full border border-white/10 hidden sm:inline">
-            Stage 1 / 3
-          </span>
+        <!-- BUY NOW / PRICE TAG BUTTON (Anchored right below the cup) -->
+        <div class="relative z-30 mt-1 sm:mt-2 flex flex-col items-center">
+          <button onclick="openCheckoutModal()" class="bg-white hover:bg-neutral-100 active:scale-95 text-neutral-900 px-4 py-2 sm:px-6 sm:py-2.5 rounded-2xl shadow-2xl border border-white/60 flex flex-col items-center justify-center cursor-pointer transition-all duration-200 group">
+            <span id="drink-price-display" class="text-xs sm:text-sm font-bold tracking-tight text-neutral-800">19.33$</span>
+            <div class="flex items-center gap-1 text-neutral-900 mt-0.5">
+              <span class="material-symbols-outlined text-[17px] sm:text-[20px] group-hover:scale-120 transition-transform">shopping_cart</span>
+              <span class="text-[11px] sm:text-xs font-bold uppercase tracking-wider">Buy Now</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Headline: "Choose your matcha tea" (Curved / Editorial font) -->
+        <div class="relative z-10 mt-3 sm:mt-5 text-center pointer-events-none">
+          <h2 class="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            Choose your matcha tea
+          </h2>
         </div>
       </div>
 
-      <!-- NOTIFICATION TOAST -->
-      <div id="kumo-toast" class="absolute top-20 inset-x-0 mx-auto w-fit z-50 transition-all duration-300 opacity-0 pointer-events-none transform -translate-y-4">
-        <div class="bg-black/90 text-white backdrop-blur-md px-5 py-2.5 rounded-full border border-kumo-gold/40 shadow-2xl flex items-center gap-2 text-xs sm:text-sm">
-          <span class="material-symbols-outlined text-kumo-gold text-base">check_circle</span>
-          <span id="toast-message">Added to your bag!</span>
+      <!-- 4. BOTTOM ROTATION SCRUBBER & ROTATE CONTROLS -->
+      <footer class="relative z-30 pb-3 sm:pb-5 px-4 sm:px-8">
+        <div class="flex items-center justify-between gap-3 sm:gap-6 max-w-2xl mx-auto">
+          
+          <!-- Rotate Left Arrow Button -->
+          <button onclick="prevFlavor()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90" title="Previous Flavor (Rotate Left)">
+            <span class="material-symbols-outlined text-[18px] sm:text-[22px]">arrow_back</span>
+          </button>
+
+          <!-- Smooth Dial Dots Indicator -->
+          <div class="flex items-center gap-2 sm:gap-3 bg-black/40 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
+            <button onclick="rotateToFlavor(0)" id="dot-0" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white"></button>
+            <button onclick="rotateToFlavor(1)" id="dot-1" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white"></button>
+            <button onclick="rotateToFlavor(2)" id="dot-2" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white"></button>
+            <button onclick="rotateToFlavor(3)" id="dot-3" class="w-3.5 h-3.5 rounded-full transition-all duration-300 bg-kumo-gold shadow"></button>
+            <button onclick="rotateToFlavor(4)" id="dot-4" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white"></button>
+          </div>
+
+          <!-- Rotate Right Arrow Button -->
+          <button onclick="nextFlavor()" class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 hover:bg-white/35 backdrop-blur-md flex items-center justify-center text-white transition cursor-pointer active:scale-90" title="Next Flavor (Rotate Right)">
+            <span class="material-symbols-outlined text-[18px] sm:text-[22px]">arrow_forward</span>
+          </button>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- 5. INSTANT BUY MODAL (Simple, Clean, Immediate) -->
+  <div id="buy-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-md transition-opacity duration-300 opacity-0 pointer-events-none">
+    <div class="bg-gradient-to-b from-[#222d1b] to-[#161e12] border border-white/20 rounded-3xl p-6 sm:p-8 max-w-sm w-full text-white shadow-2xl relative text-center transform scale-95 transition-transform duration-300" id="buy-modal-card">
+      
+      <!-- Close button -->
+      <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition cursor-pointer">
+        <span class="material-symbols-outlined text-sm">close</span>
+      </button>
+
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-3xl mb-3" id="modal-flavor-emoji">
+        🍒
+      </div>
+
+      <span class="text-xs uppercase tracking-widest text-kumo-gold font-bold">Kumo Fresh Brew</span>
+      <h3 class="font-serif text-2xl font-bold mt-1 text-white" id="modal-flavor-title">Cranberry Iced Matcha</h3>
+      <p class="text-xs text-white/70 mt-1">Single-origin ceremonial Uji matcha swirled with fresh tart cranberry puree.</p>
+
+      <div class="bg-white/5 border border-white/10 rounded-2xl p-4 my-5 flex items-center justify-between">
+        <div class="text-left">
+          <span class="text-[11px] text-white/60 block">Price</span>
+          <span class="text-xl font-bold font-serif text-white" id="modal-price-tag">$19.33</span>
+        </div>
+        <div class="text-right">
+          <span class="text-[11px] text-emerald-400 block font-semibold">In Stock · Ready to Brew</span>
+          <span class="text-[11px] text-white/60">Includes Eco Glass Straw</span>
         </div>
       </div>
 
+      <button onclick="confirmOrder()" class="w-full bg-kumo-gold hover:bg-amber-400 text-black font-bold py-3.5 rounded-xl uppercase tracking-wider text-xs transition cursor-pointer shadow-lg flex items-center justify-center gap-2">
+        <span class="material-symbols-outlined text-base">shopping_bag</span>
+        <span>Confirm Order &amp; Pay</span>
+      </button>
+      <p class="text-[10px] text-white/40 mt-3">Free pickup in 15 mins or local bicycle courier</p>
     </div>
   </div>
 
-  <!-- INTERACTIVE SLIDE-OVER CART DRAWER -->
-  <div id="cart-drawer-backdrop" onclick="toggleCartDrawer()" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
-  <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-kumo-bgDeep text-white border-l border-white/10 shadow-2xl z-50 transition-transform duration-300 transform translate-x-full flex flex-col justify-between">
-    <!-- Drawer Header -->
-    <div class="p-6 border-b border-white/10 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="font-serif text-2xl font-bold tracking-wider">kumo</span>
-        <span class="text-xs uppercase tracking-widest text-kumo-gold bg-black/40 px-2 py-0.5 rounded-full">Your Order</span>
-      </div>
-      <button onclick="toggleCartDrawer()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition cursor-pointer">
-        <span class="material-symbols-outlined text-lg">close</span>
-      </button>
-    </div>
-
-    <!-- Drawer Items List -->
-    <div class="flex-grow p-6 overflow-y-auto space-y-4" id="cart-items-container">
-      <div class="text-center py-12 text-white/50 text-sm">
-        <span class="material-symbols-outlined text-4xl mb-2 text-white/30 block">local_cafe</span>
-        <p>Your matcha bag is currently empty.</p>
-        <p class="text-xs text-white/40 mt-1">Select an infused fruit matcha on the screen to add.</p>
-      </div>
-    </div>
-
-    <!-- Drawer Footer -->
-    <div class="p-6 border-t border-white/10 bg-black/40 space-y-4">
-      <div class="flex items-center justify-between text-sm">
-        <span class="text-white/70">Subtotal:</span>
-        <span id="cart-subtotal-text" class="text-xl font-bold font-serif text-kumo-gold">$0.00</span>
-      </div>
-      <button onclick="alert('Proceeding to Kumo Express Checkout!')" class="w-full bg-kumo-gold hover:bg-amber-400 text-kumo-bgDeep font-bold py-3.5 rounded-xl uppercase tracking-wider text-xs transition cursor-pointer shadow-lg flex items-center justify-center gap-2">
-        <span>Proceed To Checkout</span>
-        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-      </button>
-      <p class="text-[11px] text-center text-white/50">Free eco-friendly courier delivery on orders over $35</p>
-    </div>
-  </aside>
-
-  <!-- SCREEN CONCEPT REFERENCE GALLERY (Original High-Res Mockups) -->
-  <section class="w-full max-w-6xl mt-16 pt-10 border-t border-kumo-frameDark/40">
-    <div class="text-center mb-10">
-      <span class="text-xs font-semibold uppercase tracking-[0.25em] text-kumo-bgDeep">Source Assets</span>
-      <h2 class="text-2xl sm:text-3xl font-serif font-bold text-kumo-bgDeep mt-1">Concept Mockup References</h2>
-      <p class="text-xs sm:text-sm text-kumo-bgDeep/80 max-w-md mx-auto mt-1">
-        Inspect the original high-resolution renders created for the Kumo digital experience.
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Screen 1 Card -->
-      <div class="bg-kumo-bgDeep/90 rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col justify-between group">
-        <div>
-          <a href="kumo-1.png" target="_blank" class="block overflow-hidden rounded-xl bg-black/40 aspect-[16/10] mb-3">
-            <img src="kumo-1.png" alt="Screen 1 Reference" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
-          </a>
-          <span class="text-[11px] uppercase tracking-widest text-kumo-gold font-bold">Screen 01</span>
-          <h3 class="text-lg font-serif font-semibold text-white mt-0.5">Initial Landscape</h3>
-          <p class="text-xs text-white/70 mt-1 leading-relaxed">
-            Iced layered matcha anchored upon fine matcha powder hills with the top navigation bar and bottom media player timeline.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-          <span class="text-white/50 font-mono">1920 × 1280</span>
-          <a href="kumo-1.png" target="_blank" class="text-kumo-gold hover:underline flex items-center gap-1">
-            <span>Open High-Res</span>
-            <span class="material-symbols-outlined text-[13px]">open_in_new</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Screen 2 Card -->
-      <div class="bg-kumo-bgDeep/90 rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col justify-between group">
-        <div>
-          <a href="kumo-2.png" target="_blank" class="block overflow-hidden rounded-xl bg-black/40 aspect-[16/10] mb-3">
-            <img src="kumo-2.png" alt="Screen 2 Reference" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
-          </a>
-          <span class="text-[11px] uppercase tracking-widest text-kumo-gold font-bold">Screen 02</span>
-          <h3 class="text-lg font-serif font-semibold text-white mt-0.5">Ingredient Orbit Cards</h3>
-          <p class="text-xs text-white/70 mt-1 leading-relaxed">
-            The 5 squircle flavor cards (Strawberry, Tea Leaves, Blueberry, Cranberry, Raspberry) fanning across an orbital arc.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-          <span class="text-white/50 font-mono">1920 × 1280</span>
-          <a href="kumo-2.png" target="_blank" class="text-kumo-gold hover:underline flex items-center gap-1">
-            <span>Open High-Res</span>
-            <span class="material-symbols-outlined text-[13px]">open_in_new</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Screen 3 Card -->
-      <div class="bg-kumo-bgDeep/90 rounded-2xl p-4 border border-white/10 shadow-xl flex flex-col justify-between group">
-        <div>
-          <a href="kumo-3.png" target="_blank" class="block overflow-hidden rounded-xl bg-black/40 aspect-[16/10] mb-3">
-            <img src="kumo-3.png" alt="Screen 3 Reference" class="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
-          </a>
-          <span class="text-[11px] uppercase tracking-widest text-kumo-gold font-bold">Screen 03</span>
-          <h3 class="text-lg font-serif font-semibold text-white mt-0.5">Cranberry Selection Active</h3>
-          <p class="text-xs text-white/70 mt-1 leading-relaxed">
-            Active cranberry puree swirling through the milk layer, floating 19.33$ price pill with quick cart add trigger.
-          </p>
-        </div>
-        <div class="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs">
-          <span class="text-white/50 font-mono">1920 × 1280</span>
-          <a href="kumo-3.png" target="_blank" class="text-kumo-gold hover:underline flex items-center gap-1">
-            <span>Open High-Res</span>
-            <span class="material-symbols-outlined text-[13px]">open_in_new</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JAVASCRIPT INTERACTIVE STATE MACHINE -->
+  <!-- JAVASCRIPT: BUTTERY SMOOTH ROTATION & CUP TRANSFORMATION -->
   <script>
-    const state = {
-      currentStage: 0, // 0: Clean landscape, 1: Orbit cards, 2: Infused
-      selectedFlavor: 'cranberry',
-      isPlaying: false,
-      progress: 0, // 0 to 100
-      playTimer: null,
-      cart: []
-    };
-
-    const flavors = {
-      'cranberry': {
-        name: 'Cranberry',
-        fullName: 'Kumo Cranberry Infused Iced Matcha',
-        price: 19.33,
-        overlayColor: 'transparent',
-        useRealImage: true
-      },
-      'strawberry': {
+    // Flavor database
+    const flavorList = [
+      {
+        id: 'strawberry',
         name: 'Strawberry',
-        fullName: 'Kumo Sweet Strawberry Swirl Matcha',
-        price: 18.50,
-        overlayColor: 'rgba(239, 68, 68, 0.22)',
-        useRealImage: false
+        fullName: 'Strawberry Swirl Matcha',
+        emoji: '🍓',
+        price: '18.50$',
+        tint: 'rgba(239, 68, 68, 0.45)',
+        isCranberry: false
       },
-      'blueberry': {
+      {
+        id: 'leaf',
+        name: 'Pure Ceremonial Leaf',
+        fullName: 'Ceremonial Uji Matcha',
+        emoji: '🍃',
+        price: '16.00$',
+        tint: 'transparent',
+        isCranberry: false
+      },
+      {
+        id: 'blueberry',
         name: 'Wild Blueberry',
-        fullName: 'Kumo Wild Mountain Blueberry Matcha',
-        price: 19.00,
-        overlayColor: 'rgba(99, 102, 241, 0.25)',
-        useRealImage: false
+        fullName: 'Wild Blueberry Matcha',
+        emoji: '🫐',
+        price: '19.00$',
+        tint: 'rgba(99, 102, 241, 0.48)',
+        isCranberry: false
       },
-      'raspberry': {
-        name: 'Raspberry',
-        fullName: 'Kumo Tart Ruby Raspberry Matcha',
-        price: 18.75,
-        overlayColor: 'rgba(217, 70, 239, 0.22)',
-        useRealImage: false
+      {
+        id: 'cranberry',
+        name: 'Cranberry',
+        fullName: 'Cranberry Iced Matcha',
+        emoji: '🍒',
+        price: '19.33$',
+        tint: 'transparent',
+        isCranberry: true
       },
-      'matcha-leaf': {
-        name: 'Ceremonial Leaf',
-        fullName: 'Kumo 100% Ceremonial Uji Matcha',
-        price: 16.00,
-        overlayColor: 'rgba(34, 197, 94, 0.15)',
-        useRealImage: false
+      {
+        id: 'raspberry',
+        name: 'Ruby Raspberry',
+        fullName: 'Tart Raspberry Matcha',
+        emoji: '🍇',
+        price: '18.75$',
+        tint: 'rgba(217, 70, 239, 0.45)',
+        isCranberry: false
       }
-    };
+    ];
 
-    // Stage Switcher Function
-    function jumpToStage(stageIdx) {
-      state.currentStage = stageIdx;
-      
-      const img0 = document.getElementById('stage-img-0');
-      const img1 = document.getElementById('stage-img-1');
-      const img2 = document.getElementById('stage-img-2');
-      const hotspots = document.getElementById('ingredient-hotspots');
-      const priceWrapper = document.getElementById('price-cart-wrapper');
-      const stagePill = document.getElementById('stage-indicator-pill');
-      const scrubberFill = document.getElementById('scrubber-fill');
+    let activeIndex = 3; // Start with Cranberry (Index 3, matching Screen 3)
 
-      // Update image visibilities
-      if (stageIdx === 0) {
-        img0.style.opacity = '1';
-        img1.style.opacity = '0';
-        img2.style.opacity = '0';
-        hotspots.classList.add('opacity-0', 'pointer-events-none');
-        hotspots.classList.remove('opacity-100', 'pointer-events-auto');
-        priceWrapper.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-        priceWrapper.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        if (stagePill) stagePill.innerText = 'Stage 1 / 3: Base View';
-        state.progress = 10;
-      } else if (stageIdx === 1) {
-        img0.style.opacity = '0';
-        img1.style.opacity = '1';
-        img2.style.opacity = '0';
-        hotspots.classList.remove('opacity-0', 'pointer-events-none');
-        hotspots.classList.add('opacity-100', 'pointer-events-auto');
-        priceWrapper.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-        priceWrapper.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        if (stagePill) stagePill.innerText = 'Stage 2 / 3: Orbit Cards';
-        state.progress = 55;
-      } else if (stageIdx === 2) {
-        img0.style.opacity = '0';
-        img1.style.opacity = '0';
-        img2.style.opacity = '1';
-        hotspots.classList.remove('opacity-0', 'pointer-events-none');
-        hotspots.classList.add('opacity-100', 'pointer-events-auto');
-        priceWrapper.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-        priceWrapper.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        if (stagePill) stagePill.innerText = 'Stage 3 / 3: Flavor Infused';
-        state.progress = 95;
-      }
+    // Positions for 5 cards across the curved orbit arc
+    // [dx (pixels), dy (pixels), scale, rotateDeg, zIndex]
+    const arcPositions = [
+      { x: -330, y: 35, scale: 0.82, rotate: -18, opacity: 0.75, z: 10 },
+      { x: -170, y: -25, scale: 0.95, rotate: -8,  opacity: 0.9,  z: 20 },
+      { x: 0,    y: -45, scale: 1.15, rotate: 0,   opacity: 1,    z: 30 },
+      { x: 170,  y: -25, scale: 0.95, rotate: 8,   opacity: 0.9,  z: 20 },
+      { x: 330,  y: 35, scale: 0.82, rotate: 18,  opacity: 0.75, z: 10 }
+    ];
 
-      if (scrubberFill) {
-        scrubberFill.style.width = state.progress + '%';
-      }
-    }
+    function updateCarousel() {
+      const isMobile = window.innerWidth < 640;
+      const xFactor = isMobile ? 0.48 : (window.innerWidth < 1024 ? 0.75 : 1);
 
-    // Flavor Selection
-    function selectFlavor(flavorKey) {
-      const flavor = flavors[flavorKey];
-      if (!flavor) return;
+      for (let i = 0; i < 5; i++) {
+        const cardEl = document.getElementById('card-item-' + i);
+        const dotEl = document.getElementById('dot-' + i);
+        if (!cardEl) continue;
 
-      state.selectedFlavor = flavorKey;
-      const priceText = document.getElementById('active-price-text');
-      const flavorName = document.getElementById('active-flavor-name');
-      const overlay = document.getElementById('custom-flavor-overlay');
+        // Calculate offset relative to activeIndex (wrapping around 0 to 4)
+        let offset = (i - activeIndex) % 5;
+        if (offset < -2) offset += 5;
+        if (offset > 2) offset -= 5;
 
-      if (priceText) priceText.innerText = flavor.price.toFixed(2) + '$';
-      if (flavorName) flavorName.innerText = flavor.name;
+        const slotIndex = offset + 2; // Maps -2..2 to 0..4 in arcPositions
+        const pos = arcPositions[slotIndex];
 
-      if (overlay) {
-        overlay.style.backgroundColor = flavor.overlayColor;
-        overlay.style.opacity = flavor.useRealImage ? '0' : '1';
-      }
+        const posX = pos.x * xFactor;
+        const posY = pos.y * (isMobile ? 0.6 : 1);
 
-      // Jump to stage 2 (infused)
-      jumpToStage(2);
-      showToast(`Selected ${flavor.name} Matcha!`);
-    }
+        cardEl.style.transform = `translate(${posX}px, ${posY}px) rotate(${pos.rotate}deg) scale(${pos.scale})`;
+        cardEl.style.opacity = pos.opacity;
+        cardEl.style.zIndex = pos.z;
 
-    // Play / Pause Animation Loop
-    function togglePlayPause() {
-      state.isPlaying = !state.isPlaying;
-      const icon = document.getElementById('play-pause-icon');
-
-      if (state.isPlaying) {
-        if (icon) icon.innerText = 'pause';
-        runAnimationLoop();
-      } else {
-        if (icon) icon.innerText = 'play_arrow';
-        clearInterval(state.playTimer);
-      }
-    }
-
-    function runAnimationLoop() {
-      clearInterval(state.playTimer);
-      state.playTimer = setInterval(() => {
-        state.progress += 1.5;
-        if (state.progress > 100) {
-          state.progress = 0;
+        // Highlight active card border
+        const innerSquircle = cardEl.querySelector('div');
+        if (innerSquircle) {
+          if (offset === 0) {
+            innerSquircle.className = 'w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-[0_0_30px_rgba(255,255,255,0.7)] p-2.5 sm:p-4 flex items-center justify-center border-4 border-amber-300 transition-all scale-105';
+          } else {
+            innerSquircle.className = 'w-16 h-16 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-[20px] sm:rounded-[28px] bg-white shadow-2xl p-2.5 sm:p-4 flex items-center justify-center border-2 border-white/40 hover:border-white transition-all';
+          }
         }
 
-        const scrubberFill = document.getElementById('scrubber-fill');
-        if (scrubberFill) scrubberFill.style.width = state.progress + '%';
-
-        if (state.progress < 35 && state.currentStage !== 0) {
-          jumpToStage(0);
-        } else if (state.progress >= 35 && state.progress < 75 && state.currentStage !== 1) {
-          jumpToStage(1);
-        } else if (state.progress >= 75 && state.currentStage !== 2) {
-          jumpToStage(2);
-        }
-      }, 100);
-    }
-
-    // Manual Timeline Scrubbing
-    function scrubTimeline(event) {
-      const bar = document.getElementById('scrubber-bar');
-      const rect = bar.getBoundingClientRect();
-      const clickX = event.clientX - rect.left;
-      const percent = Math.max(0, Math.min(100, (clickX / rect.width) * 100));
-      
-      state.progress = percent;
-      const scrubberFill = document.getElementById('scrubber-fill');
-      if (scrubberFill) scrubberFill.style.width = state.progress + '%';
-
-      if (percent < 35) {
-        jumpToStage(0);
-      } else if (percent < 75) {
-        jumpToStage(1);
-      } else {
-        jumpToStage(2);
-      }
-    }
-
-    // Add to Cart
-    function addItemToCart() {
-      const flavor = flavors[state.selectedFlavor] || flavors['cranberry'];
-      
-      const existing = state.cart.find(item => item.key === state.selectedFlavor);
-      if (existing) {
-        existing.qty += 1;
-      } else {
-        state.cart.push({
-          key: state.selectedFlavor,
-          title: flavor.fullName,
-          price: flavor.price,
-          qty: 1
-        });
-      }
-
-      updateCartBadge();
-      updateCartDrawerUI();
-      showToast(`Added ${flavor.name} to Bag!`);
-    }
-
-    function updateCartBadge() {
-      const totalQty = state.cart.reduce((sum, item) => sum + item.qty, 0);
-      const badge = document.getElementById('header-cart-badge');
-      if (badge) badge.innerText = totalQty;
-    }
-
-    function updateCartDrawerUI() {
-      const container = document.getElementById('cart-items-container');
-      const subtotalEl = document.getElementById('cart-subtotal-text');
-      if (!container) return;
-
-      if (state.cart.length === 0) {
-        container.innerHTML = `
-          <div class="text-center py-12 text-white/50 text-sm">
-            <span class="material-symbols-outlined text-4xl mb-2 text-white/30 block">local_cafe</span>
-            <p>Your matcha bag is currently empty.</p>
-            <p class="text-xs text-white/40 mt-1">Select an infused fruit matcha on the screen to add.</p>
-          </div>
-        `;
-        if (subtotalEl) subtotalEl.innerText = '$0.00';
-        return;
-      }
-
-      let subtotal = 0;
-      container.innerHTML = '';
-      state.cart.forEach((item, index) => {
-        subtotal += item.price * item.qty;
-        const itemEl = document.createElement('div');
-        itemEl.className = 'p-4 bg-white/5 rounded-xl border border-white/10 flex items-center justify-between gap-3';
-        itemEl.innerHTML = `
-          <div>
-            <h4 class="font-semibold text-sm text-white">${item.title}</h4>
-            <p class="text-xs text-kumo-gold mt-0.5">$${item.price.toFixed(2)} · Oat Milk, 50% Sweet</p>
-            <div class="flex items-center gap-2 mt-2 text-xs">
-              <button onclick="adjustCartQty(${index}, -1)" class="w-6 h-6 rounded bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold">-</button>
-              <span class="px-2 font-mono">${item.qty}</span>
-              <button onclick="adjustCartQty(${index}, 1)" class="w-6 h-6 rounded bg-white/10 hover:bg-white/20 flex items-center justify-center font-bold">+</button>
-            </div>
-          </div>
-          <div class="text-right">
-            <p class="font-serif font-bold text-base text-white">$${(item.price * item.qty).toFixed(2)}</p>
-            <button onclick="removeCartItem(${index})" class="text-[11px] text-red-400 hover:text-red-300 mt-2 block">Remove</button>
-          </div>
-        `;
-        container.appendChild(itemEl);
-      });
-
-      if (subtotalEl) subtotalEl.innerText = '$' + subtotal.toFixed(2);
-    }
-
-    function adjustCartQty(index, delta) {
-      if (state.cart[index]) {
-        state.cart[index].qty += delta;
-        if (state.cart[index].qty <= 0) {
-          state.cart.splice(index, 1);
+        // Update dots
+        if (dotEl) {
+          if (i === activeIndex) {
+            dotEl.className = 'w-3.5 h-3.5 rounded-full transition-all duration-300 bg-amber-300 shadow scale-110';
+          } else {
+            dotEl.className = 'w-2.5 h-2.5 rounded-full transition-all duration-300 bg-white/40 hover:bg-white';
+          }
         }
       }
-      updateCartBadge();
-      updateCartDrawerUI();
-    }
 
-    function removeCartItem(index) {
-      state.cart.splice(index, 1);
-      updateCartBadge();
-      updateCartDrawerUI();
-    }
+      // Update the Center Drink Cup & Text
+      const current = flavorList[activeIndex];
+      const baseImg = document.getElementById('drink-base-img');
+      const cranberryImg = document.getElementById('drink-cranberry-img');
+      const swirlTint = document.getElementById('drink-swirl-tint');
+      const titleEl = document.getElementById('drink-flavor-title');
+      const priceEl = document.getElementById('drink-price-display');
 
-    function toggleCartDrawer() {
-      const drawer = document.getElementById('cart-drawer');
-      const backdrop = document.getElementById('cart-drawer-backdrop');
+      if (titleEl) titleEl.innerText = current.name;
+      if (priceEl) priceEl.innerText = current.price;
 
-      if (!drawer || !backdrop) return;
-      const isOpen = !drawer.classList.contains('translate-x-full');
-
-      if (isOpen) {
-        drawer.classList.add('translate-x-full');
-        backdrop.classList.add('opacity-0', 'pointer-events-none');
-        backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      if (current.isCranberry) {
+        if (cranberryImg) cranberryImg.style.opacity = '1';
+        if (baseImg) baseImg.style.opacity = '0';
+        if (swirlTint) swirlTint.style.opacity = '0';
       } else {
-        drawer.classList.remove('translate-x-full');
-        backdrop.classList.remove('opacity-0', 'pointer-events-none');
-        backdrop.classList.add('opacity-100', 'pointer-events-auto');
+        if (cranberryImg) cranberryImg.style.opacity = '0';
+        if (baseImg) baseImg.style.opacity = '1';
+        if (swirlTint) {
+          if (current.id === 'leaf') {
+            swirlTint.style.opacity = '0';
+          } else {
+            swirlTint.style.backgroundColor = current.tint;
+            swirlTint.style.opacity = '1';
+          }
+        }
       }
     }
 
-    function showToast(msg) {
-      const toast = document.getElementById('kumo-toast');
-      const toastMsg = document.getElementById('toast-message');
-      if (!toast || !toastMsg) return;
-
-      toastMsg.innerText = msg;
-      toast.classList.remove('opacity-0', 'pointer-events-none', '-translate-y-4');
-      toast.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-
-      setTimeout(() => {
-        toast.classList.add('opacity-0', 'pointer-events-none', '-translate-y-4');
-        toast.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-      }, 2500);
+    function rotateToFlavor(index) {
+      activeIndex = (index + 5) % 5;
+      updateCarousel();
     }
 
-    // Auto start on orbit stage on initial load so cards are immediately interactive
-    jumpToStage(1);
+    function prevFlavor() {
+      rotateToFlavor(activeIndex - 1);
+    }
+
+    function nextFlavor() {
+      rotateToFlavor(activeIndex + 1);
+    }
+
+    // Keyboard Arrow navigation (← / →)
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') prevFlavor();
+      if (e.key === 'ArrowRight') nextFlavor();
+      if (e.key === 'Escape') closeCheckoutModal();
+    });
+
+    // Touch swipe gesture support
+    let touchStartX = 0;
+    const viewport = document.getElementById('screen-viewport');
+    if (viewport) {
+      viewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      viewport.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 45) nextFlavor();
+        if (touchEndX - touchStartX > 45) prevFlavor();
+      }, { passive: true });
+    }
+
+    // Resize handler to re-scale card spread
+    window.addEventListener('resize', updateCarousel);
+
+    // Modal Buy Handlers
+    function openCheckoutModal() {
+      const current = flavorList[activeIndex];
+      const modal = document.getElementById('buy-modal');
+      const modalTitle = document.getElementById('modal-flavor-title');
+      const modalPrice = document.getElementById('modal-price-tag');
+      const modalEmoji = document.getElementById('modal-flavor-emoji');
+
+      if (modalTitle) modalTitle.innerText = current.fullName;
+      if (modalPrice) modalPrice.innerText = '$' + current.price.replace('$', '');
+      if (modalEmoji) modalEmoji.innerText = current.emoji;
+
+      if (modal) {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        modal.classList.add('opacity-100', 'pointer-events-auto');
+        const card = document.getElementById('buy-modal-card');
+        if (card) card.classList.remove('scale-95');
+      }
+    }
+
+    function closeCheckoutModal() {
+      const modal = document.getElementById('buy-modal');
+      if (modal) {
+        modal.classList.add('opacity-0', 'pointer-events-none');
+        modal.classList.remove('opacity-100', 'pointer-events-auto');
+        const card = document.getElementById('buy-modal-card');
+        if (card) card.classList.add('scale-95');
+      }
+    }
+
+    function confirmOrder() {
+      const current = flavorList[activeIndex];
+      alert(`Order confirmed for 1x ${current.fullName} (${current.price})! Thank you for ordering from Kumo.`);
+      closeCheckoutModal();
+    }
+
+    // Initialize on load
+    updateCarousel();
   </script>
 </body>
 </html>
