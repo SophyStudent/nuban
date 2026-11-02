@@ -171,35 +171,31 @@
       </div>
 
       <!-- LAYER 3: SEPARATED MATCHA MOUNTAIN BASE (z-20) -->
-      <!-- Independent asset; supports the composition at the bottom without dominating it -->
-      <!-- Clean, continuous powder ridge alpha; zero horizontal cuts, zero jagged edges -->
-      <div class="absolute inset-x-0 bottom-0 h-[44vh] sm:h-[46vh] md:h-[48vh] pointer-events-none z-20 overflow-hidden flex items-end">
-        <img src="assets/kumo/clean_v3/mountain_base.webp" alt="Matcha Mountain Base" class="w-full h-full object-cover object-bottom" />
+      <!-- Scales identically to studio backdrop with object-cover object-center; 100% pixel-aligned -->
+      <!-- Upper sky is pure alpha; fruit cards orbit behind the mountain slope on left & right -->
+      <div class="absolute inset-0 pointer-events-none z-20 overflow-hidden">
+        <img src="assets/kumo/clean_v3/mountain_base.webp" alt="Matcha Mountain Base" class="absolute inset-0 w-full h-full object-cover object-center" />
       </div>
 
       <!-- LAYER 4: PROMINENT CENTRAL 3D CUP (z-30) - PERMANENTLY IN THE FOREGROUND! -->
-      <!-- Large, appetizing, prominent center cup; crystal clear glass transparency, reflections & rich drink texture -->
+      <!-- Centered on mountain peak; large, appetizing, prominent hero drink -->
       <!-- All 5 flavours share the EXACT SAME dimensions & baseline; cross-fade smoothly with zero jumping or shifting -->
-      <div class="absolute inset-x-0 bottom-[14vh] sm:bottom-[16vh] md:bottom-[17vh] flex items-center justify-center z-30 pointer-events-none">
-        <div class="relative w-64 sm:w-80 md:w-96 h-[46vh] sm:h-[52vh] md:h-[56vh] flex items-end justify-center">
-          
-          <!-- Soft Contact Ambient Shadow onto the mountain peak -->
-          <div class="absolute bottom-2 w-36 sm:w-48 h-6 rounded-full bg-black/60 blur-md pointer-events-none"></div>
-
+      <div class="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+        <div class="relative w-64 sm:w-76 md:w-88 h-[44vh] sm:h-[48vh] md:h-[52vh] flex items-center justify-center -mt-8 sm:-mt-12 md:-mt-14">
           <!-- Cup 0: Strawberry Swirl Matcha -->
-          <img id="cup-scene-0" src="assets/kumo/clean_v3/cups/cup_strawberry.webp" alt="Strawberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-bottom opacity-0 pointer-events-none" />
+          <img id="cup-scene-0" src="assets/kumo/clean_v3/cups/cup_strawberry.webp" alt="Strawberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-center opacity-0 pointer-events-none" />
           
           <!-- Cup 1: 100% Ceremonial Uji Pure Leaf -->
-          <img id="cup-scene-1" src="assets/kumo/clean_v3/cups/cup_leaf.webp" alt="Pure Leaf Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-bottom opacity-0 pointer-events-none" />
+          <img id="cup-scene-1" src="assets/kumo/clean_v3/cups/cup_leaf.webp" alt="Pure Leaf Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-center opacity-0 pointer-events-none" />
           
           <!-- Cup 2: Wild Blueberry Matcha -->
-          <img id="cup-scene-2" src="assets/kumo/clean_v3/cups/cup_blueberry.webp" alt="Blueberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-bottom opacity-0 pointer-events-none" />
+          <img id="cup-scene-2" src="assets/kumo/clean_v3/cups/cup_blueberry.webp" alt="Blueberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-center opacity-0 pointer-events-none" />
           
           <!-- Cup 3: Cranberry Iced Matcha (Default Active) -->
-          <img id="cup-scene-3" src="assets/kumo/clean_v3/cups/cup_cranberry.webp" alt="Cranberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-bottom opacity-100 pointer-events-none" />
+          <img id="cup-scene-3" src="assets/kumo/clean_v3/cups/cup_cranberry.webp" alt="Cranberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-center opacity-100 pointer-events-none" />
           
           <!-- Cup 4: Ruby Raspberry Matcha -->
-          <img id="cup-scene-4" src="assets/kumo/clean_v3/cups/cup_raspberry.webp" alt="Raspberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-bottom opacity-0 pointer-events-none" />
+          <img id="cup-scene-4" src="assets/kumo/clean_v3/cups/cup_raspberry.webp" alt="Raspberry Matcha Cup" class="cup-layer absolute inset-0 w-full h-full object-contain object-center opacity-0 pointer-events-none" />
         </div>
       </div>
 
